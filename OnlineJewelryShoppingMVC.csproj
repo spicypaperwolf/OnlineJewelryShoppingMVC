@@ -173,6 +173,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="BrandMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
@@ -253,6 +254,40 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\admin\css\bootstrap.min.css" />
+    <Content Include="assets\admin\css\paper-dashboard.css" />
+    <Content Include="assets\admin\css\paper-dashboard.min.css" />
+    <Content Include="assets\admin\dashboard\dashboard.css" />
+    <Content Include="assets\admin\dashboard\dashboard.js" />
+    <Content Include="assets\admin\img\apple-icon.png" />
+    <Content Include="assets\admin\img\bg5.jpg" />
+    <Content Include="assets\admin\img\damir-bosnjak.jpg" />
+    <Content Include="assets\admin\img\default-avatar.png" />
+    <Content Include="assets\admin\img\faces\ayo-ogunseinde-1.jpg" />
+    <Content Include="assets\admin\img\faces\ayo-ogunseinde-2.jpg" />
+    <Content Include="assets\admin\img\faces\clem-onojeghuo-1.jpg" />
+    <Content Include="assets\admin\img\faces\clem-onojeghuo-2.jpg" />
+    <Content Include="assets\admin\img\faces\clem-onojeghuo-3.jpg" />
+    <Content Include="assets\admin\img\faces\clem-onojeghuo-4.jpg" />
+    <Content Include="assets\admin\img\faces\erik-lucatero-1.jpg" />
+    <Content Include="assets\admin\img\faces\erik-lucatero-2.jpg" />
+    <Content Include="assets\admin\img\faces\joe-gardner-1.jpg" />
+    <Content Include="assets\admin\img\faces\joe-gardner-2.jpg" />
+    <Content Include="assets\admin\img\faces\kaci-baum-1.jpg" />
+    <Content Include="assets\admin\img\faces\kaci-baum-2.jpg" />
+    <Content Include="assets\admin\img\favicon.png" />
+    <Content Include="assets\admin\img\header.jpg" />
+    <Content Include="assets\admin\img\jan-sendereks.jpg" />
+    <Content Include="assets\admin\img\logo-small.png" />
+    <Content Include="assets\admin\img\mike.jpg" />
+    <Content Include="assets\admin\js\core\bootstrap.min.js" />
+    <Content Include="assets\admin\js\core\jquery.min.js" />
+    <Content Include="assets\admin\js\core\popper.min.js" />
+    <Content Include="assets\admin\js\paper-dashboard.js" />
+    <Content Include="assets\admin\js\paper-dashboard.min.js" />
+    <Content Include="assets\admin\js\plugins\bootstrap-notify.js" />
+    <Content Include="assets\admin\js\plugins\chartjs.min.js" />
+    <Content Include="assets\admin\js\plugins\perfect-scrollbar.jquery.min.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -282,7 +317,12 @@
     <Content Include="OJSContext.edmx.diagram">
       <DependentUpon>OJSContext.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Shared\ViewPage1.cshtml" />
+    <Content Include="assets\admin\fonts\nucleo-icons.eot" />
+    <Content Include="assets\admin\fonts\nucleo-icons.ttf" />
+    <Content Include="assets\admin\fonts\nucleo-icons.woff" />
+    <Content Include="assets\admin\fonts\nucleo-icons.woff2" />
+    <Content Include="Areas\Admin\Views\Shared\_admin.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -331,12 +371,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Client\Controllers\" />
     <Folder Include="Areas\Client\Models\" />
     <Folder Include="Areas\Client\Views\Shared\" />
-    <Folder Include="assets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
