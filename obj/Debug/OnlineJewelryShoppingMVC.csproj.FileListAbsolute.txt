@@ -208,3 +208,4 @@ C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\obj\Debug\OnlineJewelry
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\obj\Debug\OnlineJewelryShoppingMVC.csproj.CopyComplete
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\obj\Debug\OnlineJewelryShoppingMVC.dll
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\obj\Debug\OnlineJewelryShoppingMVC.pdb
+
