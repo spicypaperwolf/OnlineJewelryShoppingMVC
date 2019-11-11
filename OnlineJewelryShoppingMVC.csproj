@@ -173,7 +173,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="BrandMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -193,8 +192,12 @@
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CheckoutController.cs" />
+    <Compile Include="Controllers\CollectionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
     <Compile Include="DimInfoMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -253,6 +256,81 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\client\css\plugins.css" />
+    <Content Include="assets\client\css\style.css" />
+    <Content Include="assets\client\img\about\about1.jpg" />
+    <Content Include="assets\client\img\about\About_icon1.jpg" />
+    <Content Include="assets\client\img\about\About_icon2.jpg" />
+    <Content Include="assets\client\img\about\About_icon3.jpg" />
+    <Content Include="assets\client\img\about\testimonial4.jpg" />
+    <Content Include="assets\client\img\about\testimonial5.jpg" />
+    <Content Include="assets\client\img\about\testimonial6.png" />
+    <Content Include="assets\client\img\bg\banner1.jpg" />
+    <Content Include="assets\client\img\bg\banner2.jpg" />
+    <Content Include="assets\client\img\bg\banner3.jpg" />
+    <Content Include="assets\client\img\bg\banner4.jpg" />
+    <Content Include="assets\client\img\bg\banner5.jpg" />
+    <Content Include="assets\client\img\bg\banner6.jpg" />
+    <Content Include="assets\client\img\bg\coming-soon.jpg" />
+    <Content Include="assets\client\img\blog\blog1.jpg" />
+    <Content Include="assets\client\img\blog\blog2.jpg" />
+    <Content Include="assets\client\img\blog\blog3.jpg" />
+    <Content Include="assets\client\img\blog\blog4.jpg" />
+    <Content Include="assets\client\img\blog\blog5.jpg" />
+    <Content Include="assets\client\img\blog\blog6.jpg" />
+    <Content Include="assets\client\img\blog\blog7.jpg" />
+    <Content Include="assets\client\img\blog\blog8.jpg" />
+    <Content Include="assets\client\img\blog\blog9.jpg" />
+    <Content Include="assets\client\img\blog\comment.png.jpg" />
+    <Content Include="assets\client\img\blog\comment3.png.jpg" />
+    <Content Include="assets\client\img\blog\post1.jpg" />
+    <Content Include="assets\client\img\blog\post2.jpg" />
+    <Content Include="assets\client\img\blog\post3.jpg" />
+    <Content Include="assets\client\img\blog\post4.jpg" />
+    <Content Include="assets\client\img\blog\post5.jpg" />
+    <Content Include="assets\client\img\blog\post6.jpg" />
+    <Content Include="assets\client\img\favicon.ico" />
+    <Content Include="assets\client\img\icon\blog-nav.png" />
+    <Content Include="assets\client\img\icon\papyel2.png" />
+    <Content Include="assets\client\img\logo\logo-3.png" />
+    <Content Include="assets\client\img\logo\logo.png" />
+    <Content Include="assets\client\img\portfolio\portfolio1.jpg" />
+    <Content Include="assets\client\img\portfolio\portfolio2.jpg" />
+    <Content Include="assets\client\img\portfolio\portfolio3.jpg" />
+    <Content Include="assets\client\img\portfolio\portfolio4.jpg" />
+    <Content Include="assets\client\img\portfolio\portfolio5.jpg" />
+    <Content Include="assets\client\img\portfolio\portfolio6.jpg" />
+    <Content Include="assets\client\img\product\product1-big.jpg" />
+    <Content Include="assets\client\img\product\product1.jpg" />
+    <Content Include="assets\client\img\product\product10.jpg" />
+    <Content Include="assets\client\img\product\product11.jpg" />
+    <Content Include="assets\client\img\product\product12.jpg" />
+    <Content Include="assets\client\img\product\product13.jpg" />
+    <Content Include="assets\client\img\product\product14.jpg" />
+    <Content Include="assets\client\img\product\product15.jpg" />
+    <Content Include="assets\client\img\product\product16.jpg" />
+    <Content Include="assets\client\img\product\product2.jpg" />
+    <Content Include="assets\client\img\product\product3.jpg" />
+    <Content Include="assets\client\img\product\product4.jpg" />
+    <Content Include="assets\client\img\product\product5.jpg" />
+    <Content Include="assets\client\img\product\product6.jpg" />
+    <Content Include="assets\client\img\product\product7.jpg" />
+    <Content Include="assets\client\img\product\product8.jpg" />
+    <Content Include="assets\client\img\product\product9.jpg" />
+    <Content Include="assets\client\img\s-product\product.jpg" />
+    <Content Include="assets\client\img\s-product\product2.jpg" />
+    <Content Include="assets\client\img\s-product\product5.jpg" />
+    <Content Include="assets\client\img\s-product\product6.jpg" />
+    <Content Include="assets\client\img\service\services1.jpg" />
+    <Content Include="assets\client\img\service\services2.jpg" />
+    <Content Include="assets\client\img\service\services3.jpg" />
+    <Content Include="assets\client\img\slider\slider1.jpg" />
+    <Content Include="assets\client\img\slider\slider2.jpg" />
+    <Content Include="assets\client\img\slider\slider3.jpg" />
+    <Content Include="assets\client\img\slider\slider4.jpg" />
+    <Content Include="assets\client\img\yash.png" />
+    <Content Include="assets\client\js\main.js" />
+    <Content Include="assets\client\js\plugins.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -274,7 +352,6 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Client\Views\web.config" />
     <EntityDeploy Include="OJSContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OJSContext.Designer.cs</LastGenOutput>
@@ -283,6 +360,8 @@
       <DependentUpon>OJSContext.edmx</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Shared\ViewPage1.cshtml" />
+    <Content Include="assets\client\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\client\fonts\ionicons.ttf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -304,7 +383,7 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LayoutClient.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
@@ -328,15 +407,16 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shop\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Checkout\Index.cshtml" />
+    <Content Include="Views\Collection\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Client\Controllers\" />
-    <Folder Include="Areas\Client\Models\" />
-    <Folder Include="Areas\Client\Views\Shared\" />
-    <Folder Include="assets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
