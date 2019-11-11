@@ -174,7 +174,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
-    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
     <Compile Include="BrandMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -455,9 +454,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Client\Controllers\" />
-    <Folder Include="Areas\Client\Models\" />
-    <Folder Include="Areas\Client\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
