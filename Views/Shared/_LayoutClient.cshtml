@@ -63,9 +63,9 @@
                                 <li class="top_links">
                                     <a href="#">My Account <i class="ion-chevron-down"></i></a>
                                     <ul class="dropdown_links">
-                                        <li><a href="@Url.Action("Index", "Checkout")">Checkout </a></li>
+                                        <li><a href="@Url.Action("Checkout", "Product")">Checkout </a></li>
                                         <li><a href="@Url.Action("Login", "Account")">My Account </a></li>
-                                        <li><a href="@Url.Action("Index", "Cart")">Shopping Cart</a></li>
+                                        <li><a href="@Url.Action("Cart", "Product")">Shopping Cart</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -132,10 +132,10 @@
                                     </div>
                                     <div class="mini_cart_footer">
                                         <div class="cart_button view_cart">
-                                            <a href="@Url.Action("Index", "Cart")">View cart</a>
+                                            <a href="@Url.Action("Cart", "Product")">View cart</a>
                                         </div>
                                         <div class="cart_button checkout">
-                                            <a href="@Url.Action("Index", "Checkout")">Checkout</a>
+                                            <a href="@Url.Action("Checkout", "Product")">Checkout</a>
                                         </div>
 
                                     </div>
@@ -289,9 +289,9 @@
                                 <li class="top_links">
                                     <a href="@Url.Action("Login", "Account")">My Account <i class="ion-chevron-down"></i></a>
                                     <ul class="dropdown_links">
-                                        <li><a href="@Url.Action("Index", "Checkout")">Checkout </a></li>
+                                        <li><a href="@Url.Action("Checkout", "Product")">Checkout </a></li>
                                         <li><a href="@Url.Action("Login", "Account")">My Account </a></li>
-                                        <li><a href="@Url.Action("Index", "Cart")">Shopping Cart</a></li>
+                                        <li><a href="@Url.Action("Cart", "Product")">Shopping Cart</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -379,7 +379,7 @@
                                             <a href="cart.html">View cart</a>
                                         </div>
                                         <div class="cart_button checkout">
-                                            <a href="@Url.Action("Index", "Checkout")">Checkout</a>
+                                            <a href="@Url.Action("Checkout", "Product")">Checkout</a>
                                         </div>
 
                                     </div>
@@ -410,7 +410,7 @@
                                             <a href="@Url.Action("Index", "Home")">Home</a>
                                         </li>
                                         <li>
-                                            <a href="@Url.Action("Index", "Shop")">shop <i class="fa fa-angle-down"></i></a>
+                                            <a href="@Url.Action("Index", "Product")">shop <i class="fa fa-angle-down"></i></a>
                                             <ul class="mega_menu">
                                                 <li>
                                                     <a href="@Url.Action("Index", "Home")">Gold Jewellery</a>
@@ -447,7 +447,7 @@
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="@Url.Action("Index", "Shop")">collection <i class="fa fa-angle-down"></i></a>
+                                            <a href="@Url.Action("Index", "Product")">collection <i class="fa fa-angle-down"></i></a>
                                             <ul class="mega_menu">
                                                 <li>
                                                     <a href="@Url.Action("Index", "Home")">Gold Jewellery</a>
@@ -501,9 +501,11 @@
         <!--header bottom end-->
     </header>
     <!--header area end-->
+
     <!--content area start-->
     @RenderBody()
     <!--content area end-->
+
     <!--footer area start-->
     <footer class="footer_widgets">
         <div class="container">
@@ -747,41 +749,9 @@
     <script src="~/assets/client/js/main.js"></script>
 
     <a id="scrollUp" href="#top" style="display: none; position: fixed; z-index: 2147483647;"><i class="fa fa-angle-double-up"></i></a>
-    <!--news letter popup start-->
-    <div class="newletter-popup" style="left: 556px; position: absolute; top: 323px; z-index: 9999; opacity: 0; display: none;">
-        <div id="boxes" class="newletter-container">
-            <div id="dialog" class="window">
-                <div id="popup2">
-                    <span class="b-close"><span>close</span></span>
-                </div>
-                <div class="box">
-                    <div class="newletter-title">
-                        <h2>Newsletter</h2>
-                    </div>
-                    <div class="box-content newleter-content">
-                        <label class="newletter-label">Enter your email address to subscribe our notification of our new post &amp; features by email.</label>
-                        <div id="frm_subscribe">
-                            <form name="subscribe" id="subscribe_popup">
-                                <!-- <span class="required">*</span><span>Enter you email address here...</span>-->
-                                <input type="text" value="" name="subscribe_pemail" id="subscribe_pemail" placeholder="Enter you email address here...">
-                                <input type="hidden" value="" name="subscribe_pname" id="subscribe_pname">
-                                <div id="notification"></div>
-                                <a class="theme-btn-outlined" onclick="email_subscribepopup()"><span>Subscribe</span></a>
-                            </form>
-                            <div class="subscribe-bottom">
-                                <input type="checkbox" id="newsletter_popup_dont_show_again">
-                                <label for="newsletter_popup_dont_show_again">Don't show this popup again</label>
-                            </div>
-                        </div>
-                        <!-- /#frm_subscribe -->
-                    </div>
-                    <!-- /.box-content -->
-                </div>
-            </div>
 
-        </div>
-        <!-- /.box -->
-    </div>
+    <!--news letter popup start-->
+    @RenderSection("NewsPopup", required: false)
     <!--news letter popup end-->
 </body>
 </html>

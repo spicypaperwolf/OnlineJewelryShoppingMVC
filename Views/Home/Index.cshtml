@@ -16,7 +16,7 @@
                                     <p>exclusive offer -10% off this week</p>
                                     <h1>jewelry arrivals</h1>
                                     <p class="slider_price">starting at <span>$2.199.oo</span></p>
-                                    <a class="button" href="@Url.Action("Index", "Shop")">shopping now</a>
+                                    <a class="button" href="@Url.Action("Index", "Product")">shopping now</a>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                                     <p>exclusive offer -10% off this week</p>
                                     <h1>engagement ring</h1>
                                     <p class="slider_price">starting at <span>$2.199.oo</span></p>
-                                    <a class="button" href="@Url.Action("Index", "Shop")">shopping now</a>
+                                    <a class="button" href="@Url.Action("Index", "Product")">shopping now</a>
                                 </div>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                     <p>exclusive offer -10% off this week</p>
                                     <h1>jewelry arrivals</h1>
                                     <p class="slider_price">starting at <span>$2.199.oo</span></p>
-                                    <a class="button" href="@Url.Action("Index", "Shop")">shopping now</a>
+                                    <a class="button" href="@Url.Action("Index", "Product")">shopping now</a>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                                     <p>exclusive offer -10% off this week</p>
                                     <h1>engagement ring</h1>
                                     <p class="slider_price">starting at <span>$2.199.oo</span></p>
-                                    <a class="button" href="@Url.Action("Index", "Shop")">shopping now</a>
+                                    <a class="button" href="@Url.Action("Index", "Product")">shopping now</a>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                     <p>exclusive offer -10% off this week</p>
                                     <h1>jewelry arrivals</h1>
                                     <p class="slider_price">starting at <span>$2.199.oo</span></p>
-                                    <a class="button" href="@Url.Action("Index", "Shop")">shopping now</a>
+                                    <a class="button" href="@Url.Action("Index", "Product")">shopping now</a>
                                 </div>
                             </div>
                         </div>
@@ -91,7 +91,7 @@
                                     <p>exclusive offer -10% off this week</p>
                                     <h1>engagement ring</h1>
                                     <p class="slider_price">starting at <span>$2.199.oo</span></p>
-                                    <a class="button" href="@Url.Action("Index", "Shop")">shopping now</a>
+                                    <a class="button" href="@Url.Action("Index", "Product")">shopping now</a>
                                 </div>
                             </div>
                         </div>
@@ -109,7 +109,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_banner">
                     <div class="banner_thumb">
-                        <a href="@Url.Action("Index", "Shop")"><img src="~/assets/client/img/bg/banner1.jpg" alt=""></a>
+                        <a href="@Url.Action("Index", "Product")"><img src="~/assets/client/img/bg/banner1.jpg" alt=""></a>
                         <div class="banner_content">
                             <p>Design Creative</p>
                             <h2>Ring Jewelry Design</h2>
@@ -122,7 +122,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_banner">
                     <div class="banner_thumb">
-                        <a href="@Url.Action("Index", "Shop")"><img src="~/assets/client/img/bg/banner2.jpg" alt=""></a>
+                        <a href="@Url.Action("Index", "Product")"><img src="~/assets/client/img/bg/banner2.jpg" alt=""></a>
                         <div class="banner_content">
                             <p>Bestselling Products</p>
                             <h2>Victoria Diamonds</h2>
@@ -135,7 +135,7 @@
             <div class="col-lg-4 col-md-6">
                 <div class="single_banner bottom">
                     <div class="banner_thumb">
-                        <a href="@Url.Action("Index", "Shop")"><img src="~/assets/client/img/bg/banner3.jpg" alt=""></a>
+                        <a href="@Url.Action("Index", "Product")"><img src="~/assets/client/img/bg/banner3.jpg" alt=""></a>
                         <div class="banner_content">
                             <p>Onsale Products</p>
                             <h2>Perfect Rings</h2>
@@ -180,8 +180,8 @@
                                                     <div class="custom-col-5" style="width: 100%; display: inline-block;">
                                                         <div class="single_product">
                                                             <div class="product_thumb">
-                                                                <a class="primary_img" href="product-details.html" tabindex="-1"><img src="~/assets/client/img/product/product1.jpg" alt=""></a>
-                                                                <a class="secondary_img" href="product-details.html" tabindex="-1"><img src="~/assets/client/img/product/product2.jpg" alt=""></a>
+                                                                <a class="primary_img" href="@Url.Action("Detail", "Product")" tabindex="-1"><img src="~/assets/client/img/product/product1.jpg" alt=""></a>
+                                                                <a class="secondary_img" href="@Url.Action("Detail", "Product")" tabindex="-1"><img src="~/assets/client/img/product/product2.jpg" alt=""></a>
                                                                 <div class="quick_button">
                                                                     <a href="#" data-toggle="modal" data-target="#modal_box" data-placement="top" data-original-title="quick view" tabindex="-1"> quick view</a>
                                                                 </div>
@@ -6530,5 +6530,40 @@
     </div>
 </div>
 <!--Newsletter area start-->
+@section NewsPopup{
+<div class="newletter-popup" style="left: 556px; position: absolute; top: 323px; z-index: 9999; opacity: 0; display: none;">
+    <div id="boxes" class="newletter-container">
+        <div id="dialog" class="window">
+            <div id="popup2">
+                <span class="b-close"><span>close</span></span>
+            </div>
+            <div class="box">
+                <div class="newletter-title">
+                    <h2>Newsletter</h2>
+                </div>
+                <div class="box-content newleter-content">
+                    <label class="newletter-label">Enter your email address to subscribe our notification of our new post &amp; features by email.</label>
+                    <div id="frm_subscribe">
+                        <form name="subscribe" id="subscribe_popup">
+                            <!-- <span class="required">*</span><span>Enter you email address here...</span>-->
+                            <input type="text" value="" name="subscribe_pemail" id="subscribe_pemail" placeholder="Enter you email address here...">
+                            <input type="hidden" value="" name="subscribe_pname" id="subscribe_pname">
+                            <div id="notification"></div>
+                            <a class="theme-btn-outlined" onclick="email_subscribepopup()"><span>Subscribe</span></a>
+                        </form>
+                        <div class="subscribe-bottom">
+                            <input type="checkbox" id="newsletter_popup_dont_show_again">
+                            <label for="newsletter_popup_dont_show_again">Don't show this popup again</label>
+                        </div>
+                    </div>
+                    <!-- /#frm_subscribe -->
+                </div>
+                <!-- /.box-content -->
+            </div>
+        </div>
 
+    </div>
+    <!-- /.box -->
+</div>
+}
 
