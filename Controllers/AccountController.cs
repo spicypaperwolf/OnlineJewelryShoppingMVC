@@ -12,7 +12,7 @@ using OnlineJewelryShoppingMVC.Models;
 
 namespace OnlineJewelryShoppingMVC.Controllers
 {
-    [Authorize]
+    [Authorize] 
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
