@@ -1,0 +1,199 @@
+﻿
+@{
+    ViewBag.Title = "BlogDetails";
+    Layout = "~/Views/Shared/_client.cshtml";
+}
+
+<div class="page-title fix">
+    <!--Start Title-->
+    <div class="overlay section">
+        <h2>Blog Details</h2>
+    </div>
+</div><!--End Title-->
+<section class="blog-page page fix">
+    <!-- Start Blog Details-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 col-md-9">
+                <div class="single-blog blog-details">
+                    <div class="content fix">
+                        <img src="~/assets/client/img/blog/blog-details.jpg" alt="" />
+                        <div class="date">
+                            <h4>25</h4>
+                            <h5>Aug</h5>
+                        </div>
+                        <h2>Lorem ipsum dolor sit amet</h2>
+                        <div class="meta">
+                            <a href="#"><i class="fa fa-pencil-square-o"></i>John Lee</a>
+                            <a href="#"><i class="fa fa-calendar"></i>2 Days ago</a>
+                            <a href="#"><i class="fa fa-comments"></i>12 Comments</a>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, conse ctetur adipiscing eli sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, consectetur adipiscing elit,ed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, conse ctetur adipiscing elit, ed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, consectetur.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, conse ctetur adipiscing eli sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, consectetur adipiscing elit,ed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, conse ctetur adipiscing elit, ed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation, consectetur.</p>
+                    </div>
+                </div>
+                <div id="comments">
+                    <div class="comments-list">
+                        <h4 class="heading">Comments</h4>
+                        <ol class="commentlists">
+                            <li class="sin-comment">
+                                <div class="the-comment">
+                                    <div class="avatar">
+                                        <img alt="" src="~/assets/client/img/blog/comment-1.jpg">
+                                    </div>
+                                    <div class="comment-box">
+                                        <div class="comment-author">
+                                            <p class="com-name"><strong>Tom Cruze</strong></p>3 day ago  <a href="#" class="repost-link"> Repost </a> <a href="#" class="comment-reply-link"> Reply </a>
+                                        </div>
+                                        <div class="comment-text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adi ing elit, sed do eiusmo empor incididunt ut labore et dolore magna aliqua magna aliqua Lorem ipsum dolor sit amet, consectetur adi ing elit, sed do eiusmo empor incididunt ut labore et dolore magna aliqua magna aliqua Lorem ipsum dolor sit amet, </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="children-comment">
+                                    <li class="comment">
+                                        <div class="the-comment">
+                                            <div class="avatar">
+                                                <img alt="" src="~/assets/client/img/blog/comment-2.jpg">
+                                            </div>
+                                            <div class="comment-box">
+                                                <div class="comment-author">
+                                                    <p class="com-name"><strong>Nill Pori</strong></p>3 mins ago <a href="#" class="repost-link"> Repost </a> <a href="#" class="comment-reply-link"> Reply </a>
+                                                </div>
+                                                <div class="comment-text">
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adi ing elit, sed do eiusmo empor incididunt ut labore et dolore magna aliqua magna aliqua Lorem ipsum dolor sit amet, consectetur adi ing elit, sed do eiusmo empor incididunt ut labore et dolore magna aliqua magna aliqua.<br>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li><!-- #comment-## -->
+                                </ul><!-- .children -->
+                            </li><!-- #comment-## -->
+                            <li class="sin-comment">
+                                <div class="the-comment">
+                                    <div class="avatar">
+                                        <img alt="" src="~/assets/client/img/blog/comment-3.jpg">
+                                    </div>
+                                    <div class="comment-box">
+                                        <div class="comment-author">
+                                            <p class="com-name"><strong>TOMAS LEE</strong></p>3 day ago  <a href="#" class="repost-link"> Repost </a> <a href="#" class="comment-reply-link"> Reply </a>
+                                        </div>
+                                        <div class="comment-text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adi ing elit, sed do eiusmo empor incididunt ut labore et dolore magna aliqua magna aliqua Lorem ipsum dolor sit amet, consectetur adi ing elit, sed do eiusmo empor incididunt ut labore et dolore magna aliqua magna aliqua Lorem ipsum dolor sit amet, </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li><!-- #comment-## -->
+                        </ol>
+                    </div>
+                    <div class="commentform">
+                        <h4 class="heading">Leave a Comment</h4>
+                        <form class="comment-form" id="commentform" method="post" action="#">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-input">
+                                        <label for="author">Your Name<span>*</span></label>
+                                        <input type="text" aria-required="true" value="" id="author" name="author">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-input">
+                                        <label for="email">Your Email<span>*</span></label>
+                                        <input type="email" aria-required="true" value="" name="email" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-input">
+                                        <label for="title">Title<span>*</span></label>
+                                        <input type="text" aria-required="true" value="" name="title" id="title">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-input">
+                                <label for="comment" class="field-label">Your Comment<span>*</span></label>
+                                <textarea aria-required="true" name="comment" id="comment" rows="4"></textarea>
+                            </div>
+                            <p class="form-submit">
+                                <input type="submit" value="submit" id="submit" name="submit">
+                            </p>
+                        </form>
+                    </div><!-- end commentform -->
+                </div>
+            </div>
+            <div class="col-sm-4 col-md-3">
+                <div class="single-sidebar">
+                    <h2>Ctegory</h2>
+                    <ul>
+                        <li><a href="#">Rings</a></li>
+                        <li><a href="#">Necklaces</a></li>
+                        <li><a href="#">Bracelets</a></li>
+                        <li><a href="#">Earrings</a></li>
+                        <li><a href="#">Churies</a></li>
+                        <li><a href="#">Jewelry Sets</a></li>
+                        <li><a href="#">Kids Jewelry</a></li>
+                        <li><a href="#">Watches</a></li>
+                    </ul>
+                </div>
+                <div class="single-sidebar">
+                    <h2>Recent Post</h2>
+                    <ul class="resent-post">
+                        <li>
+                            <!-- SINGLE POST -->
+                            <div class="image">
+                                <a href="#"><img alt="" src="~/assets/client/img/blog/recent-1.jpg"></a>
+                            </div>
+                            <div class="content fix">
+                                <h5><a href="#">Lorem ipsum</a></h5>
+                                <span><i class="fa fa-clock-o"></i>20-2-2015</span>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- SINGLE POST -->
+                            <div class="image">
+                                <a href="#"><img alt="" src="~/assets/client/img/blog/recent-2.jpg"></a>
+                            </div>
+                            <div class="content fix">
+                                <h5><a href="#">Lorem ipsum</a></h5>
+                                <span><i class="fa fa-clock-o"></i>20-2-2015</span>
+                            </div>
+                        </li>
+                        <li>
+                            <!-- SINGLE POST -->
+                            <div class="image">
+                                <a href="#"><img alt="" src="~/assets/client/img/blog/recent-3.jpg"></a>
+                            </div>
+                            <div class="content fix">
+                                <h5><a href="#">Lorem ipsum</a></h5>
+                                <span><i class="fa fa-clock-o"></i>20-2-2015</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="single-sidebar">
+                    <h2>Acrive</h2>
+                    <ul>
+                        <li><a href="#">May 2013</a></li>
+                        <li><a href="#">April 2013</a></li>
+                        <li><a href="#">March 2013</a></li>
+                        <li><a href="#">February 2013</a></li>
+                        <li><a href="#">January 2013</a></li>
+                    </ul>
+                </div>
+                <div class="single-sidebar">
+                    <h2>Tags</h2>
+                    <div class="tagcloud fix">
+                        <a href="#">Rings</a>
+                        <a href="#">Necklaces</a>
+                        <a href="#">Bracelets</a>
+                        <a href="#">Earrings</a>
+                        <a href="#">Churies</a>
+                        <a href="#">Jewelry Sets</a>
+                        <a href="#">Kids Jewelry</a>
+                        <a href="#">Watches</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- Start Blog Details-->

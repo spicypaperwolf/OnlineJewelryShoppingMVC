@@ -20,7 +20,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         public ActionResult Index(int? page)
         {
             var itemMsts = db.ItemMsts.Include(i => i.BrandMst).Include(i => i.CategoryMst).Include(i => i.CertificateMst).Include(i => i.DimInfoMst).Include(i => i.GoldInfoMst).Include(i => i.ProductMst).Include(i => i.StoneInfoMst);
-            return View(itemMsts.ToList().ToPagedList(page ??1, 3));
+            return View(itemMsts.ToList().ToPagedList(page ??1, 10));
         }
 
         // GET: Admin/ItemMsts/Details/5
