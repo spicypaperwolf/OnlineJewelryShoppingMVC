@@ -1,0 +1,203 @@
+﻿@model OnlineJewelryShoppingMVC.ItemMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ItemMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.itemName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.itemName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.itemImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.itemImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.pairs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pairs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dimQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dimQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dimTot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dimTot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneTot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneTot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goldWt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goldWt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goldTot)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goldTot)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wstgPer)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wstgPer)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.wstg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.wstg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goldMaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goldMaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneMaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneMaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.otherMaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.otherMaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totMaking)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totMaking)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MRP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MRP)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BrandMst.brandType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BrandMst.brandType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoryMst.catName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoryMst.catName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CertificateMst.certificateType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CertificateMst.certificateType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DimInfoMst.dimShape)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DimInfoMst.dimShape)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GoldInfoMst.goldType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GoldInfoMst.goldType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ProductMst.prodType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProductMst.prodType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StoneInfoMst.stoneShape)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StoneInfoMst.stoneShape)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.itemCode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
