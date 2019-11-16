@@ -11,8 +11,8 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    using System.ComponentModel;
+    using System.Web;
     public partial class ItemMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,6 +31,7 @@ namespace OnlineJewelryShoppingMVC
         public string goldId { get; set; }
         public string stoneId { get; set; }
         public string itemName { get; set; }
+        [DisplayName("Upload Image")]
         public string itemImg { get; set; }
         public Nullable<decimal> pairs { get; set; }
         public Nullable<int> dimQty { get; set; }
