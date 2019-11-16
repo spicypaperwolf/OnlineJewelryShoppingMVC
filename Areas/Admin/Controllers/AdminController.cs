@@ -12,7 +12,6 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         OnlineJewelryShopDBEntities db = new OnlineJewelryShopDBEntities();
         public ActionResult Dashboard()
         {
-
             return View();
         }
 

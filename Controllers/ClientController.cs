@@ -7,13 +7,11 @@ using CryptoLib;
 using OnlineJewelryShoppingMVC.Common;
 using OnlineJewelryShoppingMVC.Models;
 
-
 namespace OnlineJewelryShoppingMVC.Controllers
 {
     public class ClientController : Controller
     {
         OnlineJewelryShopDBEntities db = new OnlineJewelryShopDBEntities();
-
         //Homepage
         public ActionResult Index()
         {
@@ -43,7 +41,6 @@ namespace OnlineJewelryShoppingMVC.Controllers
         {
             return View();
         }
-
         //Login page for user/admi
         public ActionResult Login()
         {
@@ -162,7 +159,12 @@ namespace OnlineJewelryShoppingMVC.Controllers
             Session[CommonConstants.USER_SESSION] = null;
             return RedirectToAction("Index", "Client");
         }
-
+        //Login page for user
+        public ActionResult Login()
+        {
+            return View();
+        }
+        
         //Cart Page for detailed information in cart
         public ActionResult Cart()
         {

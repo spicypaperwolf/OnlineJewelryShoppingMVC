@@ -1,4 +1,5 @@
 ﻿
+
 @model OnlineJewelryShoppingMVC.Models.LoginModel
 @{
     ViewBag.Title = "Login";
@@ -41,7 +42,26 @@
                         </form>
                     </div>
                 }
-
+                <div class="login">
+                    <form id="login-form" action="#">
+                        <h2>Login</h2>
+                        <p>Welcome to your account</p>
+                        <div class="social-login">
+                            <a id="facebook" href="#"><i class="fa fa-facebook"></i>Sign In with Facebook</a>
+                            <a id="twitter" href="#"><i class="fa fa-twitter"></i>Sign In with Twitter</a>
+                        </div>
+                        <label>E-mail Address<span>*</span></label>
+                        <input type="text" />
+                        <label>Password<span>*</span></label>
+                        <input type="password" />
+                        <div class="remember">
+                            <input type="checkbox" />
+                            <p>Remember me!</p>
+                            <a href="#">Forgot Your Password ?</a>
+                        </div>
+                        <input type="submit" value="login" />
+                    </form>
+                </div>
             </div>
             <div class="col-md-2"></div>
             <div class="col-sm-6 col-md-5">
