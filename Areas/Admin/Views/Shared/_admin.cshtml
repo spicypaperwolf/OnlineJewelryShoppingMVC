@@ -18,6 +18,19 @@
     <link href="~/assets/admin/css/paper-dashboard.min.css" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="~/assets/admin/dashboard/dashboard.css" rel="stylesheet" />
+    <!--   Core JS Files   -->
+    <script src="~/assets/admin/js/core/jquery.min.js"></script>
+    <script src="~/assets/admin/js/core/popper.min.js"></script>
+    <script src="~/assets/admin/js/core/bootstrap.min.js"></script>
+    <script src="~/assets/admin/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Chart JS -->
+    <script src="~/assets/admin/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="~/assets/admin/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/assets/admin/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
+    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
+    <script src="~/assets/admin/dashboard/dashboard.js"></script>
 </head>
 
 <body class="">
@@ -48,21 +61,57 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./icons.html">
-                            <i class="nc-icon nc-diamond"></i>
-                            <p>Icons</p>
+                        <a href="@Url.Action("Index","ItemMsts")">
+                            <i class="nc-icon nc-cart-simple"></i>
+                            <p>Items</p>
                         </a>
                     </li>
                     <li>
-                        <a href="./map.html">
-                            <i class="nc-icon nc-pin-3"></i>
+                        <a href="">
+                            <i class="nc-icon nc-box-2"></i>
+                            <p>Product</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="nc-icon nc-app"></i>
+                            <p>Category</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="nc-icon nc-bank"></i>
+                            <p>Brand</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <i class="nc-icon nc-world-2"></i>
                             <p>Maps</p>
                         </a>
                     </li>
                     <li>
+                        <a href="">
+                            <i class="nc-icon nc-diamond"></i>
+                            <p>Diamond Ifomation</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./map.html">
+                            <i class="nc-icon nc-support-17"></i>
+                            <p>Stone Infomation</p>
+                        </a>
+                    </li>
+                    <li>
                         <a href="./notifications.html">
-                            <i class="nc-icon nc-bell-55"></i>
-                            <p>Notifications</p>
+                            <i class="nc-icon nc-money-coins"></i>
+                            <p>Gold Infomation</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("Index","AdminLoginMsts")">
+                            <i class="nc-icon nc-user-run"></i>
+                            <p>Admin Profile</p>
                         </a>
                     </li>
                     <li>
@@ -71,24 +120,7 @@
                             <p>User Profile</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./tables.html">
-                            <i class="nc-icon nc-tile-56"></i>
-                            <p>Table List</p>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./typography.html">
-                            <i class="nc-icon nc-caps-small"></i>
-                            <p>Typography</p>
-                        </a>
-                    </li>
-                    <li class="active-pro">
-                        <a href="./upgrade.html">
-                            <i class="nc-icon nc-spaceship"></i>
-                            <p>Upgrade to PRO</p>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -158,30 +190,14 @@
             </nav>
             <!-- End Navbar -->
             <!-- <div class="panel-header panel-header-lg">
-
               <canvas id="bigDashboardChart"></canvas>
-
-
             </div> -->
             <div class="content">
-                @RenderBody();
+                @RenderBody()
             </div>
             <footer class="footer footer-black  footer-white ">
                 <div class="container-fluid">
                     <div class="row">
-                        <nav class="footer-nav">
-                            <ul>
-                                <li>
-                                    <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
-                                </li>
-                                <li>
-                                    <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
-                                </li>
-                                <li>
-                                    <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
-                                </li>
-                            </ul>
-                        </nav>
                         <div class="credits ml-auto">
                             <span class="copyright">
                                 ©
@@ -193,80 +209,11 @@
             </footer>
         </div>
     </div>
-    <!--   Core JS Files   -->
-    <script src="~/assets/admin/js/core/jquery.min.js"></script>
-    <script src="~/assets/admin/js/core/popper.min.js"></script>
-    <script src="~/assets/admin/js/core/bootstrap.min.js"></script>
-    <script src="~/assets/admin/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!--  Google Maps Plugin    -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
-    <!-- Chart JS -->
-    <script src="~/assets/admin/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="~/assets/admin/js/plugins/bootstrap-notify.js"></script>
-    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="~/assets/admin/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
-    <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
-    <script src="~/assets/admin/dashboard/dashboard.js"></script>
+ 
 
-    <script>
-        $(document).ready(function () {
-            // Javascript method's body can be found in assets/assets-for-demo/js/demo.js
-            demo.initChartsPages();
-        });</script>
+  
 
-    <script>
-        function SelectText(element) {
-            var doc = document,
-                text = element,
-                range, selection;
-            if (doc.body.createTextRange) {
-                range = document.body.createTextRange();
-                range.moveToElementText(text);
-                range.select();
-            } else if (window.getSelection) {
-                selection = window.getSelection();
-                range = document.createRange();
-                range.selectNodeContents(text);
-                selection.removeAllRanges();
-                selection.addRange(range);
-            }
-        }
-        window.onload = function () {
-            var iconsWrapper = document.getElementById('icons-wrapper'),
-                listItems = iconsWrapper.getElementsByTagName('li');
-            for (var i = 0; i < listItems.length; i++) {
-                listItems[i].onclick = function fun(event) {
-                    var selectedTagName = event.target.tagName.toLowerCase();
-                    if (selectedTagName == 'p' || selectedTagName == 'em') {
-                        SelectText(event.target);
-                    } else if (selectedTagName == 'input') {
-                        event.target.setSelectionRange(0, event.target.value.length);
-                    }
-                }
 
-                var beforeContentChar = window.getComputedStyle(listItems[i].getElementsByTagName('i')[0], '::before').getPropertyValue('content').replace(/'/g, "").replace(/"/g, ""),
-                    beforeContent = beforeContentChar.charCodeAt(0).toString(16);
-                var beforeContentElement = document.createElement("em");
-                beforeContentElement.textContent = "\\" + beforeContent;
-                listItems[i].appendChild(beforeContentElement);
-
-                //create input element to copy/paste chart
-                var charCharac = document.createElement('input');
-                charCharac.setAttribute('type', 'text');
-                charCharac.setAttribute('maxlength', '1');
-                charCharac.setAttribute('readonly', 'true');
-                charCharac.setAttribute('value', beforeContentChar);
-                listItems[i].appendChild(charCharac);
-            }
-        }
-    </script>
-
-    <script>
-        $(document).ready(function () {
-            demo.initGoogleMaps();
-        });
-    </script>
 </body>
 
 </html>
