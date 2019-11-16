@@ -62,10 +62,33 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst)
+        public ActionResult Create([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst, HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
+                int index = 0;
+                foreach (HttpPostedFileBase file in files)
+                {
+                    index++;
+                    //Checking file is available to save.  
+                    if (file != null)
+                    {
+                        if (files.Length != index)
+                        {
+                            itemMst.itemImg += file.FileName + ", ";
+
+                        }
+                        else
+                        {
+                            itemMst.itemImg += file.FileName;
+                        }
+                        var InputFileName = Path.GetFileName(file.FileName);
+                        var ServerSavePath = Path.Combine(Server.MapPath("~/assets/image/") + InputFileName);
+                        //Save file to server folder  
+                        file.SaveAs(ServerSavePath);
+                    }
+                }
+
                 db.ItemMsts.Add(itemMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
