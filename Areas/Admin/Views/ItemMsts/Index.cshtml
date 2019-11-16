@@ -1,0 +1,175 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.ItemMst>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().itemName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().itemImg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().dimQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().dimTot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().stoneQty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().stoneTot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().goldWt)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().goldTot)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().wstgPer)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().wstg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().goldMaking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().stoneMaking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().otherMaking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().totMaking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().MRP)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().BrandMst.brandType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CategoryMst.catName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().CertificateMst.certificateType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().DimInfoMst.dimShape)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().GoldInfoMst.goldType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().ProductMst.prodType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().StoneInfoMst.stoneShape)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.itemImg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pairs)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dimQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dimTot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stoneQty)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stoneTot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.goldWt)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.goldTot)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wstgPer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.wstg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.goldMaking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stoneMaking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.otherMaking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.totMaking)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MRP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BrandMst.brandType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryMst.catName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CertificateMst.certificateType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DimInfoMst.dimShape)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GoldInfoMst.goldType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductMst.prodType)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StoneInfoMst.stoneShape)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.itemCode })
+            </td>
+            <td>
+                @Html.ActionLink("Details", "Details", new { id = item.itemCode })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "Delete", new { id = item.itemCode })
+            </td>
+        </tr>
+    }
+
+</table>
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+    new PagedListRenderOptions() { Display= PagedListDisplayMode.IfNeeded}
+    )
+</div>
+
