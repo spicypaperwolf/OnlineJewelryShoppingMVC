@@ -8,6 +8,11 @@ namespace OnlineJewelryShoppingMVC.Controllers
 {
     public class OrderController : Controller
     {
+        public OrderController()
+        {
+            ViewBag.TotalPrice = CartController.totalPrice;
+            ViewBag.TotalQuality = CartController.totalQuality;
+        }
         // GET: Order
         public ActionResult Index()
         {

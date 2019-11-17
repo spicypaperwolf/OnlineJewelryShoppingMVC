@@ -9,6 +9,11 @@ namespace OnlineJewelryShoppingMVC.Controllers
 {
     public class ClientController : Controller
     {
+        public ClientController()
+        {
+            ViewBag.TotalPrice = CartController.totalPrice;
+            ViewBag.TotalQuality = CartController.totalQuality;
+        }
         //Homepage
         public ActionResult Index()
         {
@@ -26,8 +31,6 @@ namespace OnlineJewelryShoppingMVC.Controllers
         {
             ItemRespository ir = new ItemRespository();
             ViewBag.ItemList = ir.GetItems();
-            ViewBag.TotalPrice = CartController.totalPrice;
-            ViewBag.TotalQuality = CartController.totalQuality;
             return View();
         }
 

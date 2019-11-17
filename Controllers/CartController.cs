@@ -12,6 +12,12 @@ namespace OnlineJewelryShoppingMVC.Controllers
         ItemRespository ir = new ItemRespository();
         public static decimal totalPrice = 0;
         public static decimal totalQuality = 0;
+
+        public CartController()
+        {
+            ViewBag.TotalPrice = totalPrice;
+            ViewBag.TotalQuality = totalQuality;
+        }
         // GET: Cart
         public ActionResult Index()
         {

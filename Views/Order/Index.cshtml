@@ -11,51 +11,13 @@
 </div><!--End Title-->
 <section class="checkout-page page fix">
     <!--Start Checkout Area-->
-    @Html.BeginForm("Checkout", "Order", FormMethod.Post){
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div class="panel-group" id="checkout-progress">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="active" data-toggle="collapse" data-parent="#checkout-progress" href="#checkout-method"><span>1</span>CHECKOUT METHOD</a>
-                        </div>
-                        <div id="checkout-method" class="panel-collapse collapse in">
-                            <div class="panel-body">
-                                <div class="col-sm-6">
-                                    <div class="checkout-method checkout-reg fix">
-                                        <h2>CHECKOUT AS A GUEST OR REGISTER</h2>
-                                        <input type="radio" />
-                                        <p>Checkout as Guest</p>
-                                        <input type="radio" />
-                                        <p>Register</p>
-                                        <h3>REGISTER AND SAVE TIME!</h3>
-                                        <ul>
-                                            <li>Fast and easy checkout</li>
-                                            <li>Easy access to your order history and status</li>
-                                        </ul>
-                                        <a href="#">CONTINUE</a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-6">
-                                    <div class="checkout-method  checkout-login">
-                                        <h2>login</h2>
-                                        <h3>Already registered?</h3>
-                                        <h4>Please login below</h4>
-                                        <label>E-mail address*</label>
-                                        <input type="email" />
-                                        <br />
-                                        <label>Password*</label>
-                                        <input type="password" />
-                                        <a href="#">login</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#bill-info"><span>2</span>BILLING INFORMATION</a>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#bill-info"><span>1</span>BILLING INFORMATION</a>
                         </div>
                         <div id="bill-info" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -73,16 +35,13 @@
                                         <input type="text" name="email" placeholder="E-mail Address*" class="half">
                                         <input type="text" name="mobNo" placeholder="PHONE NUMBER*" class="half">
                                     </div>
-                                    <input type="checkbox" class="check">
-                                    <p>Check this if the billing address is the same as Shipping address</p>
-                                    <a href="#">CONTINUE</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-info"><span>3</span>SHIPPING INFORMATION</a>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-info"><span>2</span>SHIPPING INFORMATION</a>
                         </div>
                         <div id="shipping-info" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -92,7 +51,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-method"><span>4</span>SHIPPING METHOD</a>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-method"><span>3</span>SHIPPING METHOD</a>
                         </div>
                         <div id="shipping-method" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -102,7 +61,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#payment-met"><span>5</span>PAYMENT INFORMATION</a>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#payment-met"><span>4</span>PAYMENT INFORMATION</a>
                         </div>
                         <div id="payment-met" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -135,7 +94,7 @@
                     </div>
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#order-review"><span>6</span>ORDER REVIEW</a>
+                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#order-review"><span>5</span>ORDER REVIEW</a>
                         </div>
                         <div id="order-review" class="panel-collapse collapse">
                             <div class="panel-body">
@@ -181,7 +140,7 @@
                                         <div class="final-total">
                                             <h4>Sub Total <span>$420</span></h4>
                                             <h5>Grand Total <span>$420</span></h5>
-                                            <button type="submit">Place Order</button>
+                                            <a href="#">Place Order</a>
                                         </div>
                                     </div>
                                 </div>
@@ -194,7 +153,6 @@
                 <div class="checkout-right">
                     <h2>CHECKOUT PROGRESS</h2>
                     <ul>
-                        <li><a href="#">Checkout Method</a></li>
                         <li><a href="#">Billing  Information</a></li>
                         <li><a href="#">Shipping  Information</a></li>
                         <li><a href="#">Shipping  Method</a></li>
@@ -205,7 +163,6 @@
             </div>
         </div>
     </div>
-    }
 
 </section><!--End Checkout Area-->
 <script>
