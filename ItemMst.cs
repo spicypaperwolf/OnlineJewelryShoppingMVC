@@ -11,14 +11,12 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel;
-    using System.Web;
+    
     public partial class ItemMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ItemMst()
         {
-            this.CartLists = new HashSet<CartList>();
             this.CommentMsts = new HashSet<CommentMst>();
             this.TransactionMsts = new HashSet<TransactionMst>();
         }
@@ -32,9 +30,7 @@ namespace OnlineJewelryShoppingMVC
         public string goldId { get; set; }
         public string stoneId { get; set; }
         public string itemName { get; set; }
-        [DisplayName("Upload Image")]
         public string itemImg { get; set; }
-        public string itemDescription { get; set; }
         public Nullable<decimal> pairs { get; set; }
         public Nullable<int> dimQty { get; set; }
         public Nullable<decimal> dimTot { get; set; }
@@ -44,20 +40,14 @@ namespace OnlineJewelryShoppingMVC
         public Nullable<decimal> goldTot { get; set; }
         public decimal wstgPer { get; set; }
         public decimal wstg { get; set; }
-        [DataType(DataType.Currency)]
         public Nullable<decimal> goldMaking { get; set; }
-        [DataType(DataType.Currency)]
         public Nullable<decimal> stoneMaking { get; set; }
-        [DataType(DataType.Currency)]
         public Nullable<decimal> otherMaking { get; set; }
-        [DataType(DataType.Currency)]
         public decimal totMaking { get; set; }
-        [DataType(DataType.Currency)]
         public decimal MRP { get; set; }
+        public string image { get; set; }
     
         public virtual BrandMst BrandMst { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartList> CartLists { get; set; }
         public virtual CategoryMst CategoryMst { get; set; }
         public virtual CertificateMst CertificateMst { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
