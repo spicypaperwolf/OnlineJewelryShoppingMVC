@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using OnlineJewelryShoppingMVC.Respository;
 
 namespace OnlineJewelryShoppingMVC.Controllers
 {
@@ -23,6 +24,8 @@ namespace OnlineJewelryShoppingMVC.Controllers
         //Shop page in default format for showing all products w customize filter
         public ActionResult Shop()
         {
+            ItemRespository ir = new ItemRespository();
+            ViewBag.ItemList = ir.GetItems();
             return View();
         }
 

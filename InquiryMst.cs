@@ -22,7 +22,7 @@ namespace OnlineJewelryShoppingMVC
         public string mobNo { get; set; }
         public string emailId { get; set; }
         public string cmt { get; set; }
-        public System.DateTime cdate { get; set; }
+        public byte[] cdate { get; set; }
         public int cardNo { get; set; }
         public string expdate { get; set; }
         public int CVV_No { get; set; }

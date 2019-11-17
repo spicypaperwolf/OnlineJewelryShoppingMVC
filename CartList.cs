@@ -26,8 +26,10 @@ namespace OnlineJewelryShoppingMVC
         public string itemCode { get; set; }
         public int qty { get; set; }
         public decimal price { get; set; }
+        public string img { get; set; }
     
         public virtual GuestMst GuestMst { get; set; }
+        public virtual ItemMst ItemMst { get; set; }
         public virtual UserRegMst UserRegMst { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InquiryMst> InquiryMsts { get; set; }
