@@ -70,7 +70,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
             return result;
         }
 
-        //public ActionResult GetCartItems()
+        //public ActionResult CreateOrder()
         //{
 
         //}

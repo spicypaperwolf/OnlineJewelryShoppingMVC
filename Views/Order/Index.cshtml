@@ -1,6 +1,5 @@
-﻿
-@{
-    ViewBag.Title = "Checkout";
+﻿@{
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_client.cshtml";
 }
 
@@ -12,6 +11,7 @@
 </div><!--End Title-->
 <section class="checkout-page page fix">
     <!--Start Checkout Area-->
+    @Html.BeginForm("Checkout", "Order", FormMethod.Post){
     <div class="container">
         <div class="row">
             <div class="col-md-9">
@@ -61,19 +61,17 @@
                             <div class="panel-body">
                                 <div class="bill-info">
                                     <div class="group">
-                                        <input type="text" placeholder="First Name*" class="half">
-                                        <input type="text" placeholder="Last Name*" class="half">
+                                        <input type="text" name="fname" placeholder="First Name*" class="half">
+                                        <input type="text" name="lname" placeholder="Last Name*" class="half">
                                     </div>
-                                    <input type="text" placeholder="COMPANY NAME (OPTIONAL)">
-                                    <input type="text" placeholder="STREET ADDRESS*">
-                                    <input type="text" placeholder="city">
+                                    <input type="text" name="address" placeholder="STREET ADDRESS*">
+                                    <input type="text" name="city" placeholder="city">
                                     <div class="group">
-                                        <input type="text" placeholder="POSTCODE / ZIP*" class="third">
-                                        <input type="text" placeholder="STATE / COUNTRY" class="onethird">
+                                        <input type="text" name="state" placeholder="STATE / COUNTRY">
                                     </div>
                                     <div class="group">
-                                        <input type="text" placeholder="E-mail Address*" class="half">
-                                        <input type="text" placeholder="PHONE NUMBER*" class="half">
+                                        <input type="text" name="email" placeholder="E-mail Address*" class="half">
+                                        <input type="text" name="mobNo" placeholder="PHONE NUMBER*" class="half">
                                     </div>
                                     <input type="checkbox" class="check">
                                     <p>Check this if the billing address is the same as Shipping address</p>
@@ -121,7 +119,15 @@
                                         <h2>YOUR PAYPAL ACCOUNT</h2>
                                         <p>Pay via credit or debit card, Paypal transfer or even via Bank account in just a few clicks.</p>
                                         <p>This method is super easy and well protected.</p>
-                                        <a href="#">continue</a>
+                                        <div class="bill-info">
+                                            <div class="group">
+                                                <input type="text" name="cardNo" placeholder="CARD NUMBER*" onkeypress="return checkDigit(event)">
+                                            </div>
+                                            <div class="group">
+                                                <input type="text" name="expDate" placeholder="EXP. DATE (MM/YY)*" class="half">
+                                                <input type="text" name="CVV" placeholder="CVV" class="half" maxlength="3">
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +181,7 @@
                                         <div class="final-total">
                                             <h4>Sub Total <span>$420</span></h4>
                                             <h5>Grand Total <span>$420</span></h5>
-                                            <a href="#">Place Order</a>
+                                            <button type="submit">Place Order</button>
                                         </div>
                                     </div>
                                 </div>
@@ -199,4 +205,19 @@
             </div>
         </div>
     </div>
+    }
+
 </section><!--End Checkout Area-->
+<script>
+    function checkDigit(event) {
+    var code = (event.which) ? event.which : event.keyCode;
+
+    if ((code < 48 || code > 57) && (code > 31)) {
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+
