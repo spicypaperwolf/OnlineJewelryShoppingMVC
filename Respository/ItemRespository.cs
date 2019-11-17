@@ -23,5 +23,7 @@ namespace OnlineJewelryShoppingMVC.Respository
         {
             return a * b;
         }
+
+
     }
 }

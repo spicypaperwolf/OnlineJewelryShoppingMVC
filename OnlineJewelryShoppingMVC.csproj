@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -201,7 +201,7 @@
     </Compile>
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
-    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="DimInfoMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -245,6 +245,7 @@
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Respository\CartRespository.cs" />
     <Compile Include="Respository\ItemRespository.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="StoneInfoMst.cs">
@@ -521,7 +522,6 @@
     <Content Include="Views\Client\ItemDetails.cshtml" />
     <Content Include="Views\Client\Login.cshtml" />
     <Content Include="Views\Client\Cart.cshtml" />
-    <Content Include="Views\Client\Checkout.cshtml" />
     <Content Include="Views\Client\Contact.cshtml" />
     <Content Include="Views\Client\About.cshtml" />
     <Content Include="Views\Client\Blog.cshtml" />
@@ -529,6 +529,7 @@
     <Content Include="Views\Client\BlogDetails.cshtml" />
     <Content Include="Views\Client\Wishlist.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
