@@ -108,24 +108,21 @@
                         </a>
                         <div class="cart-hover">
                             <ul class="header-cart-pro">
-                                <li>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/assets/client/img/cart-1.jpg" alt="cart-1.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="content fix"><a href="#">Product Name</a><span class="price">Price: $130</span><span class="quantity">Quantity: 1</span></div>
-                                    <i class="fa fa-trash delete"></i>
-                                </li>
-                                <li>
-                                    <div class="image">
-                                        <a href="#">
-                                            <img src="~/assets/client/img/cart-2.jpg" alt="cart-2.jpg" />
-                                        </a>
-                                    </div>
-                                    <div class="content fix"><a href="#">Product Name</a><span class="price">Price: $130</span><span class="quantity">Quantity: 2</span></div>
-                                    <i class="fa fa-trash delete"></i>
-                                </li>
+                                @if (Session["cartList"] != null)
+                                {
+                                    foreach (CartList item in (List<CartList>)Session["cartList"])
+                                    {
+                                        <li>
+                                            <div class="image">
+                                                <a href="#">
+                                                    <img src="~/assets/client/img/cart-1.jpg" alt="cart-1.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="content fix"><a href="#">@item.itemCode</a><span class="price">Price: @item.price</span><span class="quantity">Quantity: @item.qty</span></div>
+                                            <a href="@Url.Action("RemoveBy1", "Cart", new { id = item.itemCode})"><i class="fa fa-trash delete"></i></a>
+                                        </li>
+                                    }
+                                }
                             </ul>
                             <div class="header-button-price">
                                 <a href="checkout.html"><i class="fa fa-sign-out"></i><span>Check Out</span></a>

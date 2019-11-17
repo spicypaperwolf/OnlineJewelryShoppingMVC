@@ -19,6 +19,7 @@ namespace OnlineJewelryShoppingMVC
         public string guestId { get; set; }
         public string itemCode { get; set; }
         public int qty { get; set; }
+        public decimal total { get; set; }
         public string approvalStt { get; set; }
     
         public virtual GuestMst GuestMst { get; set; }
