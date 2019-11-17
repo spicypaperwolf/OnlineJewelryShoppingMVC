@@ -109,7 +109,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst,HttpPostedFileBase[] files)
+        public ActionResult Edit([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemDescription,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst,HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
