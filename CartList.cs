@@ -11,7 +11,8 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class CartList
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,6 +26,7 @@ namespace OnlineJewelryShoppingMVC
         public string guestId { get; set; }
         public string itemCode { get; set; }
         public int qty { get; set; }
+        [DataType(DataType.Currency)]
         public decimal price { get; set; }
         public string img { get; set; }
     
