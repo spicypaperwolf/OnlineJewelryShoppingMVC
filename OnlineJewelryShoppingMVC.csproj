@@ -449,7 +449,6 @@
     <Content Include="assets\admin\fonts\nucleo-icons.ttf" />
     <Content Include="assets\admin\fonts\nucleo-icons.woff" />
     <Content Include="assets\admin\fonts\nucleo-icons.woff2" />
-    <Content Include="Areas\Admin\Views\Shared\_admin.cshtml" />
     <Content Include="Areas\Admin\Views\ItemMsts\Create.cshtml" />
     <Content Include="Areas\Admin\Views\ItemMsts\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\ItemMsts\Details.cshtml" />
@@ -462,7 +461,6 @@
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Areas\Admin\Views\Shared\ViewPage1.cshtml" />
     <Content Include="assets\admin\fonts\nucleo-icons.eot" />
     <Content Include="assets\admin\fonts\nucleo-icons.ttf" />
     <Content Include="assets\admin\fonts\nucleo-icons.woff" />
