@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -46,6 +46,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -173,7 +179,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Client\ClientAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ItemMstsController.cs" />
     <Compile Include="BrandMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -192,14 +199,9 @@
     <Compile Include="ContactMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
-<<<<<<< Updated upstream
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
-=======
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ClientController.cs" />
->>>>>>> Stashed changes
+    <Compile Include="Controllers\ClientController.cs" />
     <Compile Include="DimInfoMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -256,8 +258,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
-=======
     <Content Include="assets\admin\css\bootstrap.min.css" />
     <Content Include="assets\admin\css\paper-dashboard.css" />
     <Content Include="assets\admin\css\paper-dashboard.min.css" />
@@ -424,7 +424,6 @@
     <Content Include="assets\client\js\main.js" />
     <Content Include="assets\client\js\owl.carousel.min.js" />
     <Content Include="assets\client\js\wow.min.js" />
->>>>>>> Stashed changes
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -446,9 +445,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Views\web.config" />
-<<<<<<< Updated upstream
     <Content Include="Areas\Client\Views\web.config" />
-=======
     <Content Include="assets\admin\fonts\nucleo-icons.eot" />
     <Content Include="assets\admin\fonts\nucleo-icons.ttf" />
     <Content Include="assets\admin\fonts\nucleo-icons.woff" />
@@ -469,7 +466,6 @@
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff2" />
->>>>>>> Stashed changes
     <EntityDeploy Include="OJSContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OJSContext.Designer.cs</LastGenOutput>
@@ -477,10 +473,27 @@
     <Content Include="OJSContext.edmx.diagram">
       <DependentUpon>OJSContext.edmx</DependentUpon>
     </Content>
-<<<<<<< Updated upstream
     <Content Include="Areas\Admin\Views\Shared\ViewPage1.cshtml" />
-=======
->>>>>>> Stashed changes
+    <Content Include="assets\admin\fonts\nucleo-icons.eot" />
+    <Content Include="assets\admin\fonts\nucleo-icons.ttf" />
+    <Content Include="assets\admin\fonts\nucleo-icons.woff" />
+    <Content Include="assets\admin\fonts\nucleo-icons.woff2" />
+    <Content Include="Areas\Admin\Views\Shared\_admin.cshtml" />
+    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemMsts\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemMsts\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemMsts\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemMsts\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\ItemMsts\Index.cshtml" />
+    <Content Include="assets\client\fonts\fontawesome-webfont.eot" />
+    <Content Include="assets\client\fonts\fontawesome-webfont.ttf" />
+    <Content Include="assets\client\fonts\fontawesome-webfont.woff" />
+    <Content Include="assets\client\fonts\fontawesome-webfont.woff2" />
+    <Content Include="assets\client\fonts\FontAwesome.otf" />
+    <Content Include="assets\client\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\client\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -501,33 +514,6 @@
     </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-<<<<<<< Updated upstream
-    <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
-    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
-    <Content Include="Views\Manage\ChangePassword.cshtml" />
-    <Content Include="Views\Manage\Index.cshtml" />
-    <Content Include="Views\Manage\ManageLogins.cshtml" />
-    <Content Include="Views\Manage\SetPassword.cshtml" />
-    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="Views\Shared\Lockout.cshtml" />
-    <Content Include="Views\Shared\_LoginPartial.cshtml" />
-=======
     <Content Include="Views\Shared\_client.cshtml" />
     <Content Include="Views\Client\Index.cshtml" />
     <Content Include="Views\Client\Shop.cshtml" />
@@ -543,16 +529,10 @@
     <Content Include="Views\Client\BlogDetails.cshtml" />
     <Content Include="Views\Client\Wishlist.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
->>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Controllers\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="Areas\Client\Controllers\" />
-    <Folder Include="Areas\Client\Models\" />
-    <Folder Include="Areas\Client\Views\Shared\" />
-    <Folder Include="assets\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

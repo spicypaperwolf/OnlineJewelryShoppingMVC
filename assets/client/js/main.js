@@ -1,7 +1,6 @@
 (function ($) {
 "use strict";
 $(document).ready(function($){
-
 	/*----- Mobile Menu -----*/
 	$('.mobile-menu nav').meanmenu({
 		meanScreenWidth: "990",
