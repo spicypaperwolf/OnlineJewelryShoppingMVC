@@ -26,6 +26,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
         {
             ItemRespository ir = new ItemRespository();
             ViewBag.ItemList = ir.GetItems();
+            ViewBag.TotalPrice = CartController.totalPrice;
             return View();
         }
 

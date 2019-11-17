@@ -10,7 +10,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
     public class CartController : Controller
     {
         ItemRespository ir = new ItemRespository();
-
+        public static decimal totalPrice = 0;
         // GET: Cart
         public ActionResult Index()
         {
@@ -21,41 +21,29 @@ namespace OnlineJewelryShoppingMVC.Controllers
         {
             Random ran = new Random();
             ran.Next(1, 1000);
-
+            List<CartList> carts = new List<CartList>();
             if (Session["cartList"] == null)
             {
-                List<CartList> cart = new List<CartList>();
-                cart.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = "C" + ran });
-                Session["cartList"] = cart;
+                carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = "C" + ran });
+                Session["cartList"] = carts;
             }
             else
             {
-                List<CartList> cart = (List<CartList>)Session["cartList"];
+                carts = (List<CartList>)Session["cartList"];
                 int index = isExist(id);
                 if (index != -1)
                 {
-                    cart[index].qty++;
+                    carts[index].qty++;
                 }
                 else
                 {
-                    cart.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = "C" + ran });
+                    carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = "C" + ran });
                 }
-                Session["cart"] = cart;
+                Session["cart"] = carts;
             }
-
+            carts.ForEach(item =>totalPrice += item.price);
+            ViewBag.TotalPrice = totalPrice;
             return RedirectToAction("Shop", "Client");
-
-            //Random ran = new Random();
-            //ran.Next(1, 1000);
-            //List<CartList> cartList = new List<CartList>();
-            //if (Session["cartList"]!=null)
-            //{
-            //    cartList = (List<CartList>)Session["cartList"];
-            //    Session.Remove("cartList");
-            //}
-            //cartList.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = "C" + ran });
-            //Session["cartList"] = cartList;
-            //return RedirectToAction("Index");
         }
 
         public ActionResult RemoveBy1(string id)
@@ -77,11 +65,9 @@ namespace OnlineJewelryShoppingMVC.Controllers
 
         private int isExist(string id)
         {
-            List<CartList> cart = (List<CartList>)Session["cartList"];
-            for (int i = 0; i < cart.Count; i++)
-                if (cart[i].itemCode.Equals(id))
-                    return i;
-            return -1;
+            List<CartList> carts = (List<CartList>)Session["cartList"];
+            int result = carts.Find(item => item.itemCode.Equals(id))!=null ? carts.IndexOf(carts.Find(item => item.itemCode.Equals(id))) : -1;
+            return result;
         }
 
         //public ActionResult CreateOrder()

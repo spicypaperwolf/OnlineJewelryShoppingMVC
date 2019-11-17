@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,10 +18,15 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         private OnlineJewelryShopDBEntities db = new OnlineJewelryShopDBEntities();
 
         // GET: Admin/ItemMsts
-        public ActionResult Index(int? page)
+        public ActionResult Index(string searchString ,int? page)
         {
-            var itemMsts = db.ItemMsts.Include(i => i.BrandMst).Include(i => i.CategoryMst).Include(i => i.CertificateMst).Include(i => i.DimInfoMst).Include(i => i.GoldInfoMst).Include(i => i.ProductMst).Include(i => i.StoneInfoMst);
-            return View(itemMsts.ToList().ToPagedList(page ??1, 10));
+            var item = from x in db.ItemMsts select x;
+            if(!string.IsNullOrEmpty(searchString))
+            {
+                item = item.Where(x => x.itemName.Contains(searchString)|| x.itemImg.Contains(searchString) );
+            }
+        //var itemMsts = db.ItemMsts.Include(i => i.BrandMst).Include(i => i.CategoryMst).Include(i => i.CertificateMst).Include(i => i.DimInfoMst).Include(i => i.GoldInfoMst).Include(i => i.ProductMst).Include(i => i.StoneInfoMst);
+            return View(item.ToList().ToPagedList(page ??1, 3));
         }
 
         // GET: Admin/ItemMsts/Details/5
@@ -78,6 +84,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // GET: Admin/ItemMsts/Edit/5
         public ActionResult Edit(string id)
         {
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -102,10 +109,32 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst)
+        public ActionResult Edit([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst,HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
+                int index = 0;
+                foreach (HttpPostedFileBase file in files)
+                {
+                    index++;
+                    //Checking file is available to save.  
+                    if (file != null)
+                    {
+                        if (files.Length != index)
+                        {
+                            itemMst.itemImg += file.FileName + ", ";
+
+                        }
+                        else
+                        {
+                            itemMst.itemImg += file.FileName;
+                        }
+                        var InputFileName = Path.GetFileName(file.FileName);
+                        var ServerSavePath = Path.Combine(Server.MapPath("~/assets/image/") + InputFileName);
+                        //Save file to server folder  
+                        file.SaveAs(ServerSavePath);
+                    }
+                }
                 db.Entry(itemMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
