@@ -14,7 +14,6 @@ namespace OnlineJewelryShoppingMVC
     
     public partial class UserRegMst
     {
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserRegMst()
         {
@@ -32,9 +31,8 @@ namespace OnlineJewelryShoppingMVC
         public string mobNo { get; set; }
         public string emailId { get; set; }
         public string dob { get; set; }
-        public byte[] cdate { get; set; }
+        public System.DateTime cdate { get; set; }
         public string password { get; set; }
-        public Nullable<bool> status { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartList> CartLists { get; set; }

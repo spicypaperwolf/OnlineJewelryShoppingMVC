@@ -40,8 +40,8 @@ namespace OnlineJewelryShoppingMVC
         public virtual DbSet<NewsletterMst> NewsletterMsts { get; set; }
         public virtual DbSet<ProductMst> ProductMsts { get; set; }
         public virtual DbSet<StoneInfoMst> StoneInfoMsts { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TransactionMst> TransactionMsts { get; set; }
         public virtual DbSet<UserRegMst> UserRegMsts { get; set; }
-        public object AdminLoginMst { get; internal set; }
     }
 }
