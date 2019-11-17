@@ -11,6 +11,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
     {
         ItemRespository ir = new ItemRespository();
         public static decimal totalPrice = 0;
+        public static decimal totalQuality = 0;
         // GET: Cart
         public ActionResult Index()
         {
@@ -19,6 +20,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
         
         public ActionResult Buy(string id)
         {
+            totalQuality++;
             Random ran = new Random();
             ran.Next(1, 1000);
             List<CartList> carts = new List<CartList>();
@@ -41,25 +43,33 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 }
                 Session["cart"] = carts;
             }
-            carts.ForEach(item =>totalPrice += item.price);
+            carts.ForEach(item => {
+                totalPrice += item.price;
+            }) ;
             ViewBag.TotalPrice = totalPrice;
+            ViewBag.TotalQuality = totalQuality;
             return RedirectToAction("Shop", "Client");
         }
 
         public ActionResult RemoveBy1(string id)
         {
-            List<CartList> cart = (List<CartList>)Session["cartList"];
+            totalQuality--;
+            List<CartList> carts = (List<CartList>)Session["cartList"];
             int index = isExist(id);
-            if (cart[index].qty > 1)
+            if (carts[index].qty > 1)
             {
-                cart[index].qty--;
+                carts[index].qty--;
             }
             else
             {
-                cart.RemoveAt(index);
+                carts.RemoveAt(index);
             }
            
-            Session["cartList"] = cart;
+            Session["cartList"] = carts;
+            totalPrice = 0;
+            carts.ForEach(item => {
+                totalPrice += item.price;
+            });
             return RedirectToAction("Shop", "Client");
         }
 
