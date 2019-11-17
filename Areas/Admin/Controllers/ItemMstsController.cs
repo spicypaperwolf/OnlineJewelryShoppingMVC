@@ -15,7 +15,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
 {
     public class ItemMstsController : Controller
     {
-        private OnlineJewelryShopDBEntities db = new OnlineJewelryShopDBEntities();
+        private OnlineJewelryShopDBEntities db = new OnlineJewelryShopDBEntities(); 
 
         // GET: Admin/ItemMsts
         public ActionResult Index(string searchString ,int? page)
