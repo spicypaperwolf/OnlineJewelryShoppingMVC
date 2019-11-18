@@ -1,0 +1,142 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.DimInfoMst>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="content">
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create","DimInfoMsts")" >
+          ADD NEW 
+        </a>
+    </p>
+
+    @using (Html.BeginForm("Index", "DimInfoMsts", FormMethod.Post))
+    {
+        <div>
+            Search by Color & Image : @Html.TextBox("searchString")
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+        </div>
+    }
+    <p>
+        <a class="btn btn-group-justified" href="@Url.Action("ExportReport") ">
+            Download Report
+        </a>
+    </p>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">DIAMOND</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimShape)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimCrt)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimSize)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimColor)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimClarity)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimCut)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimPolish)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimSymmetry)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimReport)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimRate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().dimImg)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimShape)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimCrt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimSize)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimColor)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimClarity)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimCut)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimPolish)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimSymmetry)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimReport)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimRate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.dimImg)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.dimId.Trim() })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Details", "Details", new { id = item.dimId.Trim() })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.dimId.Trim() })
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+    )
+</div>

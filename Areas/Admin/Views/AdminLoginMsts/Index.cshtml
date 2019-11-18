@@ -1,0 +1,79 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.AdminLoginMst>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+
+
+<div class="content">
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create","AdminLoginMsts")" >  
+        Create
+        </a>
+    </p>
+    @using (Html.BeginForm("Index", "AdminLoginMsts", FormMethod.Post))
+    {
+        <div>
+            Search by User Name/Password: @Html.TextBox("searchString")
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> ADMIN TABLE</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().username)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().password)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.username)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.password)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.username }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.username }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.username })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+    )
+</div>

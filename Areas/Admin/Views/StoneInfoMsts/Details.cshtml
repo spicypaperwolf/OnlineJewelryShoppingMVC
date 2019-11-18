@@ -1,0 +1,58 @@
+﻿@model OnlineJewelryShoppingMVC.StoneInfoMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+
+<div>
+    <h4>StoneInfoMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneShape)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneShape)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneCrt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneCrt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneColor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneColor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneRate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stoneImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.stoneImg)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.stoneId.Trim() }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

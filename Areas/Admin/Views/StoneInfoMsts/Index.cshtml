@@ -1,0 +1,97 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.StoneInfoMst>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create","StoneInfoMsts")">
+        ADD NEW
+    </a>
+</p>
+
+<div class="content">
+    @using (Html.BeginForm("Index", "StoneInfoMsts", FormMethod.Post))
+    {
+        <div>
+            Search by Img/Shape/Color: @Html.TextBox("searchString")
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">STONE</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().stoneShape)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().stoneCrt)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().stoneColor)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().stoneRate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().stoneImg)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.stoneShape)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.stoneCrt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.stoneColor)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.stoneRate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.stoneImg)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.stoneId.Trim() })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Details", "Details", new { id = item.stoneId.Trim() })
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.stoneId.Trim() })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+        new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+        )
+    </div>
+</div>

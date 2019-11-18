@@ -1,0 +1,102 @@
+﻿@model OnlineJewelryShoppingMVC.UserRegMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<div class="table-responsive">
+    <table class="table">
+        <div>
+            <h4>UserRegMst</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.userFname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.userFname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.userLname)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.userLname)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.address)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.address)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.city)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.city)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.state)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.state)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.mobNo)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.mobNo)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.emailId)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.emailId)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dob)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dob)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.cdate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.cdate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.password)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.password)
+                </dd>
+
+            </dl>
+        </div>
+
+        </table>
+    </div>
+        <p>
+            @Html.ActionLink("Edit", "Edit", new { id = Model.userId.Trim() }) |
+            @Html.ActionLink("Back to List", "Index")
+        </p>

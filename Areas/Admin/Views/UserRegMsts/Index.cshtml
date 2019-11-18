@@ -1,0 +1,129 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.UserRegMst>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create","UserRegMsts")">
+            ADD NEW
+        </a>
+    </p>
+
+    <div class="content">
+        @using (Html.BeginForm("Index", "UserRegMsts", FormMethod.Post))
+        {
+            <div>
+                Search by Frist Name/Email: @Html.TextBox("searchString")
+                <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">USER</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead class=" text-primary">
+
+                                    <tr>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().userFname)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().userLname)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().address)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().city)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().state)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().mobNo)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().emailId)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().dob)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().cdate)
+                                        </th>
+                                        <th>
+                                            @Html.DisplayNameFor(model => model.First().password)
+                                        </th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.userFname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.userLname)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.address)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.city)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.state)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.mobNo)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.emailId)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.dob)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.cdate)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.password)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { id = item.userId.Trim() })
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Details", "Details", new { id = item.userId.Trim() })
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Delete", "Delete", new { id = item.userId.Trim() })
+                                            </td>
+                                        </tr>
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div>
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+            new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+            )
+        </div>
+        </div>

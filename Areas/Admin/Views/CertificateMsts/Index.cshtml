@@ -1,0 +1,72 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.CertificateMst>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create","CertificateMsts")">
+        ADD NEW
+    </a>
+</p>
+
+<div class="content">
+    @using (Html.BeginForm("Index", "CertificateMsts", FormMethod.Post))
+    {
+        <div>
+            Search by Type: @Html.TextBox("searchString")
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">CERTIFICATE</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().certificateType)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.certificateType)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.certificateId.Trim() }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.certificateId.Trim() }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.certificateId.Trim() })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+        new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+        )
+    </div>
+</div>
+
+

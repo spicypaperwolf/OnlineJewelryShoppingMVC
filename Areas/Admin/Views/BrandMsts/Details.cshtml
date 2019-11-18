@@ -1,0 +1,26 @@
+﻿@model OnlineJewelryShoppingMVC.BrandMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+
+<div>
+    <h4>BrandMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.brandType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.brandType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.brandId.Trim() }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
