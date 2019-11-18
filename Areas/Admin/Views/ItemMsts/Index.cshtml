@@ -8,24 +8,24 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <p>
-    @Html.ActionLink("Create New Item", "Create")
+    <a class="btn btn-primary" href="@Url.Action("Create","ItemMsts")">
+        ADD NEW
+    </a>
 </p>
-
-
 
 <div class="content">
     @using (Html.BeginForm("Index", "ItemMsts", FormMethod.Post))
     {
         <div>
             Search by Item Name/Item Img: @Html.TextBox("searchString")
-            <input id="Submit1" type="submit" value="Search" />
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
         </div>
     }
     <div class="row">
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title"> Items Table</h4>
+                    <h4 class="card-title"> ITEMS TABLE</h4>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
@@ -38,6 +38,9 @@
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.First().itemImg)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().pairs)
                                     </th>
                                     <th>
                                         @Html.DisplayNameFor(model => model.First().dimQty)
@@ -197,13 +200,14 @@
         </div>
 
     </div>
+
+
+
+
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+        new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+        )
+    </div>
+
 </div>
-
-
-
-<div>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
-    new PagedListRenderOptions() { Display= PagedListDisplayMode.IfNeeded}
-    )
-</div>
-

@@ -87,8 +87,8 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
                         //Save file to server folder  
                         file.SaveAs(ServerSavePath);
                     }
-                }
-
+                }//end of insert image
+                
                 db.ItemMsts.Add(itemMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
