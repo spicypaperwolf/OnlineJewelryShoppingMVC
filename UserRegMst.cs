@@ -17,7 +17,6 @@ namespace OnlineJewelryShoppingMVC
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserRegMst()
         {
-            this.CartLists = new HashSet<CartList>();
             this.CommentMsts = new HashSet<CommentMst>();
             this.TransactionMsts = new HashSet<TransactionMst>();
         }
@@ -35,8 +34,6 @@ namespace OnlineJewelryShoppingMVC
         public string password { get; set; }
         public Nullable<bool> status { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CartList> CartLists { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CommentMst> CommentMsts { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

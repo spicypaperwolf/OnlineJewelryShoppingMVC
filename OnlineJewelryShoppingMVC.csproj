@@ -215,9 +215,6 @@
     <Compile Include="GoldInfoMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
-    <Compile Include="GuestMst.cs">
-      <DependentUpon>OJSContext.tt</DependentUpon>
-    </Compile>
     <Compile Include="InquiryMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -479,6 +476,13 @@
     <Content Include="packages\EntityFramework.6.2.0\tools\migrate.exe" />
     <Content Include="packages\HomeBi.Libraries.PagedList.1.0.0\lib\netstandard2.0\HomeBi.Libraries.PagedList.dll" />
     <Content Include="packages\HomeBi.Libraries.PagedList.1.0.0\lib\netstandard2.0\HomeBi.Libraries.PagedList.xml" />
+    <EntityDeploy Include="OJSContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OJSContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="OJSContext.edmx.diagram">
+      <DependentUpon>OJSContext.edmx</DependentUpon>
+    </Content>
     <None Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1.js" />
     <Content Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1.min.js" />
@@ -648,13 +652,6 @@
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.woff2" />
-    <EntityDeploy Include="OJSContext.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>OJSContext.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="OJSContext.edmx.diagram">
-      <DependentUpon>OJSContext.edmx</DependentUpon>
-    </Content>
     <Content Include="packages\Antlr.3.5.0.2\Antlr.3.5.0.2.nupkg" />
     <Content Include="packages\bootstrap.3.4.1\.signature.p7s" />
     <Content Include="packages\bootstrap.3.4.1\bootstrap.3.4.1.nupkg" />

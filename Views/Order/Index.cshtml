@@ -10,137 +10,147 @@
     </div>
 </div><!--End Title-->
 <section class="checkout-page page fix">
+    @ViewBag.cartid
+    @ViewBag.inquiryid
     <!--Start Checkout Area-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-9">
-                <div class="panel-group" id="checkout-progress">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#bill-info"><span>1</span>BILLING INFORMATION</a>
-                        </div>
-                        <div id="bill-info" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="bill-info">
-                                    <div class="group">
-                                        <input type="text" name="fname" placeholder="First Name*" class="half">
-                                        <input type="text" name="lname" placeholder="Last Name*" class="half">
-                                    </div>
-                                    <input type="text" name="address" placeholder="STREET ADDRESS*">
-                                    <input type="text" name="city" placeholder="city">
-                                    <div class="group">
-                                        <input type="text" name="state" placeholder="STATE / COUNTRY">
-                                    </div>
-                                    <div class="group">
-                                        <input type="text" name="email" placeholder="E-mail Address*" class="half">
-                                        <input type="text" name="mobNo" placeholder="PHONE NUMBER*" class="half">
+    @using (Html.BeginForm("Checkout", "Order", FormMethod.Post))
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="panel-group" id="checkout-progress">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#bill-info"><span>1</span>BILLING INFORMATION</a>
+                            </div>
+                            <div id="bill-info" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="bill-info">
+                                        <div class="group">
+                                            <input type="text" name="fname" placeholder="First Name*" class="half">
+                                            <input type="text" name="lname" placeholder="Last Name*" class="half">
+                                        </div>
+                                        <input type="text" name="address" placeholder="STREET ADDRESS*">
+                                        <input type="text" name="city" placeholder="city">
+                                        <div class="group">
+                                            <input type="text" name="state" placeholder="STATE / COUNTRY">
+                                        </div>
+                                        <div class="group">
+                                            <input type="text" name="email" placeholder="E-mail Address*" class="half">
+                                            <input type="text" name="mobNo" placeholder="PHONE NUMBER*" class="half">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-info"><span>2</span>SHIPPING INFORMATION</a>
-                        </div>
-                        <div id="shipping-info" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-info"><span>2</span>SHIPPING INFORMATION</a>
+                            </div>
+                            <div id="shipping-info" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-method"><span>3</span>SHIPPING METHOD</a>
-                        </div>
-                        <div id="shipping-method" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#shipping-method"><span>3</span>SHIPPING METHOD</a>
+                            </div>
+                            <div id="shipping-method" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#payment-met"><span>4</span>PAYMENT INFORMATION</a>
-                        </div>
-                        <div id="payment-met" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="payment-met">
-                                    <p>Choose your payment method :</p>
-                                    <ul>
-                                        <li><a href="#"><img src="~/assets/client/img/footer/paypal.jpg" alt="" /></a></li>
-                                        <li><a href="#"><img src="~/assets/client/img/footer/visa.jpg" alt="" /></a></li>
-                                        <li><a href="#"><img src="~/assets/client/img/footer/master.jpg" alt="" /></a></li>
-                                        <li><a href="#"><img src="~/assets/client/img/footer/cards.jpg" alt="" /></a></li>
-                                        <li><a href="#"><img src="~/assets/client/img/footer/discover.jpg" alt="" /></a></li>
-                                    </ul>
-                                    <div class="pay">
-                                        <h2>YOUR PAYPAL ACCOUNT</h2>
-                                        <p>Pay via credit or debit card, Paypal transfer or even via Bank account in just a few clicks.</p>
-                                        <p>This method is super easy and well protected.</p>
-                                        <div class="bill-info">
-                                            <div class="group">
-                                                <input type="text" name="cardNo" placeholder="CARD NUMBER*" onkeypress="return checkDigit(event)">
-                                            </div>
-                                            <div class="group">
-                                                <input type="text" name="expDate" placeholder="EXP. DATE (MM/YY)*" class="half">
-                                                <input type="text" name="CVV" placeholder="CVV" class="half" maxlength="3">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#payment-met"><span>4</span>PAYMENT INFORMATION</a>
+                            </div>
+                            <div id="payment-met" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="payment-met">
+                                        @*<p>Choose your payment method :</p>
+                                            <ul>
+                                                <li><a href="#"><img src="~/assets/client/img/footer/paypal.jpg" alt="" /></a></li>
+                                                <li><a href="#"><img src="~/assets/client/img/footer/visa.jpg" alt="" /></a></li>
+                                                <li><a href="#"><img src="~/assets/client/img/footer/master.jpg" alt="" /></a></li>
+                                                <li><a href="#"><img src="~/assets/client/img/footer/cards.jpg" alt="" /></a></li>
+                                                <li><a href="#"><img src="~/assets/client/img/footer/discover.jpg" alt="" /></a></li>
+                                            </ul>*@
+                                        <div class="pay">
+                                            <h2>YOUR PAYPAL ACCOUNT</h2>
+                                            <p>Pay via credit or debit card, Paypal transfer or even via Bank account in just a few clicks.</p>
+                                            <p>This method is super easy and well protected.</p>
+                                            <div class="bill-info">
+                                                <div class="group">
+                                                    <input type="text" name="cardNo" placeholder="CARD NUMBER*" onkeypress="return checkDigit(event)">
+                                                </div>
+                                                <div class="group">
+                                                    <input type="text" name="expDate" placeholder="EXP. DATE (MM/YY)*" class="half">
+                                                    <input type="text" name="CVV" placeholder="CVV" class="half" maxlength="3">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#order-review"><span>5</span>ORDER REVIEW</a>
-                        </div>
-                        <div id="order-review" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="col-sm-4">
-                                    <div class="information">
-                                        <h3>BILLING INFORMATION</h3>
-                                        <h4>Thomas Albert</h4>
-                                        <h5>Lorem Street 2178</h5>
-                                        <p>12358 New Yourk</p>
-                                        <h5>Phone : 123 456 789</h5>
-                                        <p>E-mail: email@you,com</p>
-                                        <a href="#">MODIFY</a>
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <a class="collapsed" data-toggle="collapse" data-parent="#checkout-progress" href="#order-review"><span>5</span>ORDER REVIEW</a>
+                            </div>
+                            <div id="order-review" class="panel-collapse collapse">
+                                <div class="panel-body">
+                                    <div class="col-sm-4">
+                                        <div class="information">
+                                            <h3>BILLING INFORMATION</h3>
+                                            <h4>Thomas Albert</h4>
+                                            <h5>Lorem Street 2178</h5>
+                                            <p>12358 New Yourk</p>
+                                            <h5>Phone : 123 456 789</h5>
+                                            <p>E-mail: email@you,com</p>
+                                            <a href="#">MODIFY</a>
+                                        </div>
                                     </div>
-                                </div>
 
-                                <div class="col-sm-4">
-                                    <div class="information">
-                                        <h3>SHIPPING INFORMATION</h3>
-                                        <h4>Thomas Albert</h4>
-                                        <h5>Lorem Street 2178</h5>
-                                        <p>12358 New Yourk</p>
-                                        <h5>Phone : 123 456 789</h5>
-                                        <p>E-mail: email@you,com</p>
-                                        <a href="#">MODIFY</a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-4">
-                                    <div class="information">
-                                        <h3>CHOOSED PAYMENT METHOD</h3>
-                                        <h4>Method : Paypal</h4>
-                                        <p>Paypal address : email@you.com</p>
-                                        <a id="shipping" href="#">MODIFY</a>
-                                    </div>
-                                </div>
-                                <div class="col-sm-12">
-                                    <div class="place-order">
-                                        <div class="order-list">
-                                            <h1>PRODUCTS</h1>
-                                            <h2>Total</h2>
-                                            <h3>PRODUCT NAME DEMO   x 1 <span>$210</span></h3>
-                                            <h3>PRODUCT NAME DEMO   x 2 <span>$300</span></h3>
+                                    <div class="col-sm-4">
+                                        <div class="information">
+                                            <h3>SHIPPING INFORMATION</h3>
+                                            <h4>Thomas Albert</h4>
+                                            <h5>Lorem Street 2178</h5>
+                                            <p>12358 New Yourk</p>
+                                            <h5>Phone : 123 456 789</h5>
+                                            <p>E-mail: email@you,com</p>
+                                            <a href="#">MODIFY</a>
                                         </div>
-                                        <div class="final-total">
-                                            <h4>Sub Total <span>$420</span></h4>
-                                            <h5>Grand Total <span>$420</span></h5>
-                                            <a href="#">Place Order</a>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <div class="information">
+                                            <h3>PAYMENT METHOD</h3>
+                                            <h4>Method : Card</h4>
+                                            @*<p>Paypal address : email@you.com</p>*@
+                                            <a id="shipping" href="#">MODIFY</a>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="place-order">
+                                            <div class="order-list">
+                                                <h1>PRODUCTS</h1>
+                                                <h2>Total</h2>
+                                                @if (Session["cartList"] != null)
+                                                {
+                                                    foreach (CartList item in (List<CartList>)Session["cartList"])
+                                                    {
+                                                        <h3>@item.itemCode  x @item.qty <span>@item.price</span></h3>
+                                                    }
+                                                }
+                                            </div>
+                                            <div class="final-total">
+                                                <h4>Sub Total <span>@ViewBag.TotalPrice</span></h4>
+                                                <h5>Grand Total <span>@ViewBag.TotalPrice</span></h5>
+                                                <input type="submit" name="btnSubmit" value="Place Order" class="btn btn-border" style="background-color: #e09e25; color:#fff; font-weight:bold;"/>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -148,21 +158,22 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-3">
-                <div class="checkout-right">
-                    <h2>CHECKOUT PROGRESS</h2>
-                    <ul>
-                        <li><a href="#">Billing  Information</a></li>
-                        <li><a href="#">Shipping  Information</a></li>
-                        <li><a href="#">Shipping  Method</a></li>
-                        <li><a href="#">Payment Information</a></li>
-                        <li><a href="#">Order Review</a></li>
-                    </ul>
+                <div class="col-md-3">
+                    <div class="checkout-right">
+                        <h2>CHECKOUT PROGRESS</h2>
+                        <ul>
+                            <li><a href="#">Billing  Information</a></li>
+                            <li><a href="#">Shipping  Information</a></li>
+                            <li><a href="#">Shipping  Method</a></li>
+                            <li><a href="#">Payment Information</a></li>
+                            <li><a href="#">Order Review</a></li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+
+    }
 
 </section><!--End Checkout Area-->
 <script>

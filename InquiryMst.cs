@@ -15,18 +15,19 @@ namespace OnlineJewelryShoppingMVC
     public partial class InquiryMst
     {
         public string inquiryID { get; set; }
-        public string cartId { get; set; }
+        public string transactionId { get; set; }
         public string fname { get; set; }
         public string lname { get; set; }
+        public string address { get; set; }
         public string city { get; set; }
         public string mobNo { get; set; }
         public string emailId { get; set; }
         public string cmt { get; set; }
         public byte[] cdate { get; set; }
-        public int cardNo { get; set; }
+        public string cardNo { get; set; }
         public string expdate { get; set; }
-        public int CVV_No { get; set; }
+        public string CVV_No { get; set; }
     
-        public virtual CartList CartList { get; set; }
+        public virtual TransactionMst TransactionMst { get; set; }
     }
 }

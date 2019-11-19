@@ -15,25 +15,14 @@ namespace OnlineJewelryShoppingMVC
 
     public partial class CartList
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CartList()
-        {
-            this.InquiryMsts = new HashSet<InquiryMst>();
-        }
-    
         public string cartId { get; set; }
-        public string userId { get; set; }
-        public string guestId { get; set; }
+        public string transactionId { get; set; }
         public string itemCode { get; set; }
         public int qty { get; set; }
         [DataType(DataType.Currency)]
         public decimal price { get; set; }
-        public string img { get; set; }
     
-        public virtual GuestMst GuestMst { get; set; }
         public virtual ItemMst ItemMst { get; set; }
-        public virtual UserRegMst UserRegMst { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<InquiryMst> InquiryMsts { get; set; }
+        public virtual TransactionMst TransactionMst { get; set; }
     }
 }

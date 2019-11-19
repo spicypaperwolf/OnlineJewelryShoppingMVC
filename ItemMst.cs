@@ -11,7 +11,8 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ItemMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,7 +20,6 @@ namespace OnlineJewelryShoppingMVC
         {
             this.CartLists = new HashSet<CartList>();
             this.CommentMsts = new HashSet<CommentMst>();
-            this.TransactionMsts = new HashSet<TransactionMst>();
         }
     
         public string itemCode { get; set; }
@@ -35,17 +35,25 @@ namespace OnlineJewelryShoppingMVC
         public string itemDescription { get; set; }
         public Nullable<decimal> pairs { get; set; }
         public Nullable<int> dimQty { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<decimal> dimTot { get; set; }
         public Nullable<int> stoneQty { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<int> stoneTot { get; set; }
         public Nullable<decimal> goldWt { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<decimal> goldTot { get; set; }
         public decimal wstgPer { get; set; }
         public decimal wstg { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<decimal> goldMaking { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<decimal> stoneMaking { get; set; }
+        [DataType(DataType.Currency)]
         public Nullable<decimal> otherMaking { get; set; }
+        [DataType(DataType.Currency)]
         public decimal totMaking { get; set; }
+        [DataType(DataType.Currency)]
         public decimal MRP { get; set; }
     
         public virtual BrandMst BrandMst { get; set; }
@@ -59,7 +67,5 @@ namespace OnlineJewelryShoppingMVC
         public virtual GoldInfoMst GoldInfoMst { get; set; }
         public virtual ProductMst ProductMst { get; set; }
         public virtual StoneInfoMst StoneInfoMst { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TransactionMst> TransactionMsts { get; set; }
     }
 }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -12,6 +13,8 @@ namespace OnlineJewelryShoppingMVC.Controllers
         ItemRespository ir = new ItemRespository();
         public static decimal totalPrice = 0;
         public static decimal totalQuality = 0;
+        public static RandomGenerator rand = new RandomGenerator();
+        public static string transactionId = rand.RandomSth();
 
         public CartController()
         {
@@ -27,12 +30,11 @@ namespace OnlineJewelryShoppingMVC.Controllers
         public ActionResult Buy(string id)
         {
             totalQuality++;
-            Random ran = new Random();
-            ran.Next(1, 1000);
+            RandomGenerator ran = new RandomGenerator();
             List<CartList> carts = new List<CartList>();
             if (Session["cartList"] == null)
             {
-                carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = "C" + ran });
+                carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = ran.RandomString(10, false), transactionId = transactionId });
                 Session["cartList"] = carts;
             }
             else
@@ -45,7 +47,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 }
                 else
                 {
-                    carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = "C" + ran });
+                    carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = ran.RandomString(10, false), transactionId = transactionId });
                 }
                 Session["cart"] = carts;
             }
@@ -86,9 +88,40 @@ namespace OnlineJewelryShoppingMVC.Controllers
             return result;
         }
 
-        //public ActionResult CreateOrder()
-        //{
+        public class RandomGenerator
+        {
+            // Generate a random number between two numbers    
+            public int RandomNumber(int min, int max)
+            {
+                Random random = new Random();
+                return random.Next(min, max);
+            }
 
-        //}
+            // Generate a random string with a given size    
+            public string RandomString(int size, bool lowerCase)
+            {
+                StringBuilder builder = new StringBuilder();
+                Random random = new Random();
+                char ch;
+                for (int i = 0; i < size; i++)
+                {
+                    ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+                    builder.Append(ch);
+                }
+                if (lowerCase)
+                    return builder.ToString().ToLower();
+                return builder.ToString();
+            }
+
+            // Generate a random password    
+            public string RandomSth()
+            {
+                StringBuilder builder = new StringBuilder();
+                builder.Append(RandomString(4, true));
+                builder.Append(RandomNumber(1000, 9999));
+                builder.Append(RandomString(2, false));
+                return builder.ToString();
+            }
+        }
     }
 }
