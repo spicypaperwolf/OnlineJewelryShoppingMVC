@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -53,10 +54,32 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "stoneId,stoneShape,stoneCrt,stoneColor,stoneRate,stoneImg")] StoneInfoMst stoneInfoMst)
+        public ActionResult Create([Bind(Include = "stoneId,stoneShape,stoneCrt,stoneColor,stoneRate,stoneImg")] StoneInfoMst stoneInfoMst, HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
+                int index = 0;
+                foreach (HttpPostedFileBase file in files)
+                {
+                    index++;
+                    //Checking file is available to save.  
+                    if (file != null)
+                    {
+                        if (files.Length != index)
+                        {
+                            stoneInfoMst.stoneImg += file.FileName + ", ";
+
+                        }
+                        else
+                        {
+                            stoneInfoMst.stoneImg += file.FileName;
+                        }
+                        var InputFileName = Path.GetFileName(file.FileName);
+                        var ServerSavePath = Path.Combine(Server.MapPath("~/assets/image/") + InputFileName);
+                        //Save file to server folder  
+                        file.SaveAs(ServerSavePath);
+                    }
+                }//end of insert image
                 db.StoneInfoMsts.Add(stoneInfoMst);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -85,10 +108,33 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "stoneId,stoneShape,stoneCrt,stoneColor,stoneRate,stoneImg")] StoneInfoMst stoneInfoMst)
+        public ActionResult Edit([Bind(Include = "stoneId,stoneShape,stoneCrt,stoneColor,stoneRate,stoneImg")] StoneInfoMst stoneInfoMst, HttpPostedFileBase[] files)
         {
             if (ModelState.IsValid)
             {
+                int index = 0;
+                foreach (HttpPostedFileBase file in files)
+                {
+                    index++;
+                    //Checking file is available to save.  
+                    if (file != null)
+                    {
+                        if (files.Length != index)
+                        {
+                            stoneInfoMst.stoneImg += file.FileName + ", ";
+
+                        }
+                        else
+                        {
+                            stoneInfoMst.stoneImg += file.FileName;
+                        }
+                        var InputFileName = Path.GetFileName(file.FileName);
+                        var ServerSavePath = Path.Combine(Server.MapPath("~/assets/image/") + InputFileName);
+                        //Save file to server folder  
+                        file.SaveAs(ServerSavePath);
+                    }
+                }//end of insert image
+
                 db.Entry(stoneInfoMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

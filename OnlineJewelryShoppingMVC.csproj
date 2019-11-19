@@ -185,7 +185,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminLoginMstsController.cs" />
     <Compile Include="Areas\Admin\Controllers\BrandMstsController.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryMstsController.cs" />
@@ -350,7 +350,6 @@
     <Content Include="assets\admin\fonts\nucleo-icons.woff" />
     <Content Include="assets\admin\fonts\nucleo-icons.woff2" />
     <Content Include="Areas\Admin\Views\Shared\_admin.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\ViewPage1.cshtml" />
     <Content Include="assets\client\fonts\fontawesome-webfont.woff2" />
     <Content Include="assets\client\fonts\ionicons.ttf" />
@@ -406,6 +405,7 @@
     <Content Include="Areas\Admin\Views\CertificateMsts\Details.cshtml" />
     <Content Include="Areas\Admin\Views\CertificateMsts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\CertificateMsts\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Dashboard\Dashboard.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

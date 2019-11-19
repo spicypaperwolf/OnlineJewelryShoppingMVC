@@ -10,8 +10,12 @@
 
 <div class="content">
     <p>
-        <a class="btn btn-primary" href="@Url.Action("Create","DimInfoMsts")" >
-          ADD NEW 
+        <a class="btn btn-primary" href="@Url.Action("Create","DimInfoMsts")">
+            ADD NEW
+        </a>
+
+        <a class="btn btn-group-justified" href="@Url.Action("ExportReport") ">
+            Download Report
         </a>
     </p>
 
@@ -22,11 +26,6 @@
             <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
         </div>
     }
-    <p>
-        <a class="btn btn-group-justified" href="@Url.Action("ExportReport") ">
-            Download Report
-        </a>
-    </p>
 
     <div class="row">
         <div class="col-md-12">
@@ -133,10 +132,10 @@
         </div>
 
     </div>
+    <div>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+        new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+        )
+    </div>
 </div>
 
-<div>
-    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
-    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
-    )
-</div>

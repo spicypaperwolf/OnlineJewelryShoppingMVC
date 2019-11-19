@@ -40,22 +40,19 @@
                 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
             -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                    <div class="logo-image-small">
-                        <img src="~/assets/admin/img/logo-small.png">
-                    </div>
+                <a href="@Url.Action("Index","AdminLoginMsts")" class="logo">
+                    <center>
+                        <img src="~/assets/admin/img/yash.png">
+                    </center>
                 </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    Creative Tim
-                    <!-- <div class="logo-image-big">
-                      <img src="../assets/img/logo-big.png">
-                    </div> -->
-                </a>
+                <center>
+                   <b> ADMIN PANEL</b>
+                </center>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active ">
-                        <a>
+                    <li class="active" >
+                        <a href="@Url.Action("Dashboard","Dashboard")">
                             <i class="nc-icon nc-bank"></i>
                             <p>Dashboard</p>
                         </a>
@@ -66,19 +63,19 @@
                             <p>Items</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="@Url.Action("Index","ProductMsts")">
                             <i class="nc-icon nc-box-2"></i>
                             <p>Product</p>
                         </a>
                     </li>
-                    <li>
+                    <li >
                         <a href="@Url.Action("Index","CategoryMsts")">
                             <i class="nc-icon nc-app"></i>
                             <p>Category</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="@Url.Action("Index","BrandMsts")">
                             <i class="nc-icon nc-bank"></i>
                             <p>Brand</p>
@@ -90,7 +87,7 @@
                             <p>Certificate</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="@Url.Action("Index","DimInfoMsts")">
                             <i class="nc-icon nc-diamond"></i>
                             <p>Diamond Ifomation</p>
@@ -102,19 +99,19 @@
                             <p>Stone Infomation</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="@Url.Action("Index","GoldInfoMsts")">
                             <i class="nc-icon nc-money-coins"></i>
                             <p>Gold Infomation</p>
                         </a>
                     </li>
-                    <li>
+                    <li >
                         <a href="@Url.Action("Index","AdminLoginMsts")">
                             <i class="nc-icon nc-user-run"></i>
                             <p>Admin Profile</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="@Url.Action("Index","UserRegMsts")">
                             <i class="nc-icon nc-single-02"></i>
                             <p>User Profile</p>
@@ -188,10 +185,7 @@
                     </div>
                 </div>
             </nav>
-            <!-- End Navbar -->
-            <!-- <div class="panel-header panel-header-lg">
-              <canvas id="bigDashboardChart"></canvas>
-            </div> -->
+            <!-- End Navbar -->    
             <div class="content">
                 @RenderBody()
             </div>
@@ -201,7 +195,7 @@
                         <div class="credits ml-auto">
                             <span class="copyright">
                                 ©
-                                <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                                <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Yash
                             </span>
                         </div>
                     </div>
@@ -209,11 +203,5 @@
             </footer>
         </div>
     </div>
- 
-
-  
-
-
 </body>
-
 </html>

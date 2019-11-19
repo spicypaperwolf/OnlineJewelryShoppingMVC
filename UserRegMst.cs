@@ -11,7 +11,9 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class UserRegMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,17 +23,30 @@ namespace OnlineJewelryShoppingMVC
             this.CommentMsts = new HashSet<CommentMst>();
             this.TransactionMsts = new HashSet<TransactionMst>();
         }
-    
+       
         public string userId { get; set; }
+        [Required]
+        [DisplayName("First Name")]
         public string userFname { get; set; }
+        [DisplayName("Last Name")]
         public string userLname { get; set; }
+        [Required]
         public string address { get; set; }
+        [Required]
         public string city { get; set; }
+        [Required]
         public string state { get; set; }
+        [Required]
+        [DisplayName("Mobile Number")]
         public string mobNo { get; set; }
+        [Required]
         public string emailId { get; set; }
+        [DisplayName("Date Of Birth")]
+
         public string dob { get; set; }
+        [DisplayName("Current Date")]
         public System.DateTime cdate { get; set; }
+        [Required]
         public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

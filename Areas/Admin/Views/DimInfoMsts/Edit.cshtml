@@ -7,7 +7,7 @@
 
     <div class="content">
 
-        @using (Html.BeginForm())
+        @using (Html.BeginForm("Edit", "DimInfoMsts", FormMethod.Post, new { enctype = "multipart/form-data" }))
         {
             @Html.AntiForgeryToken()
 
@@ -98,9 +98,9 @@
             </div>
 
             <div>
-                @Html.LabelFor(model => model.dimImg, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.dimImg,htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    <input type="file" name="files" id="files" multiple="multiple" />
+                    <input type="file" name="files" id="files" multiple="multiple" required />
                 </div>
             </div>
 

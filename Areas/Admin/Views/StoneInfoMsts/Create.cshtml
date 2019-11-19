@@ -6,7 +6,7 @@
 }
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "StoneInfoMsts", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -54,11 +54,10 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div>
             @Html.LabelFor(model => model.stoneImg, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.stoneImg, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.stoneImg, "", new { @class = "text-danger" })
+                <input type="file" name="files" id="files" multiple="multiple" required />
             </div>
         </div>
 

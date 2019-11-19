@@ -11,7 +11,9 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class StoneInfoMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +21,20 @@ namespace OnlineJewelryShoppingMVC
         {
             this.ItemMsts = new HashSet<ItemMst>();
         }
-    
+
+        [Required]
         public string stoneId { get; set; }
+        [Required]
         public string stoneShape { get; set; }
+        [Required]
+        [DisplayName("Stone Criteria")]
+        [Range(0.1, 1, ErrorMessage = "Criteria must be from 0.1 to 1 ")]
         public decimal stoneCrt { get; set; }
+        [Required]
         public string stoneColor { get; set; }
+        [Required]
+        [DisplayName("Stone Rate")]
+        [Range(1, 100000000, ErrorMessage = "Rate must be from 1 to 100,000,000 ")]
         public decimal stoneRate { get; set; }
         public string stoneImg { get; set; }
     

@@ -12,6 +12,7 @@ namespace OnlineJewelryShoppingMVC
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
     using System.Web;
     public partial class ItemMst
     {
@@ -21,15 +22,27 @@ namespace OnlineJewelryShoppingMVC
             this.CommentMsts = new HashSet<CommentMst>();
             this.TransactionMsts = new HashSet<TransactionMst>();
         }
-    
+
+        [DisplayName("Item Code")]
+        [Required]
         public string itemCode { get; set; }
+        [DisplayName("Brand ID")]
         public string brandId { get; set; }
+        [DisplayName("Category ID")]
         public string catId { get; set; }
+        [DisplayName("Certificate ID")]
         public string certificateId { get; set; }
+        [DisplayName("Product ID")]
         public string prodId { get; set; }
+        [DisplayName("Diamond ID")]
         public string dimId { get; set; }
+        [DisplayName("Gold ID")]
         public string goldId { get; set; }
+        [DisplayName("Stone ID")]
         public string stoneId { get; set; }
+
+        [DisplayName("Item Name")]
+        [Required]
         public string itemName { get; set; }
         [DisplayName("Upload Image")]
         public string itemImg { get; set; }
@@ -40,14 +53,18 @@ namespace OnlineJewelryShoppingMVC
         public Nullable<int> stoneTot { get; set; }
         public Nullable<decimal> goldWt { get; set; }
         public Nullable<decimal> goldTot { get; set; }
+        [Required]
         public decimal wstgPer { get; set; }
+        [Required]
         public decimal wstg { get; set; }
         public Nullable<decimal> goldMaking { get; set; }
         public Nullable<decimal> stoneMaking { get; set; }
         public Nullable<decimal> otherMaking { get; set; }
+        [Required]
         public decimal totMaking { get; set; }
+        [Required]
         public decimal MRP { get; set; }
-    
+   
         public virtual BrandMst BrandMst { get; set; }
         public virtual CategoryMst CategoryMst { get; set; }
         public virtual CertificateMst CertificateMst { get; set; }

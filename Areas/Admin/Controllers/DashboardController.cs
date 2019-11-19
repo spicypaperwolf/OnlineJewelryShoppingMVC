@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
 {
-    public class AdminController : Controller
+    public class DashboardController : Controller
     {
         // GET: Admin/Admin
         OnlineJewelryShopDBEntities db = new OnlineJewelryShopDBEntities();
