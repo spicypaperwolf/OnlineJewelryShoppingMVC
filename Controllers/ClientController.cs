@@ -169,12 +169,6 @@ namespace OnlineJewelryShoppingMVC.Controllers
             return RedirectToAction("Index", "Client");
         }
 
-        //Cart Page for detailed information in cart
-        public ActionResult Cart()
-        {
-            return View();
-        }
-
         //Check out page for customer to process payment
         public ActionResult Checkout()
         {

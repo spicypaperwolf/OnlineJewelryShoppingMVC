@@ -788,7 +788,6 @@
     <Content Include="Views\Client\ShopList.cshtml" />
     <Content Include="Views\Client\ItemDetails.cshtml" />
     <Content Include="Views\Client\Login.cshtml" />
-    <Content Include="Views\Client\Cart.cshtml" />
     <Content Include="Views\Client\Contact.cshtml" />
     <Content Include="Views\Client\About.cshtml" />
     <Content Include="Views\Client\Blog.cshtml" />

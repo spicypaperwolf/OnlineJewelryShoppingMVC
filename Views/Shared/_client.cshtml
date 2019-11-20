@@ -1,4 +1,5 @@
-﻿<!DOCTYPE HTML>
+﻿
+<!DOCTYPE HTML>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
@@ -31,7 +32,8 @@
     <!-- Stylesheet CSS -->
     @Styles.Render("~/assets/client/css/style.css")
     <!-- Responsive Stylesheet -->
-    <link href="~/assets/client/css/responsive.css" rel="stylesheet" />
+    <link href="~/assets/client/css/responsive.css" rel="stylesheet" 
+
 </head>
 <body>
     <div class="header-top">
@@ -100,7 +102,7 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-sm-4 col-lg-3">
+                <div class="col-sm-4 col-lg-3" id="cartdroppable">
                     <div class="cart-info float-right">
                         <a href="cart.html">
                             <h5>My cart <span>@ViewBag.TotalQuality</span> items - <span>$ @ViewBag.TotalPrice</span></h5>
@@ -658,6 +660,24 @@
     </script>
     <!-- Main JS -->
     <script src="~/assets/client/js/main.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <script>
+        var totalItem = 0;
+        $(function () {
+            $(".ui-widget-content").draggable({
+                appendTo: "body",
+                helper: "clone"
+            });
+            $("#cartdroppable").droppable({
+                drop: function (event, ui) {
+                    totalItem = parseInt(totalItem) + 1
+                    alert(totalItem);
+                }
+            });
+        });
+    </script>
 
 </body>
 

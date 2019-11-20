@@ -45,7 +45,7 @@
                 @foreach (var i in ViewBag.ItemList)
                 {
                     <div class="col-sm-4 col-md-3 fix">
-                        <div class="product-item fix">
+                        <div class="product-item fix ui-widget-content">
                             <div class="product-img-hover">
                                 <!-- Product image -->
                                 <a href="product-details.html" class="pro-image fix"><img src="~/assets/client/img/product/1.jpg" alt="product" /></a>
@@ -60,6 +60,7 @@
                                 <!-- Product Name -->
                                 <div class="pro-name">
                                     <a href="product-details.html">@i.itemName</a>
+                                    @*<p style="display:none;" id="codeItem">@i.itemCode</p>*@
                                 </div>
                                 <!-- Product Ratting -->
                                 <div class="pro-ratting">
