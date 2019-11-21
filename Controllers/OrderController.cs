@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OnlineJewelryShoppingMVC.Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,55 +30,108 @@ namespace OnlineJewelryShoppingMVC.Controllers
 
                 if (Session["cartList"] != null)
                 {
-
-                    RandomGenerator ran = new RandomGenerator();
-
-                    InquiryMst i = new InquiryMst();
-
-                    i.inquiryID = ran.RandomSth();
-                    i.fname = fname;
-                    i.lname = lname;
-                    i.city = city;
-                    i.address = address;
-                    i.cmt = "";
-                    i.mobNo = mobNo;
-                    i.emailId = email;
-                    i.cardNo = cardNo;
-                    i.expdate = expDate;
-                    i.CVV_No = CVV;
-                    foreach (CartList item in (List<CartList>)Session["cartList"])
+                    if (Session[CommonConstants.USER_SESSION] != null)
                     {
-                        i.transactionId = item.transactionId;
-                        break;
+                        UserLogin u = new UserLogin();
+                        u = (UserLogin)Session[CommonConstants.USER_SESSION];
+
+                        RandomGenerator ran = new RandomGenerator();
+
+                        InquiryMst i = new InquiryMst();
+
+                        i.inquiryID = ran.RandomSth();
+                        i.fname = fname;
+                        i.lname = lname;
+                        i.city = city;
+                        i.address = address;
+                        i.cmt = "";
+                        i.mobNo = mobNo;
+                        i.emailId = email;
+                        i.cardNo = cardNo;
+                        i.expdate = expDate;
+                        i.CVV_No = CVV;
+                        foreach (CartList item in (List<CartList>)Session["cartList"])
+                        {
+                            i.transactionId = item.transactionId;
+                            break;
+                        }
+                        _context.InquiryMsts.Add(i);
+
+
+                        foreach (CartList item in (List<CartList>)Session["cartList"])
+                        {
+                            CartList c = new CartList();
+                            c.cartId = item.cartId;
+                            c.transactionId = item.transactionId;
+                            c.itemCode = item.itemCode;
+                            c.qty = item.qty;
+                            c.price = item.price;
+                            _context.CartLists.Add(c);
+                        }
+
+                        TransactionMst t = new TransactionMst();
+                        foreach (CartList item in (List<CartList>)Session["cartList"])
+                        {
+                            t.transactionId = item.transactionId;
+                            break;
+                        }
+                        t.userId = u.UserID;
+                        t.approvalStt = "Pending";
+
+
+                        _context.TransactionMsts.Add(t);
                     }
-                    _context.InquiryMsts.Add(i);
-
-
-                    foreach (CartList item in (List<CartList>)Session["cartList"])
+                    else
                     {
-                        CartList c = new CartList();
-                        c.cartId = item.cartId;
-                        c.transactionId = item.transactionId;
-                        c.itemCode = item.itemCode;
-                        c.qty = item.qty;
-                        c.price = item.price;
-                        _context.CartLists.Add(c);
+                        RandomGenerator ran = new RandomGenerator();
+
+                        InquiryMst i = new InquiryMst();
+
+                        i.inquiryID = ran.RandomSth();
+                        i.fname = fname;
+                        i.lname = lname;
+                        i.city = city;
+                        i.address = address;
+                        i.cmt = "";
+                        i.mobNo = mobNo;
+                        i.emailId = email;
+                        i.cardNo = cardNo;
+                        i.expdate = expDate;
+                        i.CVV_No = CVV;
+                        foreach (CartList item in (List<CartList>)Session["cartList"])
+                        {
+                            i.transactionId = item.transactionId;
+                            break;
+                        }
+                        _context.InquiryMsts.Add(i);
+
+
+                        foreach (CartList item in (List<CartList>)Session["cartList"])
+                        {
+                            CartList c = new CartList();
+                            c.cartId = item.cartId;
+                            c.transactionId = item.transactionId;
+                            c.itemCode = item.itemCode;
+                            c.qty = item.qty;
+                            c.price = item.price;
+                            _context.CartLists.Add(c);
+                        }
+
+                        TransactionMst t = new TransactionMst();
+                        foreach (CartList item in (List<CartList>)Session["cartList"])
+                        {
+                            t.transactionId = item.transactionId;
+                            break;
+                        }
+
+                        t.approvalStt = "Pending";
+
+
+                        _context.TransactionMsts.Add(t);
                     }
-
-                    TransactionMst t = new TransactionMst();
-                    foreach (CartList item in (List<CartList>)Session["cartList"])
-                    {
-                        t.transactionId = item.transactionId;
-                        break;
-                    }
-
-                    t.approvalStt = "Pending";
-                    
-
-                    _context.TransactionMsts.Add(t);
-
                     
                     _context.SaveChanges();
+                    Session.Remove("cartList");
                 }
                 return RedirectToAction("Index");
             }

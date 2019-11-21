@@ -1,9 +1,9 @@
-﻿
+﻿@using  OnlineJewelryShoppingMVC.Common
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8">
-    <title>Olongkar | Home Page 1</title>
+    <title>YASH - @ViewBag.Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Fav Icon -->
     <link id="favicon" rel="icon" type="image/png" href="img/favicon.ico" />
@@ -32,8 +32,9 @@
     <!-- Stylesheet CSS -->
     @Styles.Render("~/assets/client/css/style.css")
     <!-- Responsive Stylesheet -->
-    <link href="~/assets/client/css/responsive.css" rel="stylesheet" 
-
+    <link href="~/assets/client/css/responsive.css" rel="stylesheet" /> 
+    <!-- jQuery 2.1.4 -->
+    @Scripts.Render("~/assets/client/js/jquery-2.1.4.min.js")
 </head>
 <body>
     <div class="header-top">
@@ -48,7 +49,7 @@
                         </div>
                         <div class="mail-id float-left">
                             <i class="fa fa-envelope-o float-left"></i>
-                            <p><a href="#">info@olongker.com</a></p>
+                            <p><a href="#">info@yash.com</a></p>
                         </div>
                     </div>
                 </div>
@@ -64,20 +65,20 @@
                     <div id="top-menu" class="float-right">
                         <ul>
                             <li><a href="">My Account</a></li>
-                            <li>
-                                <a href="">$USD <i class="fa fa-angle-down"></i></a>
-                                <ul>
-                                    <li><a href="">Pound</a></li>
-                                    <li><a href="">BDT</a></li>
-                                </ul>
-                            </li>
-                            <li>
-                                <a href="">English(UK) <i class="fa fa-angle-down"></i></a>
-                                <ul>
-                                    <li><a href="">English(USA)</a></li>
-                                    <li><a href="">Bangla</a></li>
-                                </ul>
-                            </li>
+                            @*<li>
+                                    <a href="">$USD <i class="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="">Pound</a></li>
+                                        <li><a href="">BDT</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="">English(UK) <i class="fa fa-angle-down"></i></a>
+                                    <ul>
+                                        <li><a href="">English(USA)</a></li>
+                                        <li><a href="">Bangla</a></li>
+                                    </ul>
+                                </li>*@
                         </ul>
                     </div>
                 </div>
@@ -89,14 +90,27 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4 col-lg-3">
-                    <div class="log-link">
-                        <p>Well come visitor you can</p>
-                        <h5><a href="login.html">Login</a> or <a href="login.html">Create an account</a></h5>
-                    </div>
+                    @if (Session[CommonConstants.USER_SESSION] == null)
+                    {
+                        <div class="log-link">
+                            <p>Welcome visitor you can</p>
+                            <h5><a href="@Url.Action("Login", "Client")">Login</a> or <a href="@Url.Action("Login", "Client")">Create an account</a></h5>
+                        </div>
+                    }
+                    else
+                    {
+                        UserLogin u = new UserLogin();
+                        u = (UserLogin)Session[CommonConstants.USER_SESSION];
+                        <div class="log-link">
+                            <p>Welcome  <h5><a href="#">@u.UserName</a></h5></p>
+                            <a href="@Url.Action("Logout", "Client")"><i class="fa fa-sign-out"></i></a>
+                        </div>
+                    }
+
                 </div>
                 <div class="col-sm-4 col-lg-6">
                     <div class="logo text-center">
-                        <a href="index.html">
+                        <a href="@Url.Action("Index", "Client")">
                             <img src="~/assets/client/img/header/logo.png" alt="logo.png" />
                             <h4>online jewelry store</h4>
                         </a>
@@ -149,12 +163,7 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="index.html" class="active">Home</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="index.html">Home 1</a></li>
-                                        <li><a href="index-2.html">Home 2</a></li>
-                                        <li><a href="index-3.html">Home 3</a></li>
-                                    </ul>
+                                    <a href="@Url.Action("Index", "Client")" class="active">Home</a>
                                 </li>
                                 <li>
                                     <a href="#">Pages</a>
@@ -629,8 +638,6 @@
             </div>
         </div>
     </div><!--End Footer Area-->
-    <!-- jQuery 2.1.4 -->
-    @Scripts.Render("~/assets/client/js/jquery-2.1.4.min.js")
     <!-- Bootstrap JS -->
     <script src="~/assets/client/js/bootstrap.min.js"></script>
     <!-- Owl Carousel JS -->
@@ -666,14 +673,23 @@
     <script>
         var totalItem = 0;
         $(function () {
+            var itemCode;
             $(".ui-widget-content").draggable({
+                drag: function (event, ui) {
+                    itemCode = $(event.target).attr('data-id');
+                },
                 appendTo: "body",
-                helper: "clone"
+                helper: "clone",
+                scroll: true,
+                scrollSensitivity: 100,
+                scrollSpeed: 100,
+                containment: "html",
+                revert: true
             });
             $("#cartdroppable").droppable({
                 drop: function (event, ui) {
-                    totalItem = parseInt(totalItem) + 1
-                    alert(totalItem);
+                    totalItem = parseInt(totalItem) + 1;
+                    window.location.href = "https://localhost:44368/Cart/Buy?id=" + itemCode;
                 }
             });
         });

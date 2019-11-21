@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using OnlineJewelryShoppingMVC.Common;
 using OnlineJewelryShoppingMVC.Models;
 using OnlineJewelryShoppingMVC.Respository;
+using PagedList;
+using PagedList.Mvc;
 
 namespace OnlineJewelryShoppingMVC.Controllers
 {
@@ -21,6 +23,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
         //Homepage
         public ActionResult Index()
         {
+            ViewBag.ItemList = _context.ItemMsts.ToList();
             return View();
         }
 
@@ -31,11 +34,34 @@ namespace OnlineJewelryShoppingMVC.Controllers
         }
 
         //Shop page in default format for showing all products w customize filter
-        public ActionResult Shop()
+        public ActionResult Shop(string searchString, int? page, string sortBy)
         {
+            var item = from x in _context.ItemMsts select x;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                item = item.Where(x => x.itemName.Contains(searchString) || x.itemImg.Contains(searchString) );
+            }
+
             ItemRespository ir = new ItemRespository();
-            ViewBag.ItemList = ir.GetItems();
-            return View();
+            ViewBag.BrandList = _context.BrandMsts.ToList();
+            ViewBag.ItemList = item.ToList().ToPagedList(page ?? 1, 6);
+            return View(item.ToList().ToPagedList(page ?? 1, 6));
+        }
+
+        [HttpPost]
+        public ActionResult Shop(int? page, int sort_by, string sort_by_brand)
+        {
+            var item = from x in _context.ItemMsts select x;
+
+            if (!string.IsNullOrEmpty(sort_by_brand))
+            {
+                item = item.Where(x => x.BrandMst.brandId.Contains(sort_by_brand));
+            }
+
+            ItemRespository ir = new ItemRespository();
+            ViewBag.BrandList = _context.BrandMsts.ToList();
+            ViewBag.ItemList = item.ToList().ToPagedList(page ?? 1, sort_by);
+            return View(item.ToList().ToPagedList(page ?? 1, sort_by));
         }
 
         //Shop page in list format for showing all products w customize filter
@@ -45,9 +71,15 @@ namespace OnlineJewelryShoppingMVC.Controllers
         }
 
         //Item page for details of particular product 
-        public ActionResult ItemDetails()
+        public ActionResult ItemDetails(string id)
         {
-            return View();
+            ItemMst item = _context.ItemMsts.Where(i => i.itemCode.Equals(id)).FirstOrDefault();
+            if (item == null)
+            {
+                return RedirectToAction("ErrorPage");
+            }
+
+            return View(item);
         }
 
         //Login page for user/admi
@@ -118,6 +150,8 @@ namespace OnlineJewelryShoppingMVC.Controllers
         [HttpPost]
         public ActionResult Login(LoginModel model)
         {
+            //UserLogin u = new UserLogin();
+            //u = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (ModelState.IsValid)
             {
                 var result = checkLogin(model.emailId, (model.password));
@@ -126,9 +160,9 @@ namespace OnlineJewelryShoppingMVC.Controllers
                     Session.Remove(CommonConstants.USER_SESSION);
                     var user = GetByUserName(model.emailId);
                     var userSession = new UserLogin();
+                    userSession.UserID = user.userId;
                     userSession.UserName = user.emailId; // user.UserName in Database
                     userSession.Role = "user";
-
                     Session.Add(CommonConstants.USER_SESSION, userSession);
                     return RedirectToAction("Index", "Client");
                 }
@@ -165,8 +199,11 @@ namespace OnlineJewelryShoppingMVC.Controllers
         // Logout function
         public ActionResult Logout()
         {
-            Session[CommonConstants.USER_SESSION] = null;
-            return RedirectToAction("Index", "Client");
+            if (Session[CommonConstants.USER_SESSION] != null)
+            {
+                Session.Remove(CommonConstants.USER_SESSION);
+            }
+            return RedirectToAction("Login", "Client");
         }
 
         //Check out page for customer to process payment
@@ -201,6 +238,12 @@ namespace OnlineJewelryShoppingMVC.Controllers
 
         //Wishlist page for showing item our client wanna notice at
         public ActionResult Wishlist()
+        {
+            return View();
+        }
+
+        //Error Page
+        public ActionResult ErrorPage()
         {
             return View();
         }

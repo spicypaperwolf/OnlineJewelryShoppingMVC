@@ -1,4 +1,6 @@
-﻿
+﻿@model OnlineJewelryShoppingMVC.ItemMst
+
+
 @{
     ViewBag.Title = "Item Details";
     Layout = "~/Views/Shared/_client.cshtml";
@@ -20,14 +22,14 @@
                     <div class="tab-content details-pro-tab-content">
                         <div class="tab-pane fade in active" id="image-1">
                             <div class="simpleLens-big-image-container">
-                                <a class="simpleLens-lens-image" data-lens-image="~/assets/client/img/single-product/1.jpg">
-                                    <img src="~/assets/client/img/single-product/1.jpg" alt="" class="simpleLens-big-image">
+                                <a class="simpleLens-lens-image" data-lens-image="~/assets/image/@Html.DisplayFor(m=>m.itemImg.Split(',')[0])">
+                                    <img src="~/assets/image/@Html.DisplayFor(m=>m.itemImg.Split(',')[0])" width="600px" height="500px" alt="" class="simpleLens-big-image">
                                 </a>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="image-2">
                             <div class="simpleLens-big-image-container">
-                                <a class="simpleLens-lens-image" data-lens-image="~/assets/client/img/single-product/2.jpg">
+                                <a class="simpleLens-lens-image" data-lens-image="~/zassets/client/img/single-product/2.jpg">
                                     <img src="~/assets/client/img/single-product/2.jpg" alt="" class="simpleLens-big-image">
                                 </a>
                             </div>
@@ -49,17 +51,24 @@
                     </div>
                     <!-- Nav tabs -->
                     <ul class="tabs-list details-pro-tab-list" role="tablist">
-                        <li class="active"><a href="#image-1" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-1.jpg" alt="" /></a></li>
-                        <li><a href="#image-2" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-2.jpg" alt="" /></a></li>
-                        <li><a href="#image-3" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-3.jpg" alt="" /></a></li>
-                        <li><a href="#image-4" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-4.jpg" alt="" /></a></li>
+                        @for (int i = 0; i < Model.itemImg.Split(',').Length; i++)
+                        {
+                            if (i < 5 && i > 1)
+                            {
+                                <li><a href="#" data-toggle="tab"><img src="~/assets/image/@Html.DisplayFor(m=>m.itemImg.Split(',')[i])" alt="" /></a></li>
+                            }
+                        }
+                        @*<li class="active"><a href="#image-1" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-1.jpg" alt="" /></a></li>
+        <li><a href="#image-2" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-2.jpg" alt="" /></a></li>
+        <li><a href="#image-3" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-3.jpg" alt="" /></a></li>
+        <li><a href="#image-4" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-4.jpg" alt="" /></a></li>*@
                     </ul>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="shop-details">
                     <!-- Product Name -->
-                    <h2>PRODUCT NAME DEMO</h2>
+                    <h2>@Html.DisplayFor(m => m.itemName)</h2>
                     <!-- Product Ratting -->
                     <div class="pro-ratting">
                         <i class="on fa fa-star"></i>
@@ -68,13 +77,13 @@
                         <i class="on fa fa-star"></i>
                         <i class="on fa fa-star-half-o"></i>
                     </div>
-                    <h3><span>$165</span>$150</h3>
+                    <h3>@*<span>$165</span>*@@Html.DisplayFor(m => m.MRP)</h3>
                     <h4>10 Reviews</h4>
                     <h5>Availability - <span>In Stock</span></h5>
                     <h6>QUICK OVERVIEW</h6>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
+                    <p>@Html.DisplayFor(m=>m.itemDescription)</p>
                     <div class="select-menu fix">
-                        <div class="sort fix">
+                        @*<div class="sort fix">
                             <h4>SIZE</h4>
                             <select>
                                 <option value="3">3</option>
@@ -90,14 +99,14 @@
                                 <option value="red">red</option>
                                 <option value="blue">blue</option>
                             </select>
-                        </div>
+                        </div>*@
                         <div class="sort fix">
                             <h4>Qty</h4>
-                            <select>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
+                            <select id="qtyNumber">
+                                @for (int i = 1; i <= 10; i++)
+                                {
+                                    <option value="@i">@i</option>
+                                }
                             </select>
                         </div>
                     </div>
@@ -105,7 +114,7 @@
                         <textarea rows="4" placeholder="Write Your Review..."></textarea>
                     </div>
                     <div class="action-btn">
-                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                        <a id="add-to-card" href="#"><i class="fa fa-shopping-cart"></i></a>
                         <a href="#"><i class="fa fa-heart-o"></i></a>
                         <a href="#"><i class="fa fa-refresh"></i></a>
                     </div>
@@ -123,8 +132,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div id="description" class="tab-pane fade active in" role="tabpanel">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamc.</p>
+                            <p>@Html.DisplayFor(m=>m.itemDescription)</p>
                         </div>
                         <div id="review" class="tab-pane fade" role="tabpanel">
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
@@ -287,7 +295,7 @@
                                 <a href="product-details.html">Product Name Demo</a>
                             </div>
                             <!-- Product Ratting -->
-                            <div class="pro-ratting">
+                            <div class="pro-ratting">,,mnb uhgfdx 21azzV
                                 <i class="on fa fa-star"></i>
                                 <i class="on fa fa-star"></i>
                                 <i class="on fa fa-star"></i>
@@ -305,3 +313,12 @@
         </div>
     </div>
 </section><!--End Product Details Area-->
+
+<script>
+    $( document ).ready(function() {
+        console.log($('#qtyNumber').val());
+        $('#add-to-card').click(function(){
+            
+        });
+    });
+</script>

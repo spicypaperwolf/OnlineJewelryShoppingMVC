@@ -8,11 +8,13 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using OnlineJewelryShoppingMVC;
+using OnlineJewelryShoppingMVC.Interceptor;
 using PagedList;
 using PagedList.Mvc;
 
 namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
 {
+    [SessionAuthorize]
     public class ItemMstsController : Controller
     {
         private OnlineJewelryShopDBEntities db = new OnlineJewelryShopDBEntities(); 
@@ -122,7 +124,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
                     {
                         if (files.Length != index)
                         {
-                            itemMst.itemImg += file.FileName + ", ";
+                            itemMst.itemImg += file.FileName + ",";
 
                         }
                         else

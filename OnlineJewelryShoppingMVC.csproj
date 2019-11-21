@@ -218,6 +218,7 @@
     <Compile Include="InquiryMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Interceptor\SessionAuthorize.cs" />
     <Compile Include="ItemMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -361,7 +362,7 @@
     <Content Include="assets\client\img\new.png" />
     <Content Include="assets\client\img\offer\banner-bg-2.jpg" />
     <Content Include="assets\client\img\offer\banner-bg.jpg" />
-    <Content Include="assets\client\img\offer\offer-1.jpg" />
+    <Content Include="assets\client\img\offer\offer-1.jpeg" />
     <Content Include="assets\client\img\offer\offer-2.jpg" />
     <Content Include="assets\client\img\offer\offer-3.jpg" />
     <Content Include="assets\client\img\offer\offer-4.jpg" />
@@ -377,16 +378,13 @@
     <Content Include="assets\client\img\portfolio\portfolio-7.jpg" />
     <Content Include="assets\client\img\portfolio\portfolio-8.jpg" />
     <Content Include="assets\client\img\portfolio\portfolio-9.jpg" />
-    <Content Include="assets\client\img\product\1.jpg" />
-    <Content Include="assets\client\img\product\10.jpg" />
-    <Content Include="assets\client\img\product\2.jpg" />
-    <Content Include="assets\client\img\product\3.jpg" />
-    <Content Include="assets\client\img\product\4.jpg" />
-    <Content Include="assets\client\img\product\5.jpg" />
-    <Content Include="assets\client\img\product\6.jpg" />
-    <Content Include="assets\client\img\product\7.jpg" />
-    <Content Include="assets\client\img\product\8.jpg" />
-    <Content Include="assets\client\img\product\9.jpg" />
+    <Content Include="assets\client\img\product\je001.png" />
+    <Content Include="assets\client\img\product\je002.png" />
+    <Content Include="assets\client\img\product\je003.png" />
+    <Content Include="assets\client\img\product\je004.png" />
+    <Content Include="assets\client\img\product\je005.png" />
+    <Content Include="assets\client\img\product\je006.png" />
+    <Content Include="assets\client\img\product\je007.png" />
     <Content Include="assets\client\img\product\trendy-1.jpg" />
     <Content Include="assets\client\img\product\trendy-2.jpg" />
     <Content Include="assets\client\img\product\trendy-3.jpg" />
@@ -408,6 +406,7 @@
     <Content Include="assets\client\img\slider\1.jpg" />
     <Content Include="assets\client\img\slider\2.jpg" />
     <Content Include="assets\client\img\slider\3.jpg" />
+    <Content Include="assets\client\img\testimonial\testimonial-2.jpg" />
     <Content Include="assets\client\img\testimonial\testimonial-bg.jpg" />
     <Content Include="assets\client\img\testimonial\testimonial.jpg" />
     <Content Include="assets\client\img\title-bg.jpg" />
@@ -483,6 +482,7 @@
     <Content Include="OJSContext.edmx.diagram">
       <DependentUpon>OJSContext.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <None Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1.js" />
     <Content Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1.min.js" />
@@ -640,7 +640,6 @@
     <Content Include="assets\admin\fonts\nucleo-icons.woff" />
     <Content Include="assets\admin\fonts\nucleo-icons.woff2" />
     <Content Include="Areas\Admin\Views\Shared\_admin.cshtml" />
-    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <Content Include="Areas\Admin\Views\ItemMsts\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\ItemMsts\Index.cshtml" />
     <Content Include="assets\client\fonts\fontawesome-webfont.eot" />
@@ -797,6 +796,7 @@
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Client\ErrorPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

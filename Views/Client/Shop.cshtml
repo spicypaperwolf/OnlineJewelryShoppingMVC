@@ -1,3 +1,7 @@
+@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.ItemMst>
+
 @{
     ViewBag.Title = "Shop";
     Layout = "~/Views/Shared/_client.cshtml";
@@ -14,41 +18,51 @@
     <div class="container">
         <div class="row">
             <div class="shop-tool-bar col-sm-12 fix">
-                <div class="view-mode">
-                    <a href="shop.html" class="active"><i class="fa fa-th"></i></a>
-                    <a href="shop-list.html"><i class="fa fa-th-list"></i></a>
-                </div>
-                <div class="sort-by">
-                    <span>Sort By</span>
-                    <select name="sort-by">
-                        <option selected="selected" value="mercede">price: Lower</option>
-                        <option value="saab">price(low&gt;high)</option>
-                        <option value="mercedes">price(high &gt; low)</option>
-                        <option value="audi">rating(highest)</option>
-                    </select>
-                </div>
-                <div class="show-product">
-                    <span>Show</span>
-                    <select name="sort-by">
-                        <option selected="selected" value="mercede">16</option>
-                        <option value="saab">20</option>
-                        <option value="mercedes">24</option>
-                    </select>
-                    <span>Per Page</span>
-                </div>
-                <div class="pro-Showing">
-                    <span>Showing 1 - 12 of 16 items</span>
-                </div>
+                @using (Html.BeginForm("Shop", "Client", FormMethod.Post))
+                {
+                    <div class="view-mode">
+                        <a href="@Url.Action("Shop", "Client")" class="active"><i class="fa fa-th"></i></a>
+                        <a href="@Url.Action("ShopList", "Client")"><i class="fa fa-th-list"></i></a>
+                    </div>
+                    <div class="sort-by">
+                        <span>Search By  @Html.TextBox("searchString")</span>
+                    </div>
+                    <div class="sort-by">
+                        <span>Sort by Brand</span>
+                        <select name="sort_by_brand">
+                            <option value="" selected>Select</option>
+                            @foreach (var b in ViewBag.BrandList)
+                            {
+                                <option value="@b.brandId">@b.brandType</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="show-product">
+                        <span>Show</span>
+                        <select name="sort_by">
+                            <option value="6" selected>Select</option>
+                            <option value="6">6</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                        </select>
+                        <span>Per Page</span>
+                    </div>
+                    <input type="submit" name="btnSubmit" value="Search" class="btn btn-border" style="background-color: #e09e25; color:#fff; font-weight:bold;" />
+                    <div class="pro-Showing">
+                        <span>Showing 1 - 12 of 16 items</span>
+                    </div>
+                }
             </div>
             <div class="shop-products">
                 <!-- Single Product Start -->
                 @foreach (var i in ViewBag.ItemList)
                 {
                     <div class="col-sm-4 col-md-3 fix">
-                        <div class="product-item fix ui-widget-content">
+                        <div class="product-item fix ui-widget-content" data-id="@i.itemCode" style="width: 270px;">
                             <div class="product-img-hover">
                                 <!-- Product image -->
-                                <a href="product-details.html" class="pro-image fix"><img src="~/assets/client/img/product/1.jpg" alt="product" /></a>
+                                <a href="@Url.Action("ItemDetails", "Client", new { id = i.itemCode})" class="pro-image fix"><img src="~/assets/image/@i.itemImg.Split(',')[0]" alt="@i.itemImg" /></a>
                                 <!-- Product action Btn -->
                                 <div class="product-action-btn">
                                     <a class="quick-view" href="#"><i class="fa fa-search"></i></a>
@@ -59,8 +73,8 @@
                             <div class="pro-name-price-ratting">
                                 <!-- Product Name -->
                                 <div class="pro-name">
-                                    <a href="product-details.html">@i.itemName</a>
-                                    @*<p style="display:none;" id="codeItem">@i.itemCode</p>*@
+                                    <a href="@Url.Action("ItemDetails", "Client", new { id = i.itemCode})">@i.itemName</a>
+                                    <p style="display:none;" id="codeItem">@i.itemCode</p>
                                 </div>
                                 <!-- Product Ratting -->
                                 <div class="pro-ratting">
@@ -79,23 +93,20 @@
                     </div>
                 }
 
-                <!-- Single Product End -->
-                <div class="pagination">
-                    <ul>
-                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
-                        <li class="active"><span>1</span></li>
-                        <li><a href="#">2</a></li>
-                        <li><a href="#">3</a></li>
-                        <li><a href="#">4</a></li>
-                        <li><a href="#">5</a></li>
-                        <li><a href="#">6</a></li>
-                        <li><a href="#">7</a></li>
-                        <li><a href="#">8</a></li>
-                        <li><a href="#">9</a></li>
-                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>
-                    </ul>
+                <div>
+                    @Html.PagedListPager(Model, page => Url.Action("/Shop", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+                    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+                    )
                 </div>
             </div>
         </div>
     </div>
 </div><!--Start Shop Area-->
+<script>
+    $(document).ready(function () {
+        $('.pagination-container').find('.pagination .active a').css({'background':'#e09e25','color':'#fff'});
+        $('.pagination-container').find('.pagination').removeClass('pagination');
+        $('.pagination-container').addClass('pagination');
+        $('.pagination-container').removeClass('pagination-container');
+    });
+</script>

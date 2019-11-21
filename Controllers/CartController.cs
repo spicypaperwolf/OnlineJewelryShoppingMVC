@@ -1,4 +1,5 @@
-﻿using OnlineJewelryShoppingMVC.Respository;
+﻿using OnlineJewelryShoppingMVC.Common;
+using OnlineJewelryShoppingMVC.Respository;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,9 +28,18 @@ namespace OnlineJewelryShoppingMVC.Controllers
             return View();
         }
         
-        public ActionResult Buy(string id)
+        public ActionResult Buy(string id, int? number)
         {
-            totalQuality++;
+            UserLogin u = new UserLogin();
+            u = (UserLogin)Session[CommonConstants.USER_SESSION];
+            if (number != null)
+            {
+                totalQuality += Decimal.Parse(number.ToString());
+            }
+            else
+            {
+                totalQuality++;
+            }
             RandomGenerator ran = new RandomGenerator();
             List<CartList> carts = new List<CartList>();
             if (Session["cartList"] == null)
@@ -43,11 +53,25 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 int index = isExist(id);
                 if (index != -1)
                 {
-                    carts[index].qty++;
+                    if (number != null)
+                    {
+                        carts[index].qty += Int32.Parse(number.ToString());
+                    }
+                    else
+                    {
+                        carts[index].qty++;
+                    }   
                 }
                 else
                 {
-                    carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = ran.RandomString(10, false), transactionId = transactionId });
+                    if (number != null)
+                    {
+                        carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = Int32.Parse(number.ToString()), price = ir.GetItemById(id).MRP, cartId = ran.RandomString(10, false), transactionId = transactionId });
+                    }
+                    else
+                    {
+                        carts.Add(new CartList { itemCode = ir.GetItemById(id).itemCode, qty = 1, price = ir.GetItemById(id).MRP, cartId = ran.RandomString(10, false), transactionId = transactionId });
+                    }
                 }
                 Session["cart"] = carts;
             }
