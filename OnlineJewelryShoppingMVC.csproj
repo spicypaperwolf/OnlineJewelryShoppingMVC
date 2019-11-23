@@ -253,6 +253,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Respository\CartRespository.cs" />
     <Compile Include="Respository\ItemRespository.cs" />
+    <Compile Include="Security\MD5Service.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="StoneInfoMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
@@ -439,13 +440,6 @@
     <Content Include="assets\client\js\main.js" />
     <Content Include="assets\client\js\owl.carousel.min.js" />
     <Content Include="assets\client\js\wow.min.js" />
-    <Content Include="assets\image\je001.png" />
-    <Content Include="assets\image\je002.png" />
-    <Content Include="assets\image\je003.png" />
-    <Content Include="assets\image\je004.png" />
-    <Content Include="assets\image\je005.png" />
-    <Content Include="assets\image\je006.png" />
-    <Content Include="assets\image\je007.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -821,6 +815,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="assets\image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

@@ -18,6 +18,6 @@ namespace OnlineJewelryShoppingMVC
         public string blogImg { get; set; }
         public string blogTitle { get; set; }
         public string blogContent { get; set; }
-        public byte[] cdate { get; set; }
+        public System.DateTime cdate { get; set; }
     }
 }

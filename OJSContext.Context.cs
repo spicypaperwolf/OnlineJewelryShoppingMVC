@@ -26,6 +26,7 @@ namespace OnlineJewelryShoppingMVC
         }
     
         public virtual DbSet<AdminLoginMst> AdminLoginMsts { get; set; }
+        public virtual DbSet<BlogMst> BlogMsts { get; set; }
         public virtual DbSet<BrandMst> BrandMsts { get; set; }
         public virtual DbSet<CartList> CartLists { get; set; }
         public virtual DbSet<CategoryMst> CategoryMsts { get; set; }
@@ -34,7 +35,6 @@ namespace OnlineJewelryShoppingMVC
         public virtual DbSet<ContactMst> ContactMsts { get; set; }
         public virtual DbSet<DimInfoMst> DimInfoMsts { get; set; }
         public virtual DbSet<GoldInfoMst> GoldInfoMsts { get; set; }
-        public virtual DbSet<GuestMst> GuestMsts { get; set; }
         public virtual DbSet<InquiryMst> InquiryMsts { get; set; }
         public virtual DbSet<ItemMst> ItemMsts { get; set; }
         public virtual DbSet<NewsletterMst> NewsletterMsts { get; set; }

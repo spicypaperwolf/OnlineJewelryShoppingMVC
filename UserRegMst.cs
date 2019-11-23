@@ -30,7 +30,7 @@ namespace OnlineJewelryShoppingMVC
         public string mobNo { get; set; }
         public string emailId { get; set; }
         public string dob { get; set; }
-        public byte[] cdate { get; set; }
+        public System.DateTime cdate { get; set; }
         public string password { get; set; }
         public Nullable<bool> status { get; set; }
     
