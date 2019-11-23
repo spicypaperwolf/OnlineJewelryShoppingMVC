@@ -212,6 +212,21 @@ namespace OnlineJewelryShoppingMVC.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Contact(string c_name, string c_email, string c_phone, string c_subject, string c_message)
+        {
+            ContactMst c = new ContactMst();
+            c.contactName = c_name;
+            c.contactEmail = c_email;
+            c.contactMob = c_phone;
+            c.contactSubject = c_subject;
+            c.contactMessage = c_message;
+            _context.ContactMsts.Add(c);
+            _context.SaveChanges();
+            ViewBag.Success = "The message has been sent successfully. Thank you!";
+            return View();
+        }
+
         //Blog page for displaying all of our post
         public ActionResult Blog()
         {
@@ -242,5 +257,15 @@ namespace OnlineJewelryShoppingMVC.Controllers
             return View();
         }
 
+        //For handling newsletter requirement from user
+        [HttpPost]
+        public ActionResult Newsletter(string n_email)
+        {
+            NewsletterMst n = new NewsletterMst();
+            n.newsletterEmail = n_email;
+            _context.NewsletterMsts.Add(n);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }

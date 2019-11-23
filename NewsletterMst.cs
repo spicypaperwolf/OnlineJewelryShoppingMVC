@@ -14,7 +14,7 @@ namespace OnlineJewelryShoppingMVC
     
     public partial class NewsletterMst
     {
-        public string newsletterId { get; set; }
+        public int newsletterId { get; set; }
         public string newsletterEmail { get; set; }
     }
 }

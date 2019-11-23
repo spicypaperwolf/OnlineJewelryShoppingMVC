@@ -142,13 +142,13 @@
                                                 {
                                                     foreach (CartList item in (List<CartList>)Session["cartList"])
                                                     {
-                                                        <h3>@item.itemCode  x @item.qty <span>@item.price</span></h3>
+                                                        <h3>@item.itemCode  x @item.qty <span>$@item.price</span></h3>
                                                     }
                                                 }
                                             </div>
                                             <div class="final-total">
-                                                <h4>Sub Total <span>@ViewBag.TotalPrice</span></h4>
-                                                <h5>Grand Total <span>@ViewBag.TotalPrice</span></h5>
+                                                <h4>Sub Total <span>$@ViewBag.TotalPrice</span></h4>
+                                                <h5>Grand Total <span>$@ViewBag.TotalPrice</span></h5>
                                                 <input type="submit" name="btnSubmit" value="Place Order" class="btn btn-border" style="background-color: #e09e25; color:#fff; font-weight:bold;"/>
                                             </div>
                                         </div>

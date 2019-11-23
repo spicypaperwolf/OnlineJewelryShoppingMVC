@@ -46,6 +46,7 @@ namespace OnlineJewelryShoppingMVC
         public Nullable<decimal> otherMaking { get; set; }
         public decimal totMaking { get; set; }
         public decimal MRP { get; set; }
+        public Nullable<bool> itemStatus { get; set; }
     
         public virtual BrandMst BrandMst { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

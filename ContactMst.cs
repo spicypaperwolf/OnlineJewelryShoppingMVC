@@ -14,11 +14,11 @@ namespace OnlineJewelryShoppingMVC
     
     public partial class ContactMst
     {
-        public string contactId { get; set; }
-        public string contactFname { get; set; }
-        public string contactLname { get; set; }
+        public int contactId { get; set; }
+        public string contactName { get; set; }
         public string contactMob { get; set; }
         public string contactEmail { get; set; }
+        public string contactSubject { get; set; }
         public string contactMessage { get; set; }
     }
 }

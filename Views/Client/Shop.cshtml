@@ -49,9 +49,9 @@
                         <span>Per Page</span>
                     </div>
                     <input type="submit" name="btnSubmit" value="Search" class="btn btn-border" style="background-color: #e09e25; color:#fff; font-weight:bold;" />
-                    <div class="pro-Showing">
+                    @*<div class="pro-Showing">
                         <span>Showing 1 - 12 of 16 items</span>
-                    </div>
+                    </div>*@
                 }
             </div>
             <div class="shop-products">
@@ -62,7 +62,7 @@
                         <div class="product-item fix ui-widget-content" data-id="@i.itemCode" style="width: 270px;">
                             <div class="product-img-hover">
                                 <!-- Product image -->
-                                <a href="@Url.Action("ItemDetails", "Client", new { id = i.itemCode})" class="pro-image fix"><img src="~/assets/image/@i.itemImg.Split(',')[0]" alt="@i.itemImg" /></a>
+                                <a href="@Url.Action("ItemDetails", "Client", new { id = i.itemCode})" class="pro-image fix"><img src="~/assets/image/@i.itemImg.Split(',')[0]" alt="@i.itemImg" style="width: 270px; height: 246px;"/></a>
                                 <!-- Product action Btn -->
                                 <div class="product-action-btn">
                                     <a class="quick-view" href="#"><i class="fa fa-search"></i></a>
@@ -86,7 +86,7 @@
                                 </div>
                                 <!-- Product Price -->
                                 <div class="pro-price fix">
-                                    <p><span class="new">@i.MRP</span></p>
+                                    <p><span class="new">$@i.MRP</span></p>
                                 </div>
                             </div>
                         </div>

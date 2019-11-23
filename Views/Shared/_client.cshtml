@@ -165,7 +165,7 @@
                                 <li>
                                     <a href="@Url.Action("Index", "Client")" class="active">Home</a>
                                 </li>
-                                <li>
+                                @*<li>
                                     <a href="#">Pages</a>
                                     <div class="mega-menu mega-menu-page">
                                         <div class="column-1 column">
@@ -205,35 +205,35 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </li>
+                                </li>*@
                                 <li>
                                     <a href="@Url.Action("Shop", "Client")">Shop</a>
                                     <div class="mega-menu mega-menu-1">
                                         <div class="column-1 column">
                                             <ul>
-                                                <li><a href="shop-list.html">rings</a></li>
-                                                <li><a href="shop-left-sidebar.html">diamond ring</a></li>
-                                                <li><a href="shop-right-sidebar.html">gold ring</a></li>
-                                                <li><a href="shop-list.html">sliver ring</a></li>
-                                                <li><a href="shop-left-sidebar.html">Platinum ring</a></li>
+                                                <li><a href="shop-list.html">diamond jewelry</a></li>
+                                                <li><a href="shop-left-sidebar.html">ring</a></li>
+                                                <li><a href="shop-right-sidebar.html">earings</a></li>
+                                                <li><a href="shop-list.html">necklace</a></li>
+                                                <li><a href="shop-left-sidebar.html">bracelet</a></li>
                                             </ul>
                                         </div>
                                         <div class="column-2 column">
                                             <ul>
-                                                <li><a href="shop-list.html">Bracelets</a></li>
-                                                <li><a href="shop-left-sidebar.html">diamond Bracelets</a></li>
-                                                <li><a href="shop-right-sidebar.html">gold Bracelets</a></li>
-                                                <li><a href="shop-left-sidebar.html">sliver Bracelets</a></li>
-                                                <li><a href="shop-right-sidebar.html">Platinum Bracelets</a></li>
+                                                <li><a href="shop-list.html">stone jewelry</a></li>
+                                                <li><a href="shop-left-sidebar.html">ring</a></li>
+                                                <li><a href="shop-right-sidebar.html">earings</a></li>
+                                                <li><a href="shop-list.html">necklace</a></li>
+                                                <li><a href="shop-left-sidebar.html">bracelet</a></li>
                                             </ul>
                                         </div>
                                         <div class="column-3 column">
                                             <ul>
-                                                <li><a href="shop-list.html">lecklaces</a></li>
-                                                <li><a href="shop-right-sidebar.html">diamond lecklaces</a></li>
-                                                <li><a href="shop-left-sidebar.html">gold lecklaces</a></li>
-                                                <li><a href="shop-right-sidebar.html">sliver lecklaces</a></li>
-                                                <li><a href="shop-left-sidebar.html">Platinum lecklaces</a></li>
+                                                <li><a href="shop-list.html">gold jewelry</a></li>
+                                                <li><a href="shop-left-sidebar.html">ring</a></li>
+                                                <li><a href="shop-right-sidebar.html">earings</a></li>
+                                                <li><a href="shop-list.html">necklace</a></li>
+                                                <li><a href="shop-left-sidebar.html">bracelet</a></li>
                                             </ul>
                                         </div>
                                         <div class="column-4 column">
@@ -243,7 +243,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li>
+                                @*<li>
                                     <a href="shop.html">New Arrivals</a>
                                     <div class="mega-menu mega-menu-1">
                                         <div class="column-1 column">
@@ -283,29 +283,25 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </li>
-                                <li>
+                                </li>*@
+                                @*<li>
                                     <a href="portfolio.html">Portfolio</a>
                                     <ul class="sub-menu">
                                         <li><a href="portfolio.html">Portfolio 3 column</a></li>
                                         <li><a href="portfolio-2.html">Portfolio 4 column</a></li>
                                     </ul>
-                                </li>
+                                </li>*@
                                 <li>
                                     <a href="blog.html">Blog</a>
-                                    <ul class="sub-menu">
+                                    @*<ul class="sub-menu">
                                         <li><a href="blog.html">Blog Page</a></li>
                                         <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
                                         <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
-                                    </ul>
+                                    </ul>*@
                                 </li>
                                 <li><a href="about-us.html">About Us</a></li>
                                 <li>
-                                    <a href="contact.html">Contact</a>
-                                    <ul class="sub-menu">
-                                        <li><a href="contact.html">Contact 1</a></li>
-                                        <li><a href="contact-2.html">Contact 2</a></li>
-                                    </ul>
+                                    <a href="@Url.Action("Contact", "Client")">Contact</a>
                                 </li>
                             </ul>
                         </nav>
@@ -548,11 +544,11 @@
                         <ul>
                             <li><a href="index.html">Home</a></li>
                             <li><a href="shop.html">Shop</a></li>
-                            <li><a href="shop-left-sidebar.html">New Arrivals</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="portfolio-1.html">Portfolio</a></li>
+                            <li><a href="shop-left-sidebar.html">About</a></li>
+                            @*<li><a href="services.html">Services</a></li>
+                            <li><a href="portfolio-1.html">Portfolio</a></li>*@
                             <li><a href="blog.html">Blog</a></li>
-                            <li><a href="#">Shortcodes</a></li>
+                            @*<li><a href="#">Shortcodes</a></li>*@
                             <li><a href="contact.html">Contact</a></li>
                         </ul>
                     </div>
@@ -562,13 +558,13 @@
                         <div class="col-sm-8 footer-support footer-links">
                             <h2>OUR SUPPORT</h2>
                             <ul>
-                                <li><a href="#">Site Map</a></li>
+                                @*<li><a href="#">Site Map</a></li>*@
                                 <li><a href="#">privacy Policy</a></li>
                                 <li><a href="#">Your Account</a></li>
                                 <li><a href="#">Term & Conditions</a></li>
-                                <li><a href="#">Advance Search</a></li>
+                                @*<li><a href="#">Advance Search</a></li>*@
                                 <li><a href="faq.html">Help & FAQs</a></li>
-                                <li><a href="#">Gift Voucher</a></li>
+                                @*<li><a href="#">Gift Voucher</a></li>*@
                                 <li><a href="contact-2.html">Contact Us</a></li>
                             </ul>
                         </div>
@@ -585,8 +581,8 @@
                     <div class="footer-newslater fix">
                         <div class="wrap fix">
                             <h3>NEWS LETTER ! </h3>
-                            <form action="#">
-                                <input type="email" placeholder="Your E-mail...">
+                            <form action="@Url.Action("Newsletter", "Client")" method="post">
+                                <input type="email" name="n_email" placeholder="Your E-mail...">
                                 <button class="submit">SUBSCRIBE</button>
                             </form>
                         </div>
