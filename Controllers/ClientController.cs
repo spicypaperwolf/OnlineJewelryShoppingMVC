@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
 using System.Web;
 using System.Web.Mvc;
 using OnlineJewelryShoppingMVC.Common;
 using OnlineJewelryShoppingMVC.Models;
 using OnlineJewelryShoppingMVC.Respository;
-using OnlineJewelryShoppingMVC.Sercurity;
 using PagedList;
 using PagedList.Mvc;
 
@@ -92,25 +90,21 @@ namespace OnlineJewelryShoppingMVC.Controllers
         }
 
         // 
-        public bool isAdmin(string userName, string password)
+        public bool isAdmin(string userName, string passWord)
         {
-            using (MD5 md5Hash = MD5.Create())
+            try
             {
-                try
-                {
-                    AdminLoginMst adminLogin = _context.AdminLoginMsts.First(item => item.username.Equals(userName));
-                    bool verifyPassword = MD5Service.VerifyMd5Hash(md5Hash, password,adminLogin.password);
-                    if (adminLogin == null || !verifyPassword)
-                    {
-                        return false;
-                    }
-                    return true;
-                }
-                catch (Exception)
+                if (_context.AdminLoginMsts.First(item => item.username.Equals(userName) && item.password.Equals(passWord)) == null)
                 {
                     return false;
                 }
+                return true;
             }
+            catch (Exception)
+            {
+                return false;
+            }
+
         }
 
         public UserRegMst GetByUserName(string userName)
@@ -123,10 +117,10 @@ namespace OnlineJewelryShoppingMVC.Controllers
         }
 
         // Ham kiem tra login
-        public int checkLogin(string userName, string password)
+        public int checkLogin(string userName, string passWord)
         {
             var result = _context.UserRegMsts.SingleOrDefault(x => x.emailId == userName);
-            if (isAdmin(userName, password))
+            if (isAdmin(userName, passWord))
             {
                 return 2;
             }
@@ -142,17 +136,13 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 }
                 else
                 {
-                    using (MD5 md5Hash = MD5.Create())
+                    if (result.password == passWord)
                     {
-                        bool verifyPassword = MD5Service.VerifyMd5Hash(md5Hash, password, result.password);
-                        if (verifyPassword)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return -2;
-                        }
+                        return 1;
+                    }
+                    else
+                    {
+                        return -2;
                     }
                 }
             }
