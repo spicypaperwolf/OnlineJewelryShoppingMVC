@@ -181,6 +181,9 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\ItemMstsController.cs" />
+    <Compile Include="BlogMst.cs">
+      <DependentUpon>OJSContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="BrandMst.cs">
       <DependentUpon>OJSContext.tt</DependentUpon>
     </Compile>
@@ -378,6 +381,16 @@
     <Content Include="assets\client\img\portfolio\portfolio-7.jpg" />
     <Content Include="assets\client\img\portfolio\portfolio-8.jpg" />
     <Content Include="assets\client\img\portfolio\portfolio-9.jpg" />
+    <Content Include="assets\client\img\product\1.jpg" />
+    <Content Include="assets\client\img\product\10.jpg" />
+    <Content Include="assets\client\img\product\2.jpg" />
+    <Content Include="assets\client\img\product\3.jpg" />
+    <Content Include="assets\client\img\product\4.jpg" />
+    <Content Include="assets\client\img\product\5.jpg" />
+    <Content Include="assets\client\img\product\6.jpg" />
+    <Content Include="assets\client\img\product\7.jpg" />
+    <Content Include="assets\client\img\product\8.jpg" />
+    <Content Include="assets\client\img\product\9.jpg" />
     <Content Include="assets\client\img\product\je001.png" />
     <Content Include="assets\client\img\product\je002.png" />
     <Content Include="assets\client\img\product\je003.png" />
@@ -426,6 +439,13 @@
     <Content Include="assets\client\js\main.js" />
     <Content Include="assets\client\js\owl.carousel.min.js" />
     <Content Include="assets\client\js\wow.min.js" />
+    <Content Include="assets\image\je001.png" />
+    <Content Include="assets\image\je002.png" />
+    <Content Include="assets\image\je003.png" />
+    <Content Include="assets\image\je004.png" />
+    <Content Include="assets\image\je005.png" />
+    <Content Include="assets\image\je006.png" />
+    <Content Include="assets\image\je007.png" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -475,6 +495,7 @@
     <Content Include="packages\EntityFramework.6.2.0\tools\migrate.exe" />
     <Content Include="packages\HomeBi.Libraries.PagedList.1.0.0\lib\netstandard2.0\HomeBi.Libraries.PagedList.dll" />
     <Content Include="packages\HomeBi.Libraries.PagedList.1.0.0\lib\netstandard2.0\HomeBi.Libraries.PagedList.xml" />
+    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <EntityDeploy Include="OJSContext.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>OJSContext.Designer.cs</LastGenOutput>
@@ -482,7 +503,6 @@
     <Content Include="OJSContext.edmx.diagram">
       <DependentUpon>OJSContext.edmx</DependentUpon>
     </Content>
-    <Content Include="Areas\Admin\Views\Admin\Dashboard.cshtml" />
     <None Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1.js" />
     <Content Include="packages\jQuery.3.3.1\Content\Scripts\jquery-3.3.1.min.js" />
@@ -801,7 +821,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="assets\image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

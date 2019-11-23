@@ -11,8 +11,7 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class GoldInfoMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,7 +23,6 @@ namespace OnlineJewelryShoppingMVC
         public string goldId { get; set; }
         public decimal goldCrt { get; set; }
         public string goldType { get; set; }
-        [DataType(DataType.Currency)]
         public decimal goldRate { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -23,6 +23,8 @@ namespace OnlineJewelryShoppingMVC
     
         public string transactionId { get; set; }
         public string userId { get; set; }
+        public decimal totPrice { get; set; }
+        public int totQty { get; set; }
         public string approvalStt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

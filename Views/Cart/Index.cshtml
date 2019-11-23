@@ -64,7 +64,7 @@
             </div>
             <div class="col-sm-6 col-md-7">
                 <div class="coupon">
-                    <a href="#">Continue Shopping</a>
+                    <a href="@Url.Action("Shop", "Client")">Continue Shopping</a>
                     <h3>DISCOUNT COUPON CODE</h3>
                     <input type="text" placeholder="DISCOUNT COUPON CODE HERE..." />
                     <a href="#">Apply Coupon</a>
@@ -73,13 +73,13 @@
             </div>
             <div class="col-sm-6 col-md-5">
                 <div class="proceed fix">
-                    <a href="#">CLEAR SHOPPING CART</a>
+                    <a href="@Url.Action("ClearCart", "Cart")">CLEAR SHOPPING CART</a>
                     <a href="#">UPDATE SHOPPING CART</a>
                             <div class="total">
-                                <h5>Sub Total <span>$420</span></h5>
-                                <h6>Grand Total <span>$420</span></h6>
+                                <h5>Sub Total <span>@ViewBag.TotalPrice</span></h5>
+                                <h6>Grand Total <span>@ViewBag.TotalPrice</span></h6>
                             </div>
-                    <a id="procedto" href="checkout.html">PROCEED TO CHECK OUT</a>
+                    <a id="procedto" href="@Url.Action("Index", "Order")">PROCEED TO CHECK OUT</a>
                 </div>
             </div>
         </div>

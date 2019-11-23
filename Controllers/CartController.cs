@@ -13,14 +13,14 @@ namespace OnlineJewelryShoppingMVC.Controllers
     {
         ItemRespository ir = new ItemRespository();
         public static decimal totalPrice = 0;
-        public static decimal totalQuality = 0;
+        public static int totalQty = 0;
         public static RandomGenerator rand = new RandomGenerator();
         public static string transactionId = rand.RandomSth();
 
         public CartController()
         {
             ViewBag.TotalPrice = totalPrice;
-            ViewBag.TotalQuality = totalQuality;
+            ViewBag.TotalQty = totalQty;
         }
         // GET: Cart
         public ActionResult Index()
@@ -34,11 +34,11 @@ namespace OnlineJewelryShoppingMVC.Controllers
             u = (UserLogin)Session[CommonConstants.USER_SESSION];
             if (number != null)
             {
-                totalQuality += Decimal.Parse(number.ToString());
+                totalQty += Int32.Parse(number.ToString());
             }
             else
             {
-                totalQuality++;
+                totalQty++;
             }
             RandomGenerator ran = new RandomGenerator();
             List<CartList> carts = new List<CartList>();
@@ -79,13 +79,13 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 totalPrice += item.price;
             }) ;
             ViewBag.TotalPrice = totalPrice;
-            ViewBag.TotalQuality = totalQuality;
-            return RedirectToAction("Shop", "Client");
+            ViewBag.TotalQuality = totalQty;
+            return RedirectToAction("Index");
         }
 
         public ActionResult RemoveBy1(string id)
         {
-            totalQuality--;
+            totalQty--;
             List<CartList> carts = (List<CartList>)Session["cartList"];
             int index = isExist(id);
             if (carts[index].qty > 1)
@@ -146,6 +146,14 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 builder.Append(RandomString(2, false));
                 return builder.ToString();
             }
+        }
+
+        public ActionResult ClearCart()
+        {
+            Session.Remove("cartList");
+            totalPrice = 0;
+            totalQty = 0;
+            return RedirectToAction("Index", "Client");
         }
     }
 }

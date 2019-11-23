@@ -13,7 +13,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
         public OrderController()
         {
             ViewBag.TotalPrice = CartController.totalPrice;
-            ViewBag.TotalQuality = CartController.totalQuality;
+            ViewBag.TotalQty = CartController.totalQty;
         }
         // GET: Order
         public ActionResult Index()
@@ -77,6 +77,8 @@ namespace OnlineJewelryShoppingMVC.Controllers
                         }
                         t.userId = u.UserID;
                         t.approvalStt = "Pending";
+                        t.totPrice = ViewBag.TotalPrice;
+                        t.totQty = ViewBag.TotalQty;
 
 
                         _context.TransactionMsts.Add(t);
@@ -125,13 +127,16 @@ namespace OnlineJewelryShoppingMVC.Controllers
                         }
 
                         t.approvalStt = "Pending";
-
+                        t.totPrice = ViewBag.TotalPrice;
+                        t.totQty = ViewBag.TotalQty;
 
                         _context.TransactionMsts.Add(t);
                     }
                     
                     _context.SaveChanges();
                     Session.Remove("cartList");
+                    CartController.totalPrice = 0;
+                    CartController.totalQty = 0;
                 }
                 return RedirectToAction("Index");
             }

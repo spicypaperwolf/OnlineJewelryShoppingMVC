@@ -12,15 +12,12 @@ namespace OnlineJewelryShoppingMVC
     using System;
     using System.Collections.Generic;
     
-    public partial class CartList
+    public partial class BlogMst
     {
-        public string cartId { get; set; }
-        public string transactionId { get; set; }
-        public string itemCode { get; set; }
-        public int qty { get; set; }
-        public decimal price { get; set; }
-    
-        public virtual ItemMst ItemMst { get; set; }
-        public virtual TransactionMst TransactionMst { get; set; }
+        public string blogId { get; set; }
+        public string blogImg { get; set; }
+        public string blogTitle { get; set; }
+        public string blogContent { get; set; }
+        public byte[] cdate { get; set; }
     }
 }

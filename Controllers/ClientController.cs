@@ -18,7 +18,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
         public ClientController()
         {
             ViewBag.TotalPrice = CartController.totalPrice;
-            ViewBag.TotalQuality = CartController.totalQuality;
+            ViewBag.TotalQty = CartController.totalQty;
         }
         //Homepage
         public ActionResult Index()
@@ -78,7 +78,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
             {
                 return RedirectToAction("ErrorPage");
             }
-
+            ViewBag.RelatedItem = _context.ItemMsts.Where(i => i.brandId == item.brandId).ToList();
             return View(item);
         }
 
@@ -206,12 +206,6 @@ namespace OnlineJewelryShoppingMVC.Controllers
             return RedirectToAction("Login", "Client");
         }
 
-        //Check out page for customer to process payment
-        public ActionResult Checkout()
-        {
-            return View();
-        }
-
         //Contact page for users who willing to keep in touch w us
         public ActionResult Contact()
         {
@@ -247,5 +241,6 @@ namespace OnlineJewelryShoppingMVC.Controllers
         {
             return View();
         }
+
     }
 }

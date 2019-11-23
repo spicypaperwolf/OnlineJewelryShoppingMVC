@@ -11,8 +11,7 @@ namespace OnlineJewelryShoppingMVC
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class DimInfoMst
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,7 +30,6 @@ namespace OnlineJewelryShoppingMVC
         public string dimPolish { get; set; }
         public string dimSymmetry { get; set; }
         public string dimReport { get; set; }
-        [DataType(DataType.Currency)]
         public decimal dimRate { get; set; }
         public string dimImg { get; set; }
     
