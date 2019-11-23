@@ -35,7 +35,7 @@ namespace OnlineJewelryShoppingMVC.Sercurity
         {
             // Hash the input.
             string hashOfInput = GetMd5Hash(md5Hash, input);
-
+              
             // Create a StringComparer an compare the hashes.
             StringComparer comparer = StringComparer.OrdinalIgnoreCase;
 

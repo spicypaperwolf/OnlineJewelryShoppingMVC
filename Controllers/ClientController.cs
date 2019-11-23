@@ -144,7 +144,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 {
                     using (MD5 md5Hash = MD5.Create())
                     {
-                        bool verifyPassword = MD5Service.VerifyMd5Hash(md5Hash, password, result.password);
+                        bool verifyPassword = MD5Service.VerifyMd5Hash(md5Hash, password, result.password);  
                         if (verifyPassword)
                         {
                             return 1;
