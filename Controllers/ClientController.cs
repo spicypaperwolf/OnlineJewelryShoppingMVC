@@ -46,8 +46,8 @@ namespace OnlineJewelryShoppingMVC.Controllers
 
             ItemRespository ir = new ItemRespository();
             ViewBag.BrandList = _context.BrandMsts.ToList();
-            ViewBag.ItemList = item.ToList().ToPagedList(page ?? 1, 6);
-            return View(item.ToList().ToPagedList(page ?? 1, 6));
+            ViewBag.ItemList = item.Where(i => i.itemStatus == true).ToList().ToPagedList(page ?? 1, 6);
+            return View(item.Where(i => i.itemStatus == true).ToList().ToPagedList(page ?? 1, 6));
         }
 
         [HttpPost]

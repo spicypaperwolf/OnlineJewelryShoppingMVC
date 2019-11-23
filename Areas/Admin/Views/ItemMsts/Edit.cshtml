@@ -50,6 +50,25 @@
                                     @Html.ValidationMessageFor(model => model.prodId, "", new { @class = "text-danger" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.itemStatus, "itemStatus", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select class="form-control" id="itemStatus" name="itemStatus">
+                                        @if (Model.itemStatus == true)
+                                        {
+                                            <option value="true" selected>Active</option>
+                                            <option value="false">InActive</option>
+                                        }
+                                        else
+                                        {
+                                            <option value="true" >Active</option>
+                                            <option value="false" selected>InActive</option>
+                                        }
+
+
+                                    </select>
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 @Html.LabelFor(model => model.dimId, "dimId", htmlAttributes: new { @class = "control-label col-md-2" })
