@@ -209,6 +209,10 @@ namespace OnlineJewelryShoppingMVC.Controllers
         [HttpPost]
         public ActionResult Resister(UserRegMst model)
         {
+            using (MD5 md5Hash = MD5.Create())
+            {
+                model.password = MD5Service.GetMd5Hash(md5Hash, model.password);
+            }
             model.status = true;
             model.cdate = DateTime.Now;
             _context.UserRegMsts.Add(model);
