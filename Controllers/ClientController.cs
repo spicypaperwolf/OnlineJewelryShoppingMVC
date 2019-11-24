@@ -206,6 +206,26 @@ namespace OnlineJewelryShoppingMVC.Controllers
             }
             return View("Login");
         }
+        [HttpPost]
+        public ActionResult Resister(UserRegMst model)
+        {
+            model.status = true;
+            model.cdate = DateTime.Now;
+            _context.UserRegMsts.Add(model);
+            if (_context.UserRegMsts.Where(item => item.emailId == model.emailId).FirstOrDefault() != null)
+            {
+                ViewBag.ExistsEmail = "Email is already exists";
+                return View("Login");
+            }
+            _context.SaveChanges();
+            var user = GetByUserName(model.emailId);
+            var userSession = new UserLogin();
+            userSession.UserID = user.userId;
+            userSession.UserName = user.emailId; // user.UserName in Database
+            userSession.Role = "user";
+            Session.Add(CommonConstants.USER_SESSION, userSession);
+            return RedirectToAction("Index", "Client");
+        }
         // Logout function
         public ActionResult Logout()
         {
