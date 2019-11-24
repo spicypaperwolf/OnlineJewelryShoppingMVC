@@ -15,7 +15,7 @@ namespace OnlineJewelryShoppingMVC
     public partial class CommentMst
     {
         public string cmtId { get; set; }
-        public string userId { get; set; }
+        public int userId { get; set; }
         public string itemCode { get; set; }
         public string cmtContent { get; set; }
         public decimal ratingValue { get; set; }

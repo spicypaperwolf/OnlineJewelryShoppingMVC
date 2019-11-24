@@ -313,6 +313,7 @@
     <Content Include="assets\client\css\normalize.css" />
     <Content Include="assets\client\css\owl.carousel.min.css" />
     <Content Include="assets\client\css\responsive.css" />
+    <Content Include="assets\client\css\starrr.css" />
     <Content Include="assets\client\css\style.css" />
     <Content Include="assets\client\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\client\fonts\glyphicons-halflings-regular.svg" />
@@ -363,6 +364,7 @@
     <Content Include="assets\client\img\hot.png" />
     <Content Include="assets\client\img\magic.jpg" />
     <Content Include="assets\client\img\map-marker.png" />
+    <Content Include="assets\client\img\nav.jpg" />
     <Content Include="assets\client\img\new.png" />
     <Content Include="assets\client\img\offer\banner-bg-2.jpg" />
     <Content Include="assets\client\img\offer\banner-bg.jpg" />
@@ -439,7 +441,15 @@
     <Content Include="assets\client\js\jquery.simpleLens.min.js" />
     <Content Include="assets\client\js\main.js" />
     <Content Include="assets\client\js\owl.carousel.min.js" />
+    <Content Include="assets\client\js\starrr.js" />
     <Content Include="assets\client\js\wow.min.js" />
+    <Content Include="assets\image\je001.jpg" />
+    <Content Include="assets\image\je002.jpg" />
+    <Content Include="assets\image\je003.jpg" />
+    <Content Include="assets\image\je004.jpg" />
+    <Content Include="assets\image\je005.jpg" />
+    <Content Include="assets\image\je006.jpg" />
+    <Content Include="assets\image\je007.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -815,7 +825,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Models\" />
-    <Folder Include="assets\image\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

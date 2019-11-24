@@ -111,11 +111,22 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemDescription,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst,HttpPostedFileBase[] files)
+        public ActionResult Edit([Bind(Include = "itemCode,brandId,catId,certificateId,prodId,dimId,goldId,stoneId,itemName,itemDescription,itemImg,pairs,dimQty,dimTot,stoneQty,stoneTot,goldWt,goldTot,wstgPer,wstg,goldMaking,stoneMaking,otherMaking,totMaking,MRP")] ItemMst itemMst, HttpPostedFileBase[] files, bool itemStatus)
         {
             if (ModelState.IsValid)
             {
                 int index = 0;
+                if (files[0] == null)
+                {
+                    ViewBag.brandId = new SelectList(db.BrandMsts, "brandId", "brandType", itemMst.brandId);
+                    ViewBag.catId = new SelectList(db.CategoryMsts, "catId", "catName", itemMst.catId);
+                    ViewBag.certificateId = new SelectList(db.CertificateMsts, "certificateId", "certificateType", itemMst.certificateId);
+                    ViewBag.dimId = new SelectList(db.DimInfoMsts, "dimId", "dimShape", itemMst.dimId);
+                    ViewBag.goldId = new SelectList(db.GoldInfoMsts, "goldId", "goldType", itemMst.goldId);
+                    ViewBag.prodId = new SelectList(db.ProductMsts, "prodId", "prodType", itemMst.prodId);
+                    ViewBag.stoneId = new SelectList(db.StoneInfoMsts, "stoneId", "stoneShape", itemMst.stoneId);
+                    return View(itemMst);
+                }
                 foreach (HttpPostedFileBase file in files)
                 {
                     index++;
@@ -137,6 +148,8 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
                         file.SaveAs(ServerSavePath);
                     }
                 }
+                itemMst.itemStatus = itemStatus;
+                itemMst.created_at = DateTime.Now;
                 db.Entry(itemMst).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

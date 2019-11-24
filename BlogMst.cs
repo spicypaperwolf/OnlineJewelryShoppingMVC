@@ -14,7 +14,7 @@ namespace OnlineJewelryShoppingMVC
     
     public partial class BlogMst
     {
-        public string blogId { get; set; }
+        public int blogId { get; set; }
         public string blogImg { get; set; }
         public string blogTitle { get; set; }
         public string blogContent { get; set; }

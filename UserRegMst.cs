@@ -21,7 +21,7 @@ namespace OnlineJewelryShoppingMVC
             this.TransactionMsts = new HashSet<TransactionMst>();
         }
     
-        public string userId { get; set; }
+        public int userId { get; set; }
         public string userFname { get; set; }
         public string userLname { get; set; }
         public string address { get; set; }

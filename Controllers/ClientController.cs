@@ -25,7 +25,11 @@ namespace OnlineJewelryShoppingMVC.Controllers
         //Homepage
         public ActionResult Index()
         {
-            ViewBag.ItemList = _context.ItemMsts.OrderByDescending(i=>i.created_at).ToList();
+            ViewBag.ItemList = _context.ItemMsts.Where(i => i.itemStatus == true).OrderByDescending(i=>i.created_at).ToList();
+            ViewBag.RingList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Ring").ToList();
+            ViewBag.EaringsList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Earings").ToList();
+            ViewBag.NecklaceList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Necklace").ToList();
+            ViewBag.BraceletList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Bracelet").ToList();
             return View();
         }
 
@@ -46,8 +50,8 @@ namespace OnlineJewelryShoppingMVC.Controllers
 
             ItemRespository ir = new ItemRespository();
             ViewBag.BrandList = _context.BrandMsts.ToList();
-            ViewBag.ItemList = item.ToList().ToPagedList(page ?? 1, 6);
-            return View(item.ToList().ToPagedList(page ?? 1, 6));
+            ViewBag.ItemList = item.Where(i => i.itemStatus == true).ToList().ToPagedList(page ?? 1, 6);
+            return View(item.Where(i => i.itemStatus == true).ToList().ToPagedList(page ?? 1, 6));
         }
 
         [HttpPost]
@@ -276,6 +280,31 @@ namespace OnlineJewelryShoppingMVC.Controllers
             _context.NewsletterMsts.Add(n);
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public ActionResult Resister(UserRegMst model)
+        {
+            using (MD5 md5Hash = MD5.Create())
+            {
+                model.password = MD5Service.GetMd5Hash(md5Hash, model.password);
+            }
+            model.status = true;
+            model.cdate = DateTime.Now;
+            _context.UserRegMsts.Add(model);
+            if (_context.UserRegMsts.Where(item => item.emailId == model.emailId).FirstOrDefault() != null)
+            {
+                ViewBag.ExistsEmail = "Email is already exists";
+                return View("Login");
+            }
+            _context.SaveChanges();
+            var user = GetByUserName(model.emailId);
+            var userSession = new UserLogin();
+            userSession.UserID = user.userId;
+            userSession.UserName = user.emailId; // user.UserName in Database
+            userSession.Role = "user";
+            Session.Add(CommonConstants.USER_SESSION, userSession);
+            return RedirectToAction("Index", "Client");
         }
     }
 }
