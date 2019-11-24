@@ -5,98 +5,102 @@
     Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
 }
 
-<div class="table-responsive">
-    <table class="table">
-        <div>
-            <h4>UserRegMst</h4>
-            <hr />
-            <dl class="dl-horizontal">
-                <dt>
-                    @Html.DisplayNameFor(model => model.userFname)
-                </dt>
 
-                <dd>
-                    @Html.DisplayFor(model => model.userFname)
-                </dd>
+<div>
+    <h4>UserRegMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.userFname)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.userLname)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.userFname)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.userLname)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.userLname)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.address)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.userLname)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.address)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.city)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.city)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.state)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.state)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.state)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.mobNo)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.state)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.mobNo)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.mobNo)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.emailId)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.mobNo)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.emailId)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.emailId)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.dob)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.emailId)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.dob)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.dob)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.cdate)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.dob)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.cdate)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.cdate)
+        </dt>
 
-                <dt>
-                    @Html.DisplayNameFor(model => model.password)
-                </dt>
+        <dd>
+            @Html.DisplayFor(model => model.cdate)
+        </dd>
 
-                <dd>
-                    @Html.DisplayFor(model => model.password)
-                </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.password)
+        </dt>
 
-            </dl>
-        </div>
+        <dd>
+            @Html.DisplayFor(model => model.password)
+        </dd>
 
-        </table>
-    </div>
-        <p>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.userId.Trim() }) |
-            @Html.ActionLink("Back to List", "Index")
-        </p>
+        <dt>
+            @Html.DisplayNameFor(model => model.status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.userId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

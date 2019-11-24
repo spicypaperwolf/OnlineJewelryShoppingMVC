@@ -7,7 +7,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using CrystalDecisions.CrystalReports.Engine;
 using OnlineJewelryShoppingMVC;
 using PagedList;
 using PagedList.Mvc;
@@ -179,28 +178,6 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-
-        public ActionResult ExportReport()
-        {
-            ReportDocument rd = new ReportDocument();
-            rd.Load(Path.Combine(Server.MapPath("~/Report"), "CrystalReport.rpt"));
-            rd.SetDataSource(db.DimInfoMsts.ToList());
-            Response.Buffer = false;
-            Response.ClearContent();
-            Response.ClearHeaders();
-            try
-            {
-                Stream stream = rd.ExportToStream(CrystalDecisions.Shared.ExportFormatType.PortableDocFormat);
-                stream.Seek(0, SeekOrigin.Begin);
-                return File(stream, "application/pdf", "Diamon_list.pdf");
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
         }
 
 

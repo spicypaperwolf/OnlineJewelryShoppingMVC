@@ -25,11 +25,11 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
                 item = item.Where(x => x.userFname.Contains(searchString) || x.emailId.Contains(searchString));
             }
             return View(item.ToList().ToPagedList(page ?? 1, 3));
-           
+
         }
 
         // GET: Admin/UserRegMsts/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -54,11 +54,18 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "userId,userFname,userLname,address,city,state,mobNo,emailId,dob,cdate,password")] UserRegMst userRegMst)
+        public ActionResult Create([Bind(Include = "userId,userFname,userLname,address,city,state,mobNo,emailId,dob,password,status")] UserRegMst userRegMst)
         {
             if (ModelState.IsValid)
             {
+                userRegMst.status = true;
+                userRegMst.cdate = DateTime.Now;
                 db.UserRegMsts.Add(userRegMst);
+                if (db.UserRegMsts.Where(item => item.emailId == userRegMst.emailId).FirstOrDefault() != null)
+                {
+                    ViewBag.ExistsEmail = "Email is already exists";
+                    return View("Login");
+                }
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -67,7 +74,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         }
 
         // GET: Admin/UserRegMsts/Edit/5
-        public ActionResult Edit(string id)
+        public ActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -86,7 +93,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "userId,userFname,userLname,address,city,state,mobNo,emailId,dob,cdate,password")] UserRegMst userRegMst)
+        public ActionResult Edit([Bind(Include = "userId,userFname,userLname,address,city,state,mobNo,emailId,dob,cdate,password,status")] UserRegMst userRegMst)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +105,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         }
 
         // GET: Admin/UserRegMsts/Delete/5
-        public ActionResult Delete(string id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -115,7 +122,7 @@ namespace OnlineJewelryShoppingMVC.Areas.Admin.Controllers
         // POST: Admin/UserRegMsts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
+        public ActionResult DeleteConfirmed(int id)
         {
             UserRegMst userRegMst = db.UserRegMsts.Find(id);
             db.UserRegMsts.Remove(userRegMst);

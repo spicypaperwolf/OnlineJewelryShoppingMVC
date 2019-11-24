@@ -200,10 +200,6 @@
         </div>
 
     </div>
-
-
-
-
     <div>
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
         new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
