@@ -163,7 +163,6 @@ C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.dll
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Host.SystemWeb.dll
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.Cookies.dll
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.dll
-C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.Facebook.dll
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.Google.dll
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.OAuth.dll
@@ -196,7 +195,6 @@ C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.AspNet.Id
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.xml
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Host.SystemWeb.xml
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.xml
-C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.Facebook.xml
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.Cookies.xml
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\chase\Documents\GitHub\OnlineJewelryShoppingMVC\bin\Microsoft.Owin.Security.Twitter.xml

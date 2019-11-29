@@ -67,7 +67,7 @@
                                 <div class="product-action-btn">
                                     <a class="quick-view" href="#"><i class="fa fa-search"></i></a>
                                     <a class="favorite" href="#"><i class="fa fa-heart-o"></i></a>
-                                    <a class="add-cart" href="@Url.Action("Buy", "Client", new { id = i.itemCode})"><i class="fa fa-shopping-cart"></i></a>
+                                    <a class="add-cart" href="@Url.Action("Buy", "Cart", new { id = i.itemCode})"><i class="fa fa-shopping-cart"></i></a>
                                 </div>
                             </div>
                             <div class="pro-name-price-ratting">
@@ -77,11 +77,6 @@
                                 </div>
                                 <!-- Product Ratting -->
                                 <div class="pro-ratting">
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star-half-o"></i>
                                 </div>
                                 <!-- Product Price -->
                                 <div class="pro-price fix">
@@ -99,7 +94,7 @@
 <div class="banner-area fix">
     <!-- Product Offer Area Start -->
     <div class="col-sm-6 sin-banner">
-        <a href="#">
+        <a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T03"})">
             <img src="~/assets/client/img/offer/offer-1.jpeg" alt="" />
             <div class="wrap">
                 <h2>Bracelets</h2>
@@ -108,7 +103,7 @@
         </a>
     </div>
     <div class="col-sm-4 sin-banner">
-        <a href="#">
+        <a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T02"})">
             <img src="~/assets/client/img/offer/offer-2.jpg" alt="" />
             <div class="wrap">
                 <h2>Earrings</h2>
@@ -122,7 +117,7 @@
             <h1><span>New</span></h1>
             <h2>Arrivals</h2>
             <p>perspiciatis unde omnis iste natus error sit voluptatem accm doloremque antium</p>
-            <a href="#">Shop Now</a>
+            <a href="@Url.Action("Shop", "Client")">Shop Now</a>
         </div>
     </div>
     <div class="col-sm-2 hidden-xs sin-banner clear text-2">
@@ -130,11 +125,11 @@
         <div class="banner-text">
             <h1>Sales <span>Up to</span></h1>
             <h2><span>30%</span>off</h2>
-            <a href="#">Shop Now</a>
+            <a href="@Url.Action("Shop", "Client")">Shop Now</a>
         </div>
     </div>
     <div class="col-sm-6 sin-banner">
-        <a href="#">
+        <a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T01"})">
             <img src="~/assets/client/img/offer/offer-3.jpg" alt="" />
             <div class="wrap">
                 <h2>Rings</h2>
@@ -143,7 +138,7 @@
         </a>
     </div>
     <div class="col-sm-4 sin-banner">
-        <a href="#">
+        <a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T04"})">
             <img src="~/assets/client/img/offer/offer-4.jpg" alt="" />
             <div class="wrap">
                 <h2>Necklaces</h2>
@@ -189,11 +184,6 @@
                                         </div>
                                         <!-- Product Ratting -->
                                         <div class="pro-ratting">
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star-half-o"></i>
                                         </div>
                                         <!-- Product Price -->
                                         <div class="pro-price fix">
@@ -230,11 +220,6 @@
                                         </div>
                                         <!-- Product Ratting -->
                                         <div class="pro-ratting">
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star-half-o"></i>
                                         </div>
                                         <!-- Product Price -->
                                         <div class="pro-price fix">
@@ -271,11 +256,6 @@
                                         </div>
                                         <!-- Product Ratting -->
                                         <div class="pro-ratting">
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star-half-o"></i>
                                         </div>
                                         <!-- Product Price -->
                                         <div class="pro-price fix">
@@ -312,11 +292,6 @@
                                         </div>
                                         <!-- Product Ratting -->
                                         <div class="pro-ratting">
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star"></i>
-                                            <i class="on fa fa-star-half-o"></i>
                                         </div>
                                         <!-- Product Price -->
                                         <div class="pro-price fix">
@@ -354,78 +329,79 @@
                 <div class="underline"></div>
             </div>
             <div class="blog-slider owl-carousel">
-                <div class="single-blog">
-                    <div class="content fix">
-                        <a class="image fix" href="blog-details.html">
-                            <img src="~/assets/client/img/blog/blog-1.jpg" alt="" />
-                            <div class="date">
-                                <h4>25</h4>
-                                <h5>Aug</h5>
+                @foreach (var b in ViewBag.BlogList)
+                {
+                    <div class="single-blog">
+                        <div class="content fix">
+                            <a class="image fix" href="blog-details.html">
+                                <img src="~/assets/client/img/blog/@b.blogImg" alt="@b.blogImg" />
+                                <div class="date">
+                                    <h4>@b.cdate.Day</h4>
+                                    <h5>
+                                        @switch (b.cdate.Month.ToString())
+                                        {
+                                            case "1":
+                                                @Html.Raw("<h5>Jan</h5>")
+                                                break;
+                                            case "2":
+                                                @Html.Raw("<h5>Feb</h5>")
+                                                break;
+                                            case "3":
+                                                @Html.Raw("<h5>Mar</h5>")
+                                                break;
+                                            case "4":
+                                                @Html.Raw("<h5>Apr</h5>")
+                                                break;
+                                            case "5":
+                                                @Html.Raw("<h5>May</h5>")
+                                                break;
+                                            case "6":
+                                                @Html.Raw("<h5>Jun</h5>")
+                                                break;
+                                            case "7":
+                                                @Html.Raw("<h5>Jul</h5>")
+                                                break;
+                                            case "8":
+                                                @Html.Raw("<h5>Aug</h5>")
+                                                break;
+                                            case "9":
+                                                @Html.Raw("<h5>Sep</h5>")
+                                                break;
+                                            case "10":
+                                                @Html.Raw("<h5>Oct</h5>")
+                                                break;
+                                            case "11":
+                                                @Html.Raw("<h5>Nov</h5>")
+                                                break;
+                                            case "12":
+                                                @Html.Raw("<h5>Dec</h5>")
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    </h5>
+                                </div>
+                            </a>
+                            <h2><a class="title" href="blog-details.html">@b.blogTitle</a></h2>
+                            <div class="meta">
+                                <a href="#"><i class="fa fa-pencil-square-o"></i>Admin</a>
+                                @if (DateTime.Now.Subtract(b.cdate).Minutes > 0)
+                                {
+                                    <a href="#"><i class="fa fa-calendar"></i>@DateTime.Now.Subtract(b.cdate).Minutes minute(s) ago</a>
+                                }
+                                else if (DateTime.Now.Subtract(b.cdate).Minutes >= 60)
+                                {
+                                    <a href="#"><i class="fa fa-calendar"></i>@DateTime.Now.Subtract(b.cdate).Hours hour(s) ago</a>
+                                }
+                                else if (DateTime.Now.Subtract(b.cdate).Hours >= 24)
+                                {
+                                    <a href="#"><i class="fa fa-calendar"></i>@DateTime.Now.Subtract(b.cdate).Days day(s) ago</a>
+                                }
                             </div>
-                        </a>
-                        <h2><a class="title" href="blog-details.html">Lorem ipsum dolor sit amet</a></h2>
-                        <div class="meta">
-                            <a href="#"><i class="fa fa-pencil-square-o"></i>John Lee</a>
-                            <a href="#"><i class="fa fa-calendar"></i>2 Days ago</a>
-                            <a href="#"><i class="fa fa-comments"></i>12 Comments</a>
+                            <p>@b.blogShortDes</p>
                         </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam.</p>
                     </div>
-                </div>
-                <div class="single-blog">
-                    <div class="content fix">
-                        <a class="image fix" href="blog-details.html">
-                            <img src="~/assets/client/img/blog/blog-2.jpg" alt="" />
-                            <div class="date">
-                                <h4>25</h4>
-                                <h5>Aug</h5>
-                            </div>
-                        </a>
-                        <h2><a class="title" href="blog-details.html">Lorem ipsum dolor sit amet</a></h2>
-                        <div class="meta">
-                            <a href="#"><i class="fa fa-pencil-square-o"></i>John Lee</a>
-                            <a href="#"><i class="fa fa-calendar"></i>2 Days ago</a>
-                            <a href="#"><i class="fa fa-comments"></i>12 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam.</p>
-                    </div>
-                </div>
-                <div class="single-blog">
-                    <div class="content fix">
-                        <a class="image fix" href="blog-details.html">
-                            <img src="~/assets/client/img/blog/blog-3.jpg" alt="" />
-                            <div class="date">
-                                <h4>25</h4>
-                                <h5>Aug</h5>
-                            </div>
-                        </a>
-                        <h2><a class="title" href="blog-details.html">Lorem ipsum dolor sit amet</a></h2>
-                        <div class="meta">
-                            <a href="#"><i class="fa fa-pencil-square-o"></i>John Lee</a>
-                            <a href="#"><i class="fa fa-calendar"></i>2 Days ago</a>
-                            <a href="#"><i class="fa fa-comments"></i>12 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam.</p>
-                    </div>
-                </div>
-                <div class="single-blog">
-                    <div class="content fix">
-                        <a class="image fix" href="blog-details.html">
-                            <img src="~/assets/client/img/blog/blog-4.jpg" alt="" />
-                            <div class="date">
-                                <h4>25</h4>
-                                <h5>Aug</h5>
-                            </div>
-                        </a>
-                        <h2><a class="title" href="blog-details.html">Lorem ipsum dolor sit amet</a></h2>
-                        <div class="meta">
-                            <a href="#"><i class="fa fa-pencil-square-o"></i>John Lee</a>
-                            <a href="#"><i class="fa fa-calendar"></i>2 Days ago</a>
-                            <a href="#"><i class="fa fa-comments"></i>12 Comments</a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim niam.</p>
-                    </div>
-                </div>
+                }
             </div>
         </div>
     </div>

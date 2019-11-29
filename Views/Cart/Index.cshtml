@@ -1,4 +1,5 @@
 ﻿@using OnlineJewelryShoppingMVC.Respository
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_client.cshtml";
@@ -35,10 +36,10 @@
                                     {
                                     <tr class="table-info">
                                         <td class="produ">
-                                            <a href="#"><img alt="" src="~/assets/client/img/cart-1.jpg"></a>
+                                            <a href="#"><img alt="" src="~/assets/image/@ir.returnImage(c.itemCode)"></a>
                                         </td>
                                         <td class="namedes">
-                                            <h2><a href="#">@ir.GetItemById(c.itemCode).itemName</a></h2>
+                                            <h2><a href="@Url.Action("ItemDetails", "Client", new { id = c.itemCode})">@ir.GetItemById(c.itemCode).itemName</a></h2>
                                             <p>@ir.GetItemById(c.itemCode).itemDescription</p>
                                         </td>
                                         <td class="unit">

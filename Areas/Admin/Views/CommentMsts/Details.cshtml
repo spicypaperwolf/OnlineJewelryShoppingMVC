@@ -1,0 +1,51 @@
+﻿@model OnlineJewelryShoppingMVC.CommentMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CommentMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cmtContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmtContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ratingValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ratingValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemMst.brandId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemMst.brandId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserRegMst.userFname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserRegMst.userFname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cmtId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

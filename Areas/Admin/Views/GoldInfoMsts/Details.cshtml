@@ -1,0 +1,42 @@
+﻿@model OnlineJewelryShoppingMVC.GoldInfoMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+
+<div>
+    <h4>GoldInfoMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.goldCrt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goldCrt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goldType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goldType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.goldRate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.goldRate)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.goldId.Trim() }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

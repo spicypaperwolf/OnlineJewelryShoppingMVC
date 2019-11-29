@@ -1,0 +1,57 @@
+﻿@model OnlineJewelryShoppingMVC.CommentMst
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>CommentMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cmtContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cmtContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ratingValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ratingValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ItemMst.brandId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ItemMst.brandId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserRegMst.userFname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserRegMst.userFname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

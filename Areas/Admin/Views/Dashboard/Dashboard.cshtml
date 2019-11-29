@@ -1,0 +1,40 @@
+﻿
+@model OnlineJewelryShoppingMVC.DimInfoMst
+
+@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+<div class="table-responsive">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card ">
+                <center>
+                    <div class="card-header ">
+                        <h2 class="card-title"><b>Total Sales</b></h2>
+                        <p class="card-category">Sales By Month</p>
+                    </div>
+                    <div class="card-body">
+                        <table>
+                            <tr>
+                                <th>
+                                    <img src="@Url.Action("CharterColumn")" alt="Chart" />
+                                </th>
+                            </tr>
+                            <tr>
+                                <th>
+                                    <img src="@Url.Action("LineChart")" alt="Chart" />
+                                </th>
+                            </tr>
+
+                        </table>
+                    </div>
+
+                </center>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+

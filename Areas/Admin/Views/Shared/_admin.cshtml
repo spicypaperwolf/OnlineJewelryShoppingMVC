@@ -12,7 +12,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
     <!--     Fonts and icons     -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet"> 
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <!-- CSS Files -->
     <link href="~/assets/admin/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/assets/admin/css/paper-dashboard.min.css" rel="stylesheet" />
@@ -31,96 +31,136 @@
     <script src="~/assets/admin/js/paper-dashboard.min.js?v=2.0.0" type="text/javascript"></script>
     <!-- Paper Dashboard DEMO methods, don't include it in your project! -->
     <script src="~/assets/admin/dashboard/dashboard.js"></script>
+    <!--CKEditor-->
+    <script src="//cdn.ckeditor.com/4.13.0/full/ckeditor.js"></script>
 </head>
 
-<body class="">
+<body style="background-color: #f4f3ef" class="">
     <div class="wrapper ">
-        <div class="sidebar" data-color="white" data-active-color="danger">
+        <div class="sidebar" data-color="white" data-active-color="primary">
             <!--
                 Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
             -->
             <div class="logo">
-                <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                    <div class="logo-image-small">
-                        <img src="~/assets/admin/img/logo-small.png">
-                    </div>
+                <a href="@Url.Action("Index","AdminLoginMsts")" class="logo">
+                    <center>
+                        <img src="~/assets/admin/img/logo.png">
+                    </center>
                 </a>
-                <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                    Creative Tim
-                    <!-- <div class="logo-image-big">
-                      <img src="../assets/img/logo-big.png">
-                    </div> -->
-                </a>
+                <center>
+                   <b> ADMIN PANEL</b>
+                </center>
             </div>
             <div class="sidebar-wrapper">
                 <ul class="nav">
-                    <li class="active ">
-                        <a>
+                    <li class="active">
+                        <a href="@Url.Action("Dashboard","Dashboard")">
                             <i class="nc-icon nc-bank"></i>
                             <p>Dashboard</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="">
                         <a href="@Url.Action("Index","ItemMsts")">
-                            <i class="nc-icon nc-cart-simple"></i>
+                            <i class="nc-icon nc-box"></i>
                             <p>Items</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="">
+                        <a href="@Url.Action("Index","ProductMsts")">
                             <i class="nc-icon nc-box-2"></i>
                             <p>Product</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="">
+                        <a href="@Url.Action("Index","CategoryMsts")">
                             <i class="nc-icon nc-app"></i>
                             <p>Category</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="">
+                        <a href="@Url.Action("Index","BrandMsts")">
                             <i class="nc-icon nc-bank"></i>
                             <p>Brand</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="">
+                        <a href="@Url.Action("Index","CertificateMsts")">
                             <i class="nc-icon nc-world-2"></i>
-                            <p>Maps</p>
+                            <p>Certificate</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="">
+                    <li class="">
+                        <a href="@Url.Action("Index","DimInfoMsts")">
                             <i class="nc-icon nc-diamond"></i>
                             <p>Diamond Ifomation</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./map.html">
+                    <li class="">
+                        <a href="@Url.Action("Index","StoneInfoMsts")">
                             <i class="nc-icon nc-support-17"></i>
                             <p>Stone Infomation</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./notifications.html">
+                    <li class="">
+                        <a href="@Url.Action("Index","GoldInfoMsts")">
                             <i class="nc-icon nc-money-coins"></i>
                             <p>Gold Infomation</p>
                         </a>
                     </li>
-                    <li>
+                    <li class="">
                         <a href="@Url.Action("Index","AdminLoginMsts")">
                             <i class="nc-icon nc-user-run"></i>
                             <p>Admin Profile</p>
                         </a>
                     </li>
-                    <li>
-                        <a href="./user.html">
+                    <li class="">
+                        <a href="@Url.Action("Index","UserRegMsts")">
                             <i class="nc-icon nc-single-02"></i>
                             <p>User Profile</p>
                         </a>
                     </li>
-
+                    <li class="">
+                        <a href="@Url.Action("Index","TransactionMsts")">
+                            <i class="nc-icon nc-chart-pie-36"></i>
+                            <p>Transaction</p>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","CartLists")">
+                            <i class="nc-icon nc-cart-simple"></i>
+                            <p>Cart List</p>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","InquiryMsts")">
+                            <i class="nc-icon nc-paper"></i>
+                            <p>Inquiry</p>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","BlogMsts")">
+                            <i class="nc-icon nc-chat-33"></i>
+                            <p>Blog</p>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","CommentMsts")">
+                            <i class="nc-icon nc-tag-content"></i>
+                            <p>Comment</p>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","ContactMsts")">
+                            <i class="nc-icon nc-globe-2"></i>
+                            <p>Contact Us</p>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="@Url.Action("Index","NewsletterMsts")">
+                            <i class="nc-icon nc-email-85"></i>
+                            <p>Newsletter</p>
+                        </a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -184,14 +224,16 @@
                                     </p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn-rotate" href="@Url.Action("Logout","Dashboard", new { area="" })">
+                                    <i class="fa fa-sign-out"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-            <!-- End Navbar -->
-            <!-- <div class="panel-header panel-header-lg">
-              <canvas id="bigDashboardChart"></canvas>
-            </div> -->
+            <!-- End Navbar -->    
             <div class="content">
                 @RenderBody()
             </div>
@@ -201,7 +243,7 @@
                         <div class="credits ml-auto">
                             <span class="copyright">
                                 ©
-                                <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                                <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Yash
                             </span>
                         </div>
                     </div>
@@ -209,11 +251,5 @@
             </footer>
         </div>
     </div>
-
-
-
-
-
 </body>
-
 </html>

@@ -8,15 +8,15 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 <p>
-    @Html.ActionLink("Create New Item", "Create")
+    <a class="btn btn-primary" href="@Url.Action("Create","ItemMsts")">
+        Create
+    </a>
 </p>
-
-
 
 <div class="content">
     @using (Html.BeginForm("Index", "ItemMsts", FormMethod.Post)) 
     {
-        <div>
+        <div style="padding-bottom: 2%;">
             Search by Item Name/Item Img: @Html.TextBox("searchString")
             <input id="Submit1" type="submit" value="Search" />
         </div>
@@ -99,7 +99,8 @@
                                     <th>
                                         @Html.DisplayNameFor(model => model.First().StoneInfoMst.stoneShape)
                                     </th>
-                                    <th></th>
+                                    <th>
+                                    </th>
                                 </tr>
 
                             </thead>
@@ -177,6 +178,7 @@
                                         <td>
                                             @Html.DisplayFor(modelItem => item.StoneInfoMst.stoneShape)
                                         </td>
+                                        
                                         <td>
                                             @Html.ActionLink("Edit", "Edit", new { id = item.itemCode })
                                         </td>

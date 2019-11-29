@@ -24,6 +24,10 @@ namespace OnlineJewelryShoppingMVC.Respository
             return a * b;
         }
 
-
+        public string returnImage(string id)
+        {
+            string imgPath = _context.ItemMsts.Find(id).itemImg;
+            return imgPath;
+        }
     }
 }

@@ -1,0 +1,63 @@
+﻿@model OnlineJewelryShoppingMVC.TransactionMst
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TransactionMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.transactionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transactionId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.userId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.userId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.totQty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totQty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.totPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.totPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.approvalStt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.approvalStt)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

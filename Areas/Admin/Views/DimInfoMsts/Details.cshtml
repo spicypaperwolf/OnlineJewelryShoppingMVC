@@ -1,0 +1,108 @@
+﻿@model OnlineJewelryShoppingMVC.DimInfoMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<div class="content">
+
+    <div>
+        <h4>DimInfoMst</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.dimShape)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimShape)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimCrt)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimCrt)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimSize)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimSize)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimColor)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimColor)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimClarity)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimClarity)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimCut)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimCut)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimPolish)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimPolish)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimSymmetry)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimSymmetry)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimReport)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimReport)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimRate)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimRate)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.dimImg)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.dimImg)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.dimId.Trim() }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+    </div>

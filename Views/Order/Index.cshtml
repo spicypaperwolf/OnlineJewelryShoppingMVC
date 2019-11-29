@@ -27,17 +27,17 @@
                                 <div class="panel-body">
                                     <div class="bill-info">
                                         <div class="group">
-                                            <input type="text" name="fname" placeholder="First Name*" class="half">
-                                            <input type="text" name="lname" placeholder="Last Name*" class="half">
+                                            <input type="text" name="fname" placeholder="First Name*" class="half" data-fname="fname" id="formFname">
+                                            <input type="text" name="lname" placeholder="Last Name*" class="half" data-lname="lname" id="formLname">
                                         </div>
-                                        <input type="text" name="address" placeholder="STREET ADDRESS*">
-                                        <input type="text" name="city" placeholder="city">
+                                        <input type="text" name="address" placeholder="STREET ADDRESS*" data-street="street" id="formStreet">
+                                        <input type="text" name="city" placeholder="city" data-city="city" id="formCity">
                                         <div class="group">
-                                            <input type="text" name="state" placeholder="STATE / COUNTRY">
+                                            <input type="text" name="state" placeholder="STATE / COUNTRY" data-country="country" id="formCountry">
                                         </div>
                                         <div class="group">
-                                            <input type="text" name="email" placeholder="E-mail Address*" class="half">
-                                            <input type="text" name="mobNo" placeholder="PHONE NUMBER*" class="half">
+                                            <input type="text" name="email" placeholder="E-mail Address*" class="half" data-email="email" id="formEmail">
+                                            <input type="text" name="mobNo" placeholder="PHONE NUMBER*" class="half" data-fone="fone" id="formFone">
                                         </div>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                             </div>
                             <div id="shipping-info" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
+                                    <p>Yash Jewelery offers flat rate ground shipping for most orders shipped to the continental USA. Time to delivery can be up to eight business days, depending on your location. If you need faster delivery, choose UPS Ground or more expedited services.</p>
                                 </div>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
                             </div>
                             <div id="shipping-method" class="panel-collapse collapse">
                                 <div class="panel-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
+                                    <p>Free shipping for order greater than $1000</p>
                                 </div>
                             </div>
                         </div>
@@ -70,16 +70,12 @@
                             <div id="payment-met" class="panel-collapse collapse">
                                 <div class="panel-body">
                                     <div class="payment-met">
-                                        @*<p>Choose your payment method :</p>
+                                        <p>Choose your payment method :</p>
                                             <ul>
                                                 <li><a href="#"><img src="~/assets/client/img/footer/paypal.jpg" alt="" /></a></li>
-                                                <li><a href="#"><img src="~/assets/client/img/footer/visa.jpg" alt="" /></a></li>
-                                                <li><a href="#"><img src="~/assets/client/img/footer/master.jpg" alt="" /></a></li>
-                                                <li><a href="#"><img src="~/assets/client/img/footer/cards.jpg" alt="" /></a></li>
-                                                <li><a href="#"><img src="~/assets/client/img/footer/discover.jpg" alt="" /></a></li>
-                                            </ul>*@
+                                            </ul>
                                         <div class="pay">
-                                            <h2>YOUR PAYPAL ACCOUNT</h2>
+                                            <h2>OR YOUR CARD NUMBER</h2>
                                             <p>Pay via credit or debit card, Paypal transfer or even via Bank account in just a few clicks.</p>
                                             <p>This method is super easy and well protected.</p>
                                             <div class="bill-info">
@@ -105,11 +101,11 @@
                                     <div class="col-sm-4">
                                         <div class="information">
                                             <h3>BILLING INFORMATION</h3>
-                                            <h4>Thomas Albert</h4>
-                                            <h5>Lorem Street 2178</h5>
-                                            <p>12358 New Yourk</p>
-                                            <h5>Phone : 123 456 789</h5>
-                                            <p>E-mail: email@you,com</p>
+                                            <h4 id="showName" style="text-transform: uppercase;">Thomas Albert</h4>
+                                            <h5 id="showAddress">Lorem Street 2178</h5>
+                                            <p id="showCountry">12358 New Yourk</p>
+                                            <h5 id="showFone">Phone : 123 456 789</h5>
+                                            <p id="showEmail">E-mail: email@you,com</p>
                                             <a href="#">MODIFY</a>
                                         </div>
                                     </div>
@@ -117,11 +113,11 @@
                                     <div class="col-sm-4">
                                         <div class="information">
                                             <h3>SHIPPING INFORMATION</h3>
-                                            <h4>Thomas Albert</h4>
-                                            <h5>Lorem Street 2178</h5>
-                                            <p>12358 New Yourk</p>
-                                            <h5>Phone : 123 456 789</h5>
-                                            <p>E-mail: email@you,com</p>
+                                            <h4 id="showName1" style="text-transform: uppercase;">Thomas Albert</h4>
+                                            <h5 id="showAddress1">Lorem Street 2178</h5>
+                                            <p id="showCountry1">12358 New Yourk</p>
+                                            <h5 id="showFone1">Phone : 123 456 789</h5>
+                                            <p id="showEmail1">E-mail: email@you,com</p>
                                             <a href="#">MODIFY</a>
                                         </div>
                                     </div>
@@ -184,8 +180,23 @@
         return false;
     }
 
-    return true;
-}
+        return true;
+    }
+    $(document).ready(function () {
+        $('#bill-info').find('.group input').keyup(function () {
+            $('#showName').text($('#formFname').val() + " " + $('#formLname').val());
+            $('#showAddress').text($('#formStreet').val());
+            $('#showCountry').text($('#formCountry').val());
+            $('#showEmail').text($('#formEmail').val());
+            $('#showFone').text($('#formFone').val());
+            $('#showName1').text($('#formFname').val() + " " + $('#formLname').val());
+            $('#showAddress1').text($('#formStreet').val());
+            $('#showCountry1').text($('#formCountry').val());
+            $('#showEmail1').text($('#formEmail').val());
+            $('#showFone1').text($('#formFone').val());
+        })
+    });
+    
 </script>
 
 

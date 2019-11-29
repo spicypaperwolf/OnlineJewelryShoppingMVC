@@ -1,4 +1,5 @@
-﻿@model OnlineJewelryShoppingMVC.ItemMst
+﻿@using OnlineJewelryShoppingMVC.Common
+@model OnlineJewelryShoppingMVC.ItemMst
 
 
 @{
@@ -37,20 +38,6 @@
                                 </div>
                             </div>
                         }
-                        @*<div class="tab-pane fade" id="image-3">
-                            <div class="simpleLens-big-image-container">
-                                <a class="simpleLens-lens-image" data-lens-image="~/assets/client/img/single-product/3.jpg">
-                                    <img src="~/assets/client/img/single-product/3.jpg" alt="" class="simpleLens-big-image">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="image-4">
-                            <div class="simpleLens-big-image-container">
-                                <a class="simpleLens-lens-image" data-lens-image="~/assets/client/img/single-product/4.jpg">
-                                    <img src="~/assets/client/img/single-product/4.jpg" alt="" class="simpleLens-big-image">
-                                </a>
-                            </div>
-                        </div>*@
                     </div>
                      <!--Nav tabs--> 
                     <ul class="tabs-list details-pro-tab-list" role="tablist">
@@ -61,10 +48,6 @@
                                 <li><a href="#image-@i" data-toggle="tab"><img src="~/assets/image/@Html.DisplayFor(m=>m.itemImg.Split(',')[i])" alt="@Html.DisplayFor(m=>m.itemImg.Split(',')[i])" /></a></li>
                             }
                         }
-                        @*<li class="active"><a href="#image-1" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-1.jpg" alt="" /></a></li>
-                        <li><a href="#image-2" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-2.jpg" alt="" /></a></li>
-                        <li><a href="#image-3" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-3.jpg" alt="" /></a></li>
-                        <li><a href="#image-4" data-toggle="tab"><img src="~/assets/client/img/single-product/thumb-4.jpg" alt="" /></a></li>*@
                     </ul>
                 </div>
             </div>
@@ -74,11 +57,6 @@
                     <h2>@Html.DisplayFor(m => m.itemName)</h2>
                     <!-- Product Ratting -->
                     <div class="pro-ratting">
-                        @*<i class="on fa fa-star"></i>
-                        <i class="on fa fa-star"></i>
-                        <i class="on fa fa-star"></i>
-                        <i class="on fa fa-star"></i>
-                        <i class="on fa fa-star-half-o"></i>*@
                     </div>
                     <h3>@*<span>$165</span>*@@Html.DisplayFor(m => m.MRP)</h3>
                     <h4>10 Reviews</h4>
@@ -114,10 +92,25 @@
                         </div>
                     </div>
                     <div class="review">
-                        <textarea rows="4" placeholder="Write Your Review..."></textarea>
+                        @if (Session[CommonConstants.USER_SESSION] != null)
+                        {
+                            UserLogin u = new UserLogin();
+                            u = (UserLogin)Session[CommonConstants.USER_SESSION];
+                            using (Html.BeginForm("Review", "Client", FormMethod.Post))
+                            {
+                                <textarea rows="4" name="review" placeholder="Write Your Review..."></textarea>
+                                <input type="text" hidden value="@Model.itemCode" name="itemCode" />
+                                <input type="text" hidden value="@u.UserID" name="userId" />
+                                <input type="submit" name="reviewSubmit" value="Submit" class="btn btn-border" style="background-color: #e09e25; color:#fff; font-weight:bold;" />
+                            }
+                        }
+                        else
+                        {
+
+                        }
                     </div>
-                    <div class="action-btn">
-                        <a id="add-to-card" href="@Url.Action("Buy", "Cart", new { id = Model.itemCode})"><i class="fa fa-shopping-cart"></i></a>
+                    <div class="action-btn" style="padding-top: 6%;">
+                        <a id="add-to-card" href="@Url.Action("Buy", "Cart", new { id = Model.itemCode })"><i class="fa fa-shopping-cart"></i></a>
                         <a href="#"><i class="fa fa-heart-o"></i></a>
                         <a href="#"><i class="fa fa-refresh"></i></a>
                     </div>
@@ -138,8 +131,30 @@
                             <p>@Html.DisplayFor(m=>m.itemDescription)</p>
                         </div>
                         <div id="review" class="tab-pane fade" role="tabpanel">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco aboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepte.</p>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamc.</p>
+                            <div id="comments">
+                                <div class="comments-list">
+                                    <ol class="commentlists">
+                                        @foreach (var item in ViewBag.CmtList)
+                                        {
+                                            <li class="sin-comment">
+                                                <div class="the-comment">
+                                                    <div class="avatar">
+                                                        <img alt="" src="~/assets/client/img/blog/comment-1.jpg">
+                                                    </div>
+                                                    <div class="comment-box">
+                                                        <div class="comment-author">
+                                                            <p class="com-name"><strong>@item.UserRegMst.userFname @item.UserRegMst.userLname</strong>
+                                                        </div>
+                                                        <div class="comment-text">
+                                                            <p>@item.cmtContent</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </li><!-- #comment-## -->
+                                        }
+                                    </ol>
+                                </div>
+                            </div>
                         </div>
                         <div id="tags" class="tab-pane fade" role="tabpanel">
                             <div class="table-responsive">
@@ -264,11 +279,6 @@
                                 </div>
                                 <!-- Product Ratting -->
                                 <div class="pro-ratting">
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star"></i>
-                                    <i class="on fa fa-star-half-o"></i>
                                 </div>
                                 <!-- Product Price -->
                                 <div class="pro-price fix">

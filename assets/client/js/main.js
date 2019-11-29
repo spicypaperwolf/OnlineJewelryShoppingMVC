@@ -168,15 +168,42 @@ $(document).ready(function($){
 	/*----- Price Slider -----*/	
 	$( "#slider-range" ).slider({
 	   range: true,
-	   min: 0,
-	   max: 800,
-	   values: [ 50, 550 ],
+	   min: 50,
+	   max: 1000000,
+	   values: [ 50, 1000000 ],
 	   slide: function( event, ui ) {
-		$( "#price-amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+           $("#price-amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+           var mi = ui.values[0];
+           var mx = ui.values[1];
+           filterSystem(mi, mx);
 	   }
-	  });
+    });
+
+    function filterSystem(minPrice, maxPrice) {
+        $("#shopListProd div.single-list-product").hide().filter(function () {
+            var price = parseInt($(this).data("price"), 10);
+            return price >= minPrice && price <= maxPrice;
+        }).show();
+    }
+
 	$( "#price-amount" ).val( "$" + $( "#slider-range" ).slider( "values", 0 ) +
-	   " - $" + $( "#slider-range" ).slider( "values", 1 ) );  
+        " - $" + $("#slider-range").slider("values", 1));  
+
+    /*----- Brand Filter -----*/
+    $('a#brandFilter').on('click', function (e) {
+        e.preventDefault();
+        var brand = $(this).data("brand");
+        $('div.single-list-product').hide();
+        $('div[data-brand="' + brand + '"]').show();
+    });
+
+    /*----- Product Filter -----*/
+    $('a#prodFilter').on('click', function (e) {
+        e.preventDefault();
+        var prod = $(this).data("prod");
+        $('div.single-list-product').hide();
+        $('div[data-prod="' + prod + '"]').show();
+    });
 	   
 	$('.newslater-container .close').on("click", function(){
 		$('#popup-newslater').addClass('hidden');

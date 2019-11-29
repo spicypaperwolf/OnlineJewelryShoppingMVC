@@ -1,0 +1,99 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.CartList>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="content">
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create","CartLists")">
+            Create
+        </a>
+    </p>
+    @using (Html.BeginForm("Index", "CartLists", FormMethod.Post))
+    {
+        <div style="padding-bottom: 2%;">
+            Search: @Html.TextBox("searchString")
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> CART-LIST TABLE</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().cartId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().transactionId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().itemCode)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().qty)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().price)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cartId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.transactionId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.itemCode)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.qty)
+                                        </td>
+                                        
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.price)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.cartId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.cartId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.cartId })
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+    )
+</div>

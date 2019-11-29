@@ -1,4 +1,6 @@
 ﻿@using  OnlineJewelryShoppingMVC.Common
+@using OnlineJewelryShoppingMVC.Respository
+
 <!DOCTYPE HTML>
 <html lang="en-US">
 <head>
@@ -120,7 +122,7 @@
                 </div>
                 <div class="col-sm-4 col-lg-3" id="cartdroppable">
                     <div class="cart-info float-right">
-                        <a href="cart.html">
+                        <a href="@Url.Action("Index", "Cart")">
                             <h5>My cart <span>@ViewBag.TotalQty</span> items - <span>$ @ViewBag.TotalPrice</span></h5>
                             <i class="fa fa-shopping-cart"></i>
                         </a>
@@ -128,15 +130,16 @@
                             <ul class="header-cart-pro">
                                 @if (Session["cartList"] != null)
                                 {
+                                    ItemRespository ir = new ItemRespository();
                                     foreach (CartList item in (List<CartList>)Session["cartList"])
                                     {
                                         <li>
                                             <div class="image">
-                                                <a href="#">
-                                                    <img src="~/assets/client/img/cart-1.jpg" alt="cart-1.jpg" />
+                                                <a href="@Url.Action("ItemDetails", "Client", new { id = item.itemCode})">
+                                                    <img src="~/assets/image/@ir.returnImage(item.itemCode)" alt="cart-1.jpg" />
                                                 </a>
                                             </div>
-                                            <div class="content fix"><a href="#">@item.itemCode</a><span class="price">Price: @item.price</span><span class="quantity">Quantity: @item.qty</span></div>
+                                            <div class="content fix"><a href="@Url.Action("ItemDetails", "Client", new { id = item.itemCode})">@item.itemCode</a><span class="price">Price: @item.price</span><span class="quantity">Quantity: @item.qty</span></div>
                                             <a href="@Url.Action("RemoveBy1", "Cart", new { id = item.itemCode})"><i class="fa fa-trash delete"></i></a>
                                         </li>
                                     }
@@ -167,141 +170,47 @@
                                 <li>
                                     <a href="@Url.Action("Index", "Client")" class="active">Home</a>
                                 </li>
-                                @*<li>
-                                        <a href="#">Pages</a>
-                                        <div class="mega-menu mega-menu-page">
-                                            <div class="column-1 column">
-                                                <ul>
-                                                    <li><a href="about-us.html">About US</a></li>
-                                                    <li><a href="blog.html">Blog</a></li>
-                                                    <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
-                                                    <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
-                                                    <li><a href="blog-details.html">Blog details</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column-2 column">
-                                                <ul>
-                                                    <li><a href="cart.html">Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="coming-soon.html">Coming soon</a></li>
-                                                    <li><a href="contact.html">Contact</a></li>
-                                                    <li><a href="contact-2.html">Contact 2</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column-3 column">
-                                                <ul>
-                                                    <li><a href="faq.html">FAQ</a></li>
-                                                    <li><a href="login.html">Login</a></li>
-                                                    <li><a href="portfolio.html">Portfolio 3 column</a></li>
-                                                    <li><a href="portfolio-2.html">Portfolio 4 column</a></li>
-                                                    <li><a href="404.html">404</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column-4 column">
-                                                <ul>
-                                                    <li><a href="#">Shop</a></li>
-                                                    <li><a href="shop-list.html">Shop list</a></li>
-                                                    <li><a href="shop-left-sidebar.html">Shop left sidebar</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                                                    <li><a href="product-details.html">Product details</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>*@
                                 <li>
                                     <a href="@Url.Action("Shop", "Client")">Shop</a>
                                     <div class="mega-menu mega-menu-1">
                                         <div class="column-1 column">
                                             <ul>
                                                 <li><a href="shop-list.html">diamond jewelry</a></li>
-                                                <li><a href="shop-left-sidebar.html">ring</a></li>
-                                                <li><a href="shop-right-sidebar.html">earings</a></li>
-                                                <li><a href="shop-list.html">necklace</a></li>
-                                                <li><a href="shop-left-sidebar.html">bracelet</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T01"})">ring</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T02"})">earings</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T04"}) ">necklace</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T03"})">bracelet</a></li>
                                             </ul>
                                         </div>
                                         <div class="column-2 column">
                                             <ul>
                                                 <li><a href="shop-list.html">stone jewelry</a></li>
-                                                <li><a href="shop-left-sidebar.html">ring</a></li>
-                                                <li><a href="shop-right-sidebar.html">earings</a></li>
-                                                <li><a href="shop-list.html">necklace</a></li>
-                                                <li><a href="shop-left-sidebar.html">bracelet</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T01"})">ring</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T02"})">earings</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T04"}) ">necklace</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T03"})">bracelet</a></li>
                                             </ul>
                                         </div>
                                         <div class="column-3 column">
                                             <ul>
                                                 <li><a href="shop-list.html">gold jewelry</a></li>
-                                                <li><a href="shop-left-sidebar.html">ring</a></li>
-                                                <li><a href="shop-right-sidebar.html">earings</a></li>
-                                                <li><a href="shop-list.html">necklace</a></li>
-                                                <li><a href="shop-left-sidebar.html">bracelet</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T01"})">ring</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T02"})">earings</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T04"}) ">necklace</a></li>
+                                                <li><a href="@Url.Action("Shop", "Client", new { sort_by_prod = "T03"})">bracelet</a></li>
                                             </ul>
                                         </div>
                                         <div class="column-4 column">
-                                            <a href="#">
+                                            <a href="@Url.Action("Shop", "Client")">
                                                 <img src="~/assets/client/img/nav.jpg" alt="10.jpg" />
                                             </a>
                                         </div>
                                     </div>
                                 </li>
-                                @*<li>
-                                        <a href="shop.html">New Arrivals</a>
-                                        <div class="mega-menu mega-menu-1">
-                                            <div class="column-1 column">
-                                                <ul>
-                                                    <li><a href="shop-list.html">rings</a></li>
-                                                    <li><a href="shop-left-sidebar.html">diamond ring</a></li>
-                                                    <li><a href="shop-right-sidebar.html">gold ring</a></li>
-                                                    <li><a href="shop-list.html">sliver ring</a></li>
-                                                    <li><a href="shop-left-sidebar.html">Platinum ring</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column-2 column">
-                                                <ul>
-                                                    <li><a href="shop-list.html">Bracelets</a></li>
-                                                    <li><a href="shop-left-sidebar.html">diamond Bracelets</a></li>
-                                                    <li><a href="shop-right-sidebar.html">gold Bracelets</a></li>
-                                                    <li><a href="shop-left-sidebar.html">sliver Bracelets</a></li>
-                                                    <li><a href="shop-right-sidebar.html">Platinum Bracelets</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column-3 column">
-                                                <ul>
-                                                    <li><a href="shop-list.html">lecklaces</a></li>
-                                                    <li><a href="shop-right-sidebar.html">diamond lecklaces</a></li>
-                                                    <li><a href="shop-left-sidebar.html">gold lecklaces</a></li>
-                                                    <li><a href="shop-right-sidebar.html">sliver lecklaces</a></li>
-                                                    <li><a href="shop-left-sidebar.html">Platinum lecklaces</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="column-4 column">
-                                                <ul>
-                                                    <li><a href="shop-right-sidebar.html">earrings</a></li>
-                                                    <li><a href="shop-list.html">diamond earrings</a></li>
-                                                    <li><a href="shop-left-sidebar.html">gold earrings</a></li>
-                                                    <li><a href="shop-list.html">sliver earrings</a></li>
-                                                    <li><a href="shop-left-sidebar.html">Platinum earrings</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </li>*@
-                                @*<li>
-                                        <a href="portfolio.html">Portfolio</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="portfolio.html">Portfolio 3 column</a></li>
-                                            <li><a href="portfolio-2.html">Portfolio 4 column</a></li>
-                                        </ul>
-                                    </li>*@
                                 <li>
-                                    <a href="blog.html">Blog</a>
-                                    @*<ul class="sub-menu">
-                                            <li><a href="blog.html">Blog Page</a></li>
-                                            <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
-                                            <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
-                                        </ul>*@
+                                    <a href="@Url.Action("Blog", "Client")">Blog</a>
                                 </li>
-                                <li><a href="about-us.html">About Us</a></li>
+                                <li><a href="@Url.Action("About", "Client")">About Us</a></li>
                                 <li>
                                     <a href="@Url.Action("Contact", "Client")">Contact</a>
                                 </li>
@@ -312,133 +221,46 @@
                         <nav>
                             <ul>
                                 <li>
-                                    <a href="index.html" class="active">Home</a>
-                                    <ul>
-                                        <li><a href="index.html">Home 1</a></li>
-                                        <li><a href="index-2.html">Home 2</a></li>
-                                        <li><a href="index-3.html">Home 3</a></li>
-                                    </ul>
+                                    <a href="@Url.Action("Index", "Client")" class="active">Home</a>
                                 </li>
                                 <li>
-                                    <a href="#">Pages</a>
-                                    <ul>
-                                        <li><a href="about-us.html">About US</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog left sidebar</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog right sidebar</a></li>
-                                        <li><a href="blog-details.html">Blog details</a></li>
-                                        <li><a href="cart.html">Cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="coming-soon.html">Coming soon</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
-                                        <li><a href="contact-2.html">Contact 2</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="portfolio.html">Portfolio 3 column</a></li>
-                                        <li><a href="portfolio-2.html">Portfolio 4 column</a></li>
-                                        <li><a href="404.html">404</a></li>
-                                        <li><a href="shop.html">Shop</a></li>
-                                        <li><a href="shop-list.html">Shop list</a></li>
-                                        <li><a href="shop-left-sidebar.html">Shop left sidebar</a></li>
-                                        <li><a href="shop-right-sidebar.html">Shop right sidebar</a></li>
-                                        <li><a href="product-details.html">Product details</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="shop.html">Shop</a>
+                                    <a href="@Url.Action("Shop", "Client")">Shop</a>
                                     <ul>
                                         <li>
-                                            <a href="shop-list.html">rings</a>
+                                            <a href="#">Diamond Jewelry</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">diamond ring</a></li>
-                                                <li><a href="shop-right-sidebar.html">gold ring</a></li>
-                                                <li><a href="shop-list.html">sliver ring</a></li>
-                                                <li><a href="shop-left-sidebar.html">Platinum ring</a></li>
+                                                <li><a href="#">ring</a></li>
+                                                <li><a href="#">earings</a></li>
+                                                <li><a href="#">necklace</a></li>
+                                                <li><a href="#">bracelet</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="shop-list.html">Bracelets</a>
+                                            <a href="#">Stone Jewelry</a>
                                             <ul>
-                                                <li><a href="shop-left-sidebar.html">diamond Bracelets</a></li>
-                                                <li><a href="shop-right-sidebar.html">gold Bracelets</a></li>
-                                                <li><a href="shop-left-sidebar.html">sliver Bracelets</a></li>
-                                                <li><a href="shop-right-sidebar.html">Platinum Bracelets</a></li>
+                                                <li><a href="#">ring</a></li>
+                                                <li><a href="#">earings</a></li>
+                                                <li><a href="#">necklace</a></li>
+                                                <li><a href="#">bracelet</a></li>
                                             </ul>
                                         </li>
                                         <li>
-                                            <a href="shop-list.html">lecklaces</a>
+                                            <a href="#">Gold Jewelry</a>
                                             <ul>
-                                                <li><a href="shop-right-sidebar.html">diamond lecklaces</a></li>
-                                                <li><a href="shop-left-sidebar.html">gold lecklaces</a></li>
-                                                <li><a href="shop-right-sidebar.html">sliver lecklaces</a></li>
-                                                <li><a href="shop-left-sidebar.html">Platinum lecklaces</a></li>
+                                                <li><a href="#">ring</a></li>
+                                                <li><a href="#">earings</a></li>
+                                                <li><a href="#">necklace</a></li>
+                                                <li><a href="#">bracelet</a></li>
                                             </ul>
                                         </li>
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="shop.html">New Arrivals</a>
-                                    <ul>
-                                        <li>
-                                            <a href="shop-list.html">rings</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">diamond ring</a></li>
-                                                <li><a href="shop-right-sidebar.html">gold ring</a></li>
-                                                <li><a href="shop-list.html">sliver ring</a></li>
-                                                <li><a href="shop-left-sidebar.html">Platinum ring</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list.html">Bracelets</a>
-                                            <ul>
-                                                <li><a href="shop-left-sidebar.html">diamond Bracelets</a></li>
-                                                <li><a href="shop-right-sidebar.html">gold Bracelets</a></li>
-                                                <li><a href="shop-left-sidebar.html">sliver Bracelets</a></li>
-                                                <li><a href="shop-right-sidebar.html">Platinum Bracelets</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list.html">lecklaces</a>
-                                            <ul>
-                                                <li><a href="shop-right-sidebar.html">diamond lecklaces</a></li>
-                                                <li><a href="shop-left-sidebar.html">gold lecklaces</a></li>
-                                                <li><a href="shop-right-sidebar.html">sliver lecklaces</a></li>
-                                                <li><a href="shop-left-sidebar.html">Platinum lecklaces</a></li>
-                                            </ul>
-                                        </li>
-                                        <li>
-                                            <a href="shop-right-sidebar.html">earrings</a>
-                                            <ul>
-                                                <li><a href="shop-right-sidebar.html">diamond lecklaces</a></li>
-                                                <li><a href="shop-left-sidebar.html">gold earrings</a></li>
-                                                <li><a href="shop-list.html">sliver earrings</a></li>
-                                                <li><a href="shop-left-sidebar.html">Platinum earrings</a></li>
-                                            </ul>
-                                        </li>
-                                    </ul>
+                                    <a href="@Url.Action("Blog", "Client")">Blog</a>
                                 </li>
+                                <li><a href="@Url.Action("About", "Client")">About Us</a></li>
                                 <li>
-                                    <a href="portfolio.html">Portfolio</a>
-                                    <ul>
-                                        <li><a href="portfolio.html">Portfolio 3 column</a></li>
-                                        <li><a href="portfolio-2.html">Portfolio 4 column</a></li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <a href="blog.html">Blog</a>
-                                    <ul>
-                                        <li><a href="blog.html">Blog 1</a></li>
-                                        <li><a href="blog-left-sidebar.html">Blog 2</a></li>
-                                        <li><a href="blog-right-sidebar.html">Blog 3</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li>
-                                    <a href="contact.html">Contact</a>
-                                    <ul>
-                                        <li><a href="contact.html">Contact 1</a></li>
-                                        <li><a href="contact-2.html">Contact 2</a></li>
-                                    </ul>
+                                    <a href="@Url.Action("Contact", "Client")">Contact</a>
                                 </li>
                             </ul>
                         </nav>
@@ -508,7 +330,7 @@
                             <img src="~/assets/client/img/header/logo.png" alt="logo.png" />
                             <h3>online jewelry store</h3>
                         </div>
-                        <p>perspiciatis unde omnis iste natus error sit voluptatem accm doloremque antium, totam rem aperiam, eaque ipsa perspiciatis unde omnis iste</p>
+                        <p>Our goal at Yash’s is to make our customers feel comfortable and to keep them coming back for generations. After being in business for over 100 years we know how to make our customers feel as precious as our diamonds.</p>
                     </div>
                     <div class="footer-contact">
                         <div class="single-contact">
@@ -534,8 +356,8 @@
                                 <i class="fa fa-dribbble"></i>
                             </div>
                             <div class="details">
-                                <a href="#">info@olongker.com</a>
-                                <a href="#">www.olongker.com</a>
+                                <a href="#">info@yash.com</a>
+                                <a href="#">www.yashjew.com</a>
                             </div>
                         </div>
                     </div>
@@ -544,14 +366,11 @@
                     <div class="footer-quick-link footer-links">
                         <h2>QUICK LINK</h2>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="shop.html">Shop</a></li>
-                            <li><a href="shop-left-sidebar.html">About</a></li>
-                            @*<li><a href="services.html">Services</a></li>
-                                <li><a href="portfolio-1.html">Portfolio</a></li>*@
-                            <li><a href="blog.html">Blog</a></li>
-                            @*<li><a href="#">Shortcodes</a></li>*@
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="@Url.Action("Index", "Client")">Home</a></li>
+                            <li><a href="@Url.Action("Shop", "Client")">Shop</a></li>
+                            <li><a href="@Url.Action("About", "Client")">About</a></li>
+                            <li><a href="@Url.Action("Blog", "Client")">Blog</a></li>
+                            <li><a href="@Url.Action("Contact", "Client")">Contact</a></li>
                         </ul>
                     </div>
                 </div>
@@ -560,14 +379,11 @@
                         <div class="col-sm-8 footer-support footer-links">
                             <h2>OUR SUPPORT</h2>
                             <ul>
-                                @*<li><a href="#">Site Map</a></li>*@
                                 <li><a href="#">privacy Policy</a></li>
                                 <li><a href="#">Your Account</a></li>
                                 <li><a href="#">Term & Conditions</a></li>
-                                @*<li><a href="#">Advance Search</a></li>*@
                                 <li><a href="faq.html">Help & FAQs</a></li>
-                                @*<li><a href="#">Gift Voucher</a></li>*@
-                                <li><a href="contact-2.html">Contact Us</a></li>
+                                <li><a href="@Url.Action("Contact", "Client")">Contact Us</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4 footer-account footer-links">
@@ -599,7 +415,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <div class="copy-right">
-                        <p>&copy; 2015 <a href="www.bootexperts.com">BootExperts</a>, All Right Reserved</p>
+                        <p>&copy; 2015 <a href="#">PowerRangers</a>, All Right Reserved</p>
                     </div>
                 </div>
                 <div class="col-sm-6">

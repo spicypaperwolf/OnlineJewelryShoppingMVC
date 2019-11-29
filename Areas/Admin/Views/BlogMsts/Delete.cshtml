@@ -1,0 +1,57 @@
+﻿@model OnlineJewelryShoppingMVC.BlogMst
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>BlogMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.blogImg)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blogImg)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blogTitle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blogTitle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.blogContent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.blogContent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cdate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cdate)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,27 @@
+﻿@model OnlineJewelryShoppingMVC.NewsletterMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NewsletterMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.newsletterEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.newsletterEmail)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.newsletterId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

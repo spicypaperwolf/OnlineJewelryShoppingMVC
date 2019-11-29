@@ -16,9 +16,10 @@
           <Key>
             <PropertyRef Name="blogId" />
           </Key>
-          <Property Name="blogId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="blogId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="blogImg" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="blogTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="blogShortDes" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="blogContent" Type="varchar(max)" Nullable="false" />
           <Property Name="cdate" Type="datetime" Nullable="false" />
         </EntityType>
@@ -57,8 +58,8 @@
           <Key>
             <PropertyRef Name="cmtId" />
           </Key>
-          <Property Name="cmtId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="userId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="cmtId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" Nullable="false" />
           <Property Name="itemCode" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="cmtContent" Type="nvarchar" MaxLength="150" Nullable="false" />
           <Property Name="ratingValue" Type="numeric" Precision="10" Scale="1" Nullable="false" />
@@ -180,7 +181,7 @@
             <PropertyRef Name="transactionId" />
           </Key>
           <Property Name="transactionId" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="userId" Type="nchar" MaxLength="10" />
+          <Property Name="userId" Type="int" />
           <Property Name="totPrice" Type="numeric" Precision="10" Scale="2" Nullable="false" />
           <Property Name="totQty" Type="int" Nullable="false" />
           <Property Name="approvalStt" Type="nvarchar" MaxLength="10" />
@@ -189,7 +190,7 @@
           <Key>
             <PropertyRef Name="userId" />
           </Key>
-          <Property Name="userId" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="userFname" Type="text" Nullable="false" />
           <Property Name="userLname" Type="text" Nullable="false" />
           <Property Name="address" Type="varchar(max)" Nullable="false" />
@@ -471,9 +472,10 @@
           <Key>
             <PropertyRef Name="blogId" />
           </Key>
-          <Property Name="blogId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="blogId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="blogImg" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="blogTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="blogShortDes" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="blogContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cdate" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
@@ -517,8 +519,8 @@
           <Key>
             <PropertyRef Name="cmtId" />
           </Key>
-          <Property Name="cmtId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="userId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="cmtId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
           <Property Name="itemCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="cmtContent" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ratingValue" Type="Decimal" Precision="10" Scale="1" Nullable="false" />
@@ -656,7 +658,7 @@
             <PropertyRef Name="transactionId" />
           </Key>
           <Property Name="transactionId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="userId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="userId" Type="Int32" />
           <Property Name="totPrice" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
           <Property Name="totQty" Type="Int32" Nullable="false" />
           <Property Name="approvalStt" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
@@ -668,7 +670,7 @@
           <Key>
             <PropertyRef Name="userId" />
           </Key>
-          <Property Name="userId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="userFname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="userLname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -956,6 +958,7 @@
                 <ScalarProperty Name="blogId" ColumnName="blogId" />
                 <ScalarProperty Name="blogImg" ColumnName="blogImg" />
                 <ScalarProperty Name="blogTitle" ColumnName="blogTitle" />
+                <ScalarProperty Name="blogShortDes" ColumnName="blogShortDes" />
                 <ScalarProperty Name="blogContent" ColumnName="blogContent" />
                 <ScalarProperty Name="cdate" ColumnName="cdate" />
               </MappingFragment>

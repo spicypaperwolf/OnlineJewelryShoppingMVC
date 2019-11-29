@@ -1,0 +1,141 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.InquiryMst>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="content">
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create","InquiryMsts")">
+            Create
+        </a>
+    </p>
+    @using (Html.BeginForm("Index", "InquiryMsts", FormMethod.Post))
+    {
+        <div style="padding-bottom: 2%;">
+            Search: @Html.TextBox("searchString")
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+        </div>
+    }
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> INQUIRY TABLE</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().transactionId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().fname)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().lname)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().address)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().city)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().mobNo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().emailId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().cmt)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().cdate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().cardNo)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().expdate)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().CVV_No)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.transactionId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.fname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.lname)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.address)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.city)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.mobNo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.emailId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cmt)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cdate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cardNo)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.expdate)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CVV_No)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.inquiryID }) 
+                                            </td> 
+                                        <td>
+                                            @Html.ActionLink("Details", "Details", new { id = item.inquiryID }) </td>
+                                        <td>
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.inquiryID })
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+    )
+</div>
+

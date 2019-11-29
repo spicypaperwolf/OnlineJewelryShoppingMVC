@@ -1,0 +1,115 @@
+﻿@model OnlineJewelryShoppingMVC.DimInfoMst
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+    <div class="content">
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>DimInfoMst</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimShape)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimShape)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimCrt)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimCrt)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimSize)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimSize)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimColor)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimColor)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimClarity)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimClarity)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimCut)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimCut)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimPolish)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimPolish)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimSymmetry)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimSymmetry)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimReport)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimReport)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimRate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimRate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.dimImg)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.dimImg)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>

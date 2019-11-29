@@ -1,0 +1,26 @@
+﻿@model OnlineJewelryShoppingMVC.ProductMst
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+
+<div>
+    <h4>ProductMst</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.prodType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.prodType)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.prodId.Trim() }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

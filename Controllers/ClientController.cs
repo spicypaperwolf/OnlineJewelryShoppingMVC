@@ -25,11 +25,12 @@ namespace OnlineJewelryShoppingMVC.Controllers
         //Homepage
         public ActionResult Index()
         {
-            ViewBag.ItemList = _context.ItemMsts.Where(i => i.itemStatus == true).OrderByDescending(i=>i.created_at).ToList();
+            ViewBag.ItemList = _context.ItemMsts.Where(i => i.itemStatus == true).OrderByDescending(i => i.created_at).ToList();
             ViewBag.RingList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Ring").ToList();
             ViewBag.EaringsList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Earings").ToList();
             ViewBag.NecklaceList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Necklace").ToList();
             ViewBag.BraceletList = _context.ItemMsts.Where(i => i.ProductMst.prodType == "Bracelet").ToList();
+            ViewBag.BlogList = _context.BlogMsts.ToList();
             return View();
         }
 
@@ -40,22 +41,28 @@ namespace OnlineJewelryShoppingMVC.Controllers
         }
 
         //Shop page in default format for showing all products w customize filter
-        public ActionResult Shop(string searchString, int? page, string sortBy)
+        public ActionResult Shop(string searchString, int? page, string sortBy, string sort_by_prod)
         {
             var item = from x in _context.ItemMsts select x;
             if (!string.IsNullOrEmpty(searchString))
             {
-                item = item.Where(x => x.itemName.Contains(searchString) || x.itemImg.Contains(searchString) );
+                item = item.Where(x => x.itemName.Contains(searchString) || x.itemImg.Contains(searchString));
+            }
+
+            if (!string.IsNullOrEmpty(sort_by_prod))
+            {
+                item = item.Where(x => x.ProductMst.prodId.Contains(sort_by_prod));
             }
 
             ItemRespository ir = new ItemRespository();
             ViewBag.BrandList = _context.BrandMsts.ToList();
+            ViewBag.ProdList = _context.ProductMsts.ToList();
             ViewBag.ItemList = item.Where(i => i.itemStatus == true).ToList().ToPagedList(page ?? 1, 6);
             return View(item.Where(i => i.itemStatus == true).ToList().ToPagedList(page ?? 1, 6));
         }
 
         [HttpPost]
-        public ActionResult Shop(int? page, int sort_by, string sort_by_brand)
+        public ActionResult Shop(int? page, int sort_by, string sort_by_brand, string sort_by_prod)
         {
             var item = from x in _context.ItemMsts select x;
 
@@ -64,28 +71,64 @@ namespace OnlineJewelryShoppingMVC.Controllers
                 item = item.Where(x => x.BrandMst.brandId.Contains(sort_by_brand));
             }
 
+            if (!string.IsNullOrEmpty(sort_by_prod))
+            {
+                item = item.Where(x => x.ProductMst.prodId.Contains(sort_by_prod));
+            }
+
             ItemRespository ir = new ItemRespository();
             ViewBag.BrandList = _context.BrandMsts.ToList();
+            ViewBag.ProdList = _context.ProductMsts.ToList();
             ViewBag.ItemList = item.ToList().ToPagedList(page ?? 1, sort_by);
             return View(item.ToList().ToPagedList(page ?? 1, sort_by));
         }
 
         //Shop page in list format for showing all products w customize filter
-        public ActionResult ShopList()
+        public ActionResult ShopList(int? page)
         {
-            return View();
+            var item = from x in _context.ItemMsts select x;
+            ViewBag.BrandList = _context.BrandMsts.ToList();
+            ViewBag.ProdList = _context.ProductMsts.ToList();
+            return View(item.Where(i => i.itemStatus == true).ToList().ToPagedList(page ?? 1, 8));
+        }
+
+        //Shop page in list format for showing all products w customize filter
+        [HttpPost]
+        public ActionResult ShopList(int? page, int sort_by, string sort_by_brand)
+        {
+            var item = from x in _context.ItemMsts select x;
+
+            if (!string.IsNullOrEmpty(sort_by_brand))
+            {
+                item = item.Where(x => x.BrandMst.brandId.Contains(sort_by_brand));
+            }
+
+            return View(item.ToList().ToPagedList(page ?? 1, sort_by));
         }
 
         //Item page for details of particular product 
         public ActionResult ItemDetails(string id)
         {
             ItemMst item = _context.ItemMsts.Where(i => i.itemCode.Equals(id)).FirstOrDefault();
-            if (item == null)
+            if (item == null || id == null)
             {
                 return RedirectToAction("ErrorPage");
             }
             ViewBag.RelatedItem = _context.ItemMsts.Where(i => i.brandId == item.brandId).ToList();
+            ViewBag.CmtList = _context.CommentMsts.OrderByDescending(c => c.cmtId).ToList();
             return View(item);
+        }
+
+        [HttpPost]
+        public ActionResult Review(string review, string itemCode, int userId)
+        {
+            CommentMst c = new CommentMst();
+            c.cmtContent = review;
+            c.itemCode = itemCode;
+            c.userId = userId;
+            _context.CommentMsts.Add(c);
+            _context.SaveChanges();
+            return RedirectToAction("ItemDetails", "Client", new { id = itemCode});
         }
 
         //Login page for user/admi
@@ -188,7 +231,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
                     userSession.UserName = user.username; // user.UserName in Database
                     userSession.Role = "admin";
                     Session.Add(CommonConstants.USER_SESSION, userSession);
-                    return RedirectToAction("Dashboard", "Admin/Admin");
+                    return RedirectToAction("Dashboard", "Admin");
                 }
                 else if (result == 0)
                 {
@@ -242,21 +285,23 @@ namespace OnlineJewelryShoppingMVC.Controllers
         }
 
         //Blog page for displaying all of our post
-        public ActionResult Blog()
+        public ActionResult Blog(int? page)
         {
-            return View();
+            var blog = from x in _context.BlogMsts select x;
+            return View(blog.ToList().ToPagedList(page ?? 1, 3));
         }
 
-        //Blog page in list format for displaying all of our blog in the different presentation
-        public ActionResult BlogList()
-        {
-            return View();
-        }
 
         //Blog detailed page for presenting a specific post
-        public ActionResult BlogDetails()
+        public ActionResult BlogDetails(int id)
         {
-            return View();
+            BlogMst blog = _context.BlogMsts.Where(b => b.blogId.Equals(id)).FirstOrDefault();
+            if (blog == null)
+            {
+                return RedirectToAction("ErrorPage");
+            }
+            ViewBag.RecentBlog = _context.BlogMsts.OrderByDescending(b => b.cdate).ToList();
+            return View(blog);
         }
 
         //Wishlist page for showing item our client wanna notice at
@@ -306,5 +351,6 @@ namespace OnlineJewelryShoppingMVC.Controllers
             Session.Add(CommonConstants.USER_SESSION, userSession);
             return RedirectToAction("Index", "Client");
         }
+
     }
 }

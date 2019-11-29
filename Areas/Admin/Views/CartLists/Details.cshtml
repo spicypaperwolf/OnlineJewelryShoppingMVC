@@ -1,0 +1,58 @@
+﻿@model OnlineJewelryShoppingMVC.CartList
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>CartList</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cartId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cartId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.transactionId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.transactionId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.itemCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.itemCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.qty)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.qty)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.cartId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,92 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@model IPagedList<OnlineJewelryShoppingMVC.CommentMst>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_admin.cshtml";
+}
+
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<div class="content">
+    <p>
+        <a class="btn btn-primary" href="@Url.Action("Create","CommentMsts")">
+            Create
+        </a>
+    </p>
+    @using (Html.BeginForm("Index", "CommentMsts", FormMethod.Post))
+    {
+        <div style="padding-bottom: 2%;">
+            Search: @Html.TextBox("searchString")
+            <input id="Submit1" type="submit" value="Search" class="btn btn-success" />
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title"> COMMENT TABLE</h4>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().cmtContent)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().ratingValue)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().ItemMst.brandId)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.First().UserRegMst.userFname)
+                                    </th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.cmtContent)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ratingValue)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ItemMst.brandId)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserRegMst.userFname)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.cmtId }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.cmtId }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.cmtId })
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, searchBy = Request.QueryString["searchBy"], search = Request.QueryString["search"] }),
+    new PagedListRenderOptions() { Display = PagedListDisplayMode.IfNeeded }
+    )
+</div>

@@ -50,6 +50,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
                         i.cardNo = cardNo;
                         i.expdate = expDate;
                         i.CVV_No = CVV;
+                        i.cdate = System.DateTime.Now;
                         foreach (CartList item in (List<CartList>)Session["cartList"])
                         {
                             i.transactionId = item.transactionId;
@@ -100,6 +101,7 @@ namespace OnlineJewelryShoppingMVC.Controllers
                         i.cardNo = cardNo;
                         i.expdate = expDate;
                         i.CVV_No = CVV;
+                        i.cdate = System.DateTime.Now;
                         foreach (CartList item in (List<CartList>)Session["cartList"])
                         {
                             i.transactionId = item.transactionId;

@@ -17,6 +17,7 @@ namespace OnlineJewelryShoppingMVC
         public int blogId { get; set; }
         public string blogImg { get; set; }
         public string blogTitle { get; set; }
+        public string blogShortDes { get; set; }
         public string blogContent { get; set; }
         public System.DateTime cdate { get; set; }
     }

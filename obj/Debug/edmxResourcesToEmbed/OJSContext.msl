@@ -9,6 +9,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BlogMsts">
+      <EntityTypeMapping TypeName="OnlineJewelryShopDBModel.BlogMst">
+        <MappingFragment StoreEntitySet="BlogMst">
+          <ScalarProperty Name="blogId" ColumnName="blogId" />
+          <ScalarProperty Name="blogImg" ColumnName="blogImg" />
+          <ScalarProperty Name="blogTitle" ColumnName="blogTitle" />
+          <ScalarProperty Name="blogShortDes" ColumnName="blogShortDes" />
+          <ScalarProperty Name="blogContent" ColumnName="blogContent" />
+          <ScalarProperty Name="cdate" ColumnName="cdate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="BrandMsts">
       <EntityTypeMapping TypeName="OnlineJewelryShopDBModel.BrandMst">
         <MappingFragment StoreEntitySet="BrandMst">
@@ -21,12 +33,10 @@
       <EntityTypeMapping TypeName="OnlineJewelryShopDBModel.CartList">
         <MappingFragment StoreEntitySet="CartList">
           <ScalarProperty Name="cartId" ColumnName="cartId" />
-          <ScalarProperty Name="userId" ColumnName="userId" />
-          <ScalarProperty Name="guestId" ColumnName="guestId" />
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
           <ScalarProperty Name="itemCode" ColumnName="itemCode" />
           <ScalarProperty Name="qty" ColumnName="qty" />
           <ScalarProperty Name="price" ColumnName="price" />
-          <ScalarProperty Name="img" ColumnName="img" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -61,10 +71,10 @@
       <EntityTypeMapping TypeName="OnlineJewelryShopDBModel.ContactMst">
         <MappingFragment StoreEntitySet="ContactMst">
           <ScalarProperty Name="contactId" ColumnName="contactId" />
-          <ScalarProperty Name="contactFname" ColumnName="contactFname" />
-          <ScalarProperty Name="contactLname" ColumnName="contactLname" />
+          <ScalarProperty Name="contactName" ColumnName="contactName" />
           <ScalarProperty Name="contactMob" ColumnName="contactMob" />
           <ScalarProperty Name="contactEmail" ColumnName="contactEmail" />
+          <ScalarProperty Name="contactSubject" ColumnName="contactSubject" />
           <ScalarProperty Name="contactMessage" ColumnName="contactMessage" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -97,29 +107,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="GuestMsts">
-      <EntityTypeMapping TypeName="OnlineJewelryShopDBModel.GuestMst">
-        <MappingFragment StoreEntitySet="GuestMst">
-          <ScalarProperty Name="guestId" ColumnName="guestId" />
-          <ScalarProperty Name="guestFname" ColumnName="guestFname" />
-          <ScalarProperty Name="guestLname" ColumnName="guestLname" />
-          <ScalarProperty Name="address" ColumnName="address" />
-          <ScalarProperty Name="city" ColumnName="city" />
-          <ScalarProperty Name="state" ColumnName="state" />
-          <ScalarProperty Name="mobNo" ColumnName="mobNo" />
-          <ScalarProperty Name="emailId" ColumnName="emailId" />
-          <ScalarProperty Name="dob" ColumnName="dob" />
-          <ScalarProperty Name="cdate" ColumnName="cdate" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="InquiryMsts">
       <EntityTypeMapping TypeName="OnlineJewelryShopDBModel.InquiryMst">
         <MappingFragment StoreEntitySet="InquiryMst">
           <ScalarProperty Name="inquiryID" ColumnName="inquiryID" />
-          <ScalarProperty Name="cartId" ColumnName="cartId" />
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
           <ScalarProperty Name="fname" ColumnName="fname" />
           <ScalarProperty Name="lname" ColumnName="lname" />
+          <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="city" ColumnName="city" />
           <ScalarProperty Name="mobNo" ColumnName="mobNo" />
           <ScalarProperty Name="emailId" ColumnName="emailId" />
@@ -159,6 +154,8 @@
           <ScalarProperty Name="otherMaking" ColumnName="otherMaking" />
           <ScalarProperty Name="totMaking" ColumnName="totMaking" />
           <ScalarProperty Name="MRP" ColumnName="MRP" />
+          <ScalarProperty Name="itemStatus" ColumnName="itemStatus" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -195,10 +192,8 @@
         <MappingFragment StoreEntitySet="TransactionMst">
           <ScalarProperty Name="transactionId" ColumnName="transactionId" />
           <ScalarProperty Name="userId" ColumnName="userId" />
-          <ScalarProperty Name="guestId" ColumnName="guestId" />
-          <ScalarProperty Name="itemCode" ColumnName="itemCode" />
-          <ScalarProperty Name="qty" ColumnName="qty" />
-          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="totPrice" ColumnName="totPrice" />
+          <ScalarProperty Name="totQty" ColumnName="totQty" />
           <ScalarProperty Name="approvalStt" ColumnName="approvalStt" />
         </MappingFragment>
       </EntityTypeMapping>
